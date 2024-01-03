@@ -1,19 +1,19 @@
-//@use "src/theme/mixins" as mixins;
+@use "../../../theme/mixins" as mixins;
+@use "../../../theme/colors" as colors;
+@use "../../../theme/constants" as constants;
 
 footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include mixins.flexMix();
+
   padding: 3.5rem 0;
-  background: #252B42;
+  background: colors.$dark-background;
 
   .footer-nav {
-    display: flex;
-    gap: 2.5rem;
+    @include mixins.flexMix($gap: 2.5rem);
 
     &__item {
       a {
-        color: #BDBDBD;
+        color: colors.$light-gray;
 
         &.active-link {
           color: #fff;
@@ -21,7 +21,7 @@ footer {
       }
     }
 
-    @media (max-width: 450px) {
+    @media (max-width: constants.$small-screen) {
       flex-direction: column;
       text-align: center;
     }
