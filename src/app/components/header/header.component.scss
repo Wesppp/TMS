@@ -1,0 +1,42 @@
+//@use "src/theme/mixins" as mixins;
+
+header {
+  //@include mixins.flexMix();
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem 2.7rem 1.4rem 16rem;
+  background: #fff;
+
+  .nav-list {
+    //@include mixins.flexMix();
+
+    display: flex;
+    gap: 2.2rem;
+
+    &__item {
+      font-weight: 600;
+
+      a {
+        color: #737373;
+
+        &.active-link {
+          color: #252B42;
+        }
+      }
+    }
+  }
+
+  .account-actions {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    &__item {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+    }
+  }
+}

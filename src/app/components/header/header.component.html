@@ -1,0 +1,38 @@
+<header>
+  <ul class="nav-list">
+    @for (navLink of navLinks; track navLink.label) {
+      <li
+        class="nav-list__item">
+        <a
+          routerLinkActive="active-link"
+          [routerLink]="navLink.link">
+          {{ navLink.label }}
+        </a>
+      </li>
+    }
+  </ul>
+  <ul class="account-actions">
+    <li class="account-actions__item">
+      <img
+        ngSrc="assets/icons/avatar.svg"
+        alt="avatar"
+        width="50"
+        height="50">
+      <span>My Account</span>
+    </li>
+    <li class="account-actions__item">
+      <img
+        ngSrc="assets/icons/carbon_favorite.svg"
+        alt="favorite"
+        width="50"
+        height="50">
+    </li>
+    <li class="account-actions__item">
+      <img
+        ngSrc="assets/icons/basket.svg"
+        alt="basket"
+        width="50"
+        height="50">
+    </li>
+  </ul>
+</header>
