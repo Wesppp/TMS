@@ -1,21 +1,19 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { NgOptimizedImage } from '@angular/common';
 
 import { NavigationLink } from '../../models/nav-link.interface';
 
 @Component({
-  selector: 'app-header',
+  selector: 'app-footer',
   standalone: true,
   imports: [
-    RouterLink,
     RouterLinkActive,
-    NgOptimizedImage,
+    RouterLink,
   ],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  templateUrl: './footer.component.html',
+  styleUrl: './footer.component.scss'
 })
-export class HeaderComponent {
+export class FooterComponent {
   public navLinks: NavigationLink[] = [
     { label: 'Home', link: '#' },
     { label: 'Shop', link: '#' },

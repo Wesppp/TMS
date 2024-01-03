@@ -1,0 +1,29 @@
+//@use "src/theme/mixins" as mixins;
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3.5rem 0;
+  background: #252B42;
+
+  .footer-nav {
+    display: flex;
+    gap: 2.5rem;
+
+    &__item {
+      a {
+        color: #BDBDBD;
+
+        &.active-link {
+          color: #fff;
+        }
+      }
+    }
+
+    @media (max-width: 450px) {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+}

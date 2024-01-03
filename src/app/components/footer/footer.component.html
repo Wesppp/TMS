@@ -1,0 +1,14 @@
+<footer>
+  <ul class="footer-nav">
+    @for (navLink of navLinks; track navLink.label) {
+      <li
+        class="footer-nav__item">
+        <a
+          routerLinkActive="active-link"
+          [routerLink]="navLink.link">
+          {{ navLink.label }}
+        </a>
+      </li>
+    }
+  </ul>
+</footer>
