@@ -1,4 +1,4 @@
-<header>
+<header [class.second]="isHomePage">
   <ul class="nav-list">
     @for (navLink of navLinks; track navLink.label) {
       <li
@@ -19,7 +19,8 @@
           ngSrc="assets/icons/avatar.svg"
           alt="avatar"
           width="30"
-          height="30">
+          height="30"
+          priority>
       </div>
       <a routerLink="#">My Account</a>
     </li>
@@ -29,7 +30,8 @@
         ngSrc="assets/icons/carbon_favorite.svg"
         alt="favorite"
         width="30"
-        height="30">
+        height="30"
+        priority>
     </li>
     <li class="account-actions__item">
       <div class="highlight-icon-wrapper">
@@ -38,7 +40,8 @@
           ngSrc="assets/icons/basket.svg"
           alt="basket"
           width="30"
-          height="30">
+          height="30"
+          priority>
       </div>
     </li>
     <li class="account-actions__item">
@@ -47,7 +50,8 @@
         ngSrc="assets/icons/menu.svg"
         alt="menu"
         width="35"
-        height="35">
+        height="35"
+        priority>
     </li>
   </ul>
 </header>

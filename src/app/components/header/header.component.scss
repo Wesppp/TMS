@@ -6,7 +6,6 @@ header {
   @include mixins.flexMix($justify: space-between);
 
   padding: 1.4rem 2.7rem 1.4rem 0;
-  background: #fff;
 
   .nav-list {
     @include mixins.flexMix($gap: 2.2rem);
@@ -18,6 +17,10 @@ header {
 
       a {
         color: colors.$second-text;
+
+        &.second-color {
+          color: #fff;
+        }
 
         &.active-link {
           color: colors.$text;
@@ -65,5 +68,20 @@ header {
 
   @media (max-width: constants.$medium-screen) {
     justify-content: flex-end;
+  }
+
+  &.second {
+    background: transparent;
+
+    .nav-list__item, .account-actions__item {
+      a {
+        color: #fff;
+      }
+    }
+
+    .highlight-icon-wrapper {
+      border: 1px solid colors.$icon-light-wrapper-border;
+      background: colors.$icon-light-wrapper;
+    }
   }
 }
