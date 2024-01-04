@@ -21,3 +21,12 @@ a {
   text-decoration: none;
   color: colors.$text;
 }
+
+.light-large-btn {
+  padding: 1rem 2.8rem;
+  border: none;
+  cursor: pointer;
+  background: #fff;
+  color: colors.$primary;
+  font-weight: 800;
+}
