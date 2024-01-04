@@ -1,5 +1,6 @@
 @use "../../../theme/mixins" as mixins;
 @use "../../../theme/colors" as colors;
+@use "../../../theme/constants" as constants;
 
 .home {
   &__header {
@@ -28,6 +29,14 @@
 
   &__categories {
     padding: 3rem 0;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 2.5rem;
+    grid-template-areas:
+    "card0 card2 card3"
+    "card1 card2 card4";
   }
 }
 

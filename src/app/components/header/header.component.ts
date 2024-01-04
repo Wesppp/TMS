@@ -5,7 +5,7 @@ import { NgClass, NgOptimizedImage, NgStyle } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { NavigationLink } from '../../models/nav-link.interface';
-import { navLinks } from '../../constants/nav-links';
+import { NAV_LINKS } from '../../constants/nav-links';
 
 @Component({
   selector: 'app-header',
@@ -21,7 +21,7 @@ import { navLinks } from '../../constants/nav-links';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit {
-  public navLinks: NavigationLink[] = navLinks;
+  public navLinks: NavigationLink[] = NAV_LINKS;
   public isHomePage: boolean = false;
 
   constructor(private readonly router: Router,
