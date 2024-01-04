@@ -1,14 +1,17 @@
 @use "../../../theme/mixins" as mixins;
 @use "../../../theme/colors" as colors;
+@use "../../../theme/constants" as constants;
 
 header {
   @include mixins.flexMix($justify: space-between);
 
-  padding: 1.4rem 2.7rem 1.4rem 16rem;
+  padding: 1.4rem 2.7rem 1.4rem 0;
   background: #fff;
 
   .nav-list {
     @include mixins.flexMix($gap: 2.2rem);
+
+    padding-left: 15rem;
 
     &__item {
       font-weight: 600;
@@ -21,6 +24,10 @@ header {
         }
       }
     }
+
+    @media (max-width: constants.$medium-screen) {
+      display: none;
+    }
   }
 
   .account-actions {
@@ -31,6 +38,20 @@ header {
 
       font-weight: 600;
 
+      &:nth-last-child(1) {
+        display: none;
+
+        @media (max-width: constants.$medium-screen) {
+          display: flex;
+        }
+      }
+
+      &:nth-child(1), &:nth-child(2) {
+        @media (max-width: constants.$small-screen) {
+          display: none;
+        }
+      }
+
       .highlight-icon-wrapper {
         @include mixins.flexMix();
 
@@ -40,5 +61,9 @@ header {
         z-index: 0;
       }
     }
+  }
+
+  @media (max-width: constants.$medium-screen) {
+    justify-content: flex-end;
   }
 }

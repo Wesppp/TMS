@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 import { NavigationLink } from '../../models/nav-link.interface';
+import { navLinks } from '../../constants/nav-links';
 
 @Component({
   selector: 'app-footer',
@@ -14,11 +15,5 @@ import { NavigationLink } from '../../models/nav-link.interface';
   styleUrl: './footer.component.scss'
 })
 export class FooterComponent {
-  public navLinks: NavigationLink[] = [
-    { label: 'Home', link: '#' },
-    { label: 'Shop', link: '#' },
-    { label: 'Account', link: '#' },
-    { label: 'Pages', link: '#' },
-    { label: 'Blog', link: '#' },
-  ];
+  public navLinks: NavigationLink[] = navLinks;
 }

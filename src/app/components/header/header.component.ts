@@ -3,6 +3,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
 
 import { NavigationLink } from '../../models/nav-link.interface';
+import { navLinks } from '../../constants/nav-links';
 
 @Component({
   selector: 'app-header',
@@ -16,11 +17,5 @@ import { NavigationLink } from '../../models/nav-link.interface';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  public navLinks: NavigationLink[] = [
-    { label: 'Home', link: '#' },
-    { label: 'Shop', link: '#' },
-    { label: 'Account', link: '#' },
-    { label: 'Pages', link: '#' },
-    { label: 'Blog', link: '#' },
-  ];
+  public navLinks: NavigationLink[] = navLinks;
 }
