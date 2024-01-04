@@ -1,0 +1,29 @@
+@use "../../../theme/mixins" as mixins;
+@use "../../../theme/colors" as colors;
+@use "../../../theme/constants" as constants;
+
+footer {
+  @include mixins.flexMix();
+
+  padding: 3.5rem 0;
+  background: colors.$dark-background;
+
+  .footer-nav {
+    @include mixins.flexMix($gap: 2.5rem);
+
+    &__item {
+      a {
+        color: colors.$light-gray;
+
+        &.active-link {
+          color: #fff;
+        }
+      }
+    }
+
+    @media (max-width: constants.$small-screen) {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+}

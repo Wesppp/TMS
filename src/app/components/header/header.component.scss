@@ -1,0 +1,92 @@
+@use "../../../theme/mixins" as mixins;
+@use "../../../theme/colors" as colors;
+@use "../../../theme/constants" as constants;
+
+header {
+  @include mixins.flexMix($justify: space-between);
+
+  padding: 1.4rem 2.7rem 1.4rem 0;
+
+  .nav-list {
+    @include mixins.flexMix($gap: 2.2rem);
+
+    padding-left: 15rem;
+
+    &__item {
+      font-weight: 600;
+
+      a {
+        color: colors.$second-text;
+
+        &.second-color {
+          color: #fff;
+        }
+
+        &.active-link {
+          color: colors.$text;
+        }
+      }
+    }
+
+    @media (max-width: constants.$medium-screen) {
+      display: none;
+    }
+  }
+
+  .account-actions {
+    @include mixins.flexMix($gap: 2rem);
+
+    &__item {
+      @include mixins.flexMix($gap: .8rem);
+
+      font-weight: 600;
+
+      &:nth-last-child(1) {
+        display: none;
+
+        @media (max-width: constants.$medium-screen) {
+          display: flex;
+        }
+      }
+
+      &:nth-child(1), &:nth-child(2) {
+        @media (max-width: constants.$small-screen) {
+          display: none;
+        }
+      }
+
+      .highlight-icon-wrapper {
+        @include mixins.flexMix();
+
+        background: colors.$second-light-gray;
+        border-radius: 50%;
+        padding: 1rem;
+        z-index: 0;
+      }
+    }
+  }
+
+  @media (max-width: constants.$medium-screen) {
+    justify-content: flex-end;
+  }
+
+  &.second {
+    background: transparent;
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    .nav-list__item, .account-actions__item {
+      a {
+        color: #fff;
+      }
+    }
+
+    .highlight-icon-wrapper {
+      border: 1px solid colors.$icon-light-wrapper-border;
+      background: colors.$icon-light-wrapper;
+    }
+  }
+}

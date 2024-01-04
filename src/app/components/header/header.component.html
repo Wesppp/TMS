@@ -1,0 +1,57 @@
+<header [class.second]="isHomePage">
+  <ul class="nav-list">
+    @for (navLink of navLinks; track navLink.label) {
+      <li
+        class="nav-list__item">
+        <a
+          routerLinkActive="active-link"
+          [routerLink]="navLink.link">
+          {{ navLink.label }}
+        </a>
+      </li>
+    }
+  </ul>
+  <ul class="account-actions">
+    <li class="account-actions__item">
+      <div class="highlight-icon-wrapper">
+        <img
+          class="icon"
+          ngSrc="assets/icons/avatar.svg"
+          alt="avatar"
+          width="30"
+          height="30"
+          priority>
+      </div>
+      <a routerLink="#">My Account</a>
+    </li>
+    <li class="account-actions__item">
+      <img
+        class="icon"
+        ngSrc="assets/icons/carbon_favorite.svg"
+        alt="favorite"
+        width="30"
+        height="30"
+        priority>
+    </li>
+    <li class="account-actions__item">
+      <div class="highlight-icon-wrapper">
+        <img
+          class="icon"
+          ngSrc="assets/icons/basket.svg"
+          alt="basket"
+          width="30"
+          height="30"
+          priority>
+      </div>
+    </li>
+    <li class="account-actions__item">
+      <img
+        class="icon"
+        ngSrc="assets/icons/menu.svg"
+        alt="menu"
+        width="35"
+        height="35"
+        priority>
+    </li>
+  </ul>
+</header>
