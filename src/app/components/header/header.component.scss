@@ -1,6 +1,6 @@
-@use "../../../theme/mixins" as mixins;
-@use "../../../theme/colors" as colors;
-@use "../../../theme/constants" as constants;
+@use "mixins" as mixins;
+@use "colors" as colors;
+@use "constants" as constants;
 
 header {
   @include mixins.flexMix($justify: space-between);
@@ -54,15 +54,6 @@ header {
           display: none;
         }
       }
-
-      .highlight-icon-wrapper {
-        @include mixins.flexMix();
-
-        background: colors.$second-light-gray;
-        border-radius: 50%;
-        padding: 1rem;
-        z-index: 0;
-      }
     }
   }
 
@@ -82,11 +73,6 @@ header {
       a {
         color: #fff;
       }
-    }
-
-    .highlight-icon-wrapper {
-      border: 1px solid colors.$icon-light-wrapper-border;
-      background: colors.$icon-light-wrapper;
     }
   }
 }

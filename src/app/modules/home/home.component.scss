@@ -1,0 +1,90 @@
+@use "mixins" as mixins;
+@use "colors" as colors;
+@use "constants" as constants;
+
+:host ::ng-deep p-tabView {
+  .p-tabview-nav {
+    border: none;
+    justify-content: center;
+
+    li {
+      &.p-highlight {
+        a {
+          color: colors.$primary;
+        }
+      }
+
+      a {
+        @include mixins.fontMix(.8rem, 600);
+
+        color: colors.$second-text;
+      }
+    }
+  }
+}
+
+.home {
+  &__header {
+    @include mixins.bg-img('/assets/images/home-header-bg.png');
+    @include mixins.flexMix(column, $gap: .4rem);
+
+    height: 600px;
+    color: #fff;
+
+    h1 {
+      @include mixins.responsive-font(3rem, 5vw, 3.6rem, 800);
+    }
+
+    span:nth-child(1) {
+      @include mixins.fontMix(1.5rem, 700);
+    }
+
+    span:nth-child(2) {
+      @include mixins.fontMix(1.2rem, 500);
+    }
+
+    button {
+      margin-top: 1rem;
+    }
+  }
+
+  &__categories {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 2.5rem;
+    grid-template-areas:
+    "card0 card2 card3"
+    "card1 card2 card4";
+    border-bottom: 2px solid colors.$light-gray-second;
+
+    @media (max-width: constants.$wide-screen) {
+      grid-gap: .5rem;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas:
+      "card0 card2"
+      "card1 card2"
+      "card3 card4";
+    }
+  }
+
+  &__featured-products {
+    h2 {
+      @include mixins.fontMix(1.5rem, 700);
+
+      text-align: center;
+      padding-bottom: 1.6rem;
+    }
+  }
+
+  &__featured-products, &__categories {
+    padding: 3rem 0;
+  }
+}
+
+.max-width-container {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding-left: 10rem;
+  padding-right: 10rem;
+}

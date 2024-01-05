@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 import { NavigationLink } from '../../models/nav-link.interface';
-import { navLinks } from '../../constants/nav-links';
+import { NAV_LINKS } from '../../constants/nav-links';
 
 @Component({
   selector: 'app-footer',
@@ -15,5 +15,5 @@ import { navLinks } from '../../constants/nav-links';
   styleUrl: './footer.component.scss'
 })
 export class FooterComponent {
-  public navLinks: NavigationLink[] = navLinks;
+  public navLinks: NavigationLink[] = NAV_LINKS;
 }

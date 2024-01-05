@@ -1,15 +1,20 @@
-@use "theme/colors" as colors;
+@use "colors" as colors;
 
 @font-face {
-  font-family: "Montserrat";
-  src: local("Montserrat"), url(assets/fonts/Montserrat/Montserrat-Regular.ttf) format("truetype");
+  font-family: "Montserrat-Regular";
+  src: local("Montserrat-Regular"), url(assets/fonts/Montserrat/Montserrat-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Montserrat-Bold";
+  src: local("Montserrat-Bold"), url(assets/fonts/Montserrat/Montserrat-Bold.ttf) format("truetype");
 }
 
 *,
 *::after,
 *::before {
   margin: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat-Regular", sans-serif;
 }
 
 ul {
@@ -20,4 +25,13 @@ ul {
 a {
   text-decoration: none;
   color: colors.$text;
+}
+
+.light-large-btn {
+  padding: 1rem 2.8rem;
+  border: none;
+  cursor: pointer;
+  background: #fff;
+  color: colors.$primary;
+  font-weight: 800;
 }

@@ -13,45 +13,37 @@
   </ul>
   <ul class="account-actions">
     <li class="account-actions__item">
-      <div class="highlight-icon-wrapper">
-        <img
-          class="icon"
-          ngSrc="assets/icons/avatar.svg"
-          alt="avatar"
-          width="30"
-          height="30"
-          priority>
-      </div>
+      <img
+        class="icon"
+        [ngSrc]="isHomePage ? 'assets/icons/avatar-white.svg' : 'assets/icons/avatar-black.svg'"
+        alt="avatar"
+        width="50"
+        height="50">
       <a routerLink="#">My Account</a>
     </li>
     <li class="account-actions__item">
       <img
         class="icon"
-        ngSrc="assets/icons/carbon_favorite.svg"
+        [ngSrc]="isHomePage ? 'assets/icons/favorite-white.svg' : 'assets/icons/favorite-black.svg'"
         alt="favorite"
         width="30"
-        height="30"
-        priority>
-    </li>
-    <li class="account-actions__item">
-      <div class="highlight-icon-wrapper">
-        <img
-          class="icon"
-          ngSrc="assets/icons/basket.svg"
-          alt="basket"
-          width="30"
-          height="30"
-          priority>
-      </div>
+        height="30">
     </li>
     <li class="account-actions__item">
       <img
         class="icon"
-        ngSrc="assets/icons/menu.svg"
+        [ngSrc]="isHomePage ? 'assets/icons/basket-white.svg' : 'assets/icons/basket-black.svg'"
+        alt="basket"
+        width="50"
+        height="50">
+    </li>
+    <li class="account-actions__item">
+      <img
+        class="icon"
+        [ngSrc]="isHomePage ? 'assets/icons/menu-white.svg' : 'assets/icons/menu-black.svg'"
         alt="menu"
         width="35"
-        height="35"
-        priority>
+        height="35">
     </li>
   </ul>
 </header>

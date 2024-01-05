@@ -1,11 +1,12 @@
-@use "../../../theme/mixins" as mixins;
-@use "../../../theme/colors" as colors;
-@use "../../../theme/constants" as constants;
+@use "mixins" as mixins;
+@use "colors" as colors;
+@use "constants" as constants;
 
 footer {
   @include mixins.flexMix();
 
   padding: 3.5rem 0;
+  margin-top: 5rem;
   background: colors.$dark-background;
 
   .footer-nav {

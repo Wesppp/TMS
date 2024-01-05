@@ -1,0 +1,8 @@
+<div
+  [ngClass]="{'category-card--long': isLongCard}"
+  [style.background-image]="'url(' + categoryCard.image + ')'"
+  class="category-card">
+  <div class="category-card__title">
+    {{ categoryCard.title | uppercase }}
+  </div>
+</div>

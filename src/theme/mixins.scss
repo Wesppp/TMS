@@ -11,3 +11,15 @@
   font-size: $size;
   font-weight: $weight;
 }
+
+@mixin responsive-font($minSize: 1rem, $val: 5vw, $maxSize: 1rem, $weight: 400) {
+  font-size: clamp($minSize, $val, $maxSize);;
+  font-weight: $weight;
+}
+
+@mixin bg-img($bg-img: null, $bg-size: cover, $bg-position: center center, $bg-repeat: no-repeat) {
+  background-image: url($bg-img);
+  background-size: $bg-size;
+  background-position: $bg-position;
+  background-repeat: $bg-repeat;
+}

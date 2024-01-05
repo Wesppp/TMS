@@ -1,0 +1,23 @@
+@use "mixins" as mixins;
+@use "colors" as colors;
+@use "constants" as constants;
+
+.category-card {
+  @include mixins.bg-img('/assets/images/category-hat.png');
+  @include mixins.flexMix();
+
+  width: 100%;
+  min-width: 370px;
+  height: 220px;
+
+  &--long {
+    height: 100%;
+  }
+
+  &__title {
+    padding: 1rem 2rem;
+    color: #fff;
+    border: 1px solid #fff;
+    font-weight: 700;
+  }
+}
