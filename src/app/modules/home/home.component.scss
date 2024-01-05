@@ -28,16 +28,24 @@
   }
 
   &__categories {
-    max-width: 1120px;
     padding: 3rem 0;
     display: grid;
-    justify-items: center;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
     grid-gap: 2.5rem;
     grid-template-areas:
     "card0 card2 card3"
     "card1 card2 card4";
+    border-bottom: 2px solid colors.$light-gray-second;
+
+    @media (max-width: constants.$wide-screen) {
+      grid-gap: .5rem;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas:
+      "card0 card2"
+      "card1 card2"
+      "card3 card4";
+    }
   }
 }
 

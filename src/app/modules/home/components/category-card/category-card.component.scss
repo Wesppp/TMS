@@ -1,11 +1,13 @@
 @use "../../../../../theme/mixins" as mixins;
 @use "../../../../../theme/colors" as colors;
+@use "../../../../../theme/constants" as constants;
 
 .category-card {
   @include mixins.bg-img('/assets/images/category-hat.png');
   @include mixins.flexMix();
 
-  width: 370px;
+  width: 100%;
+  min-width: 370px;
   height: 220px;
 
   &--long {
