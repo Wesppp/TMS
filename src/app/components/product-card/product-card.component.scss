@@ -6,26 +6,30 @@
     background: transparent;
     border-radius: 0;
     box-shadow: none;
-  }
 
-  .p-card-body {
-    @include mixins.fontMix(1.2rem, 200);
+    &-body {
+      @include mixins.fontMix(1.2rem, 200);
 
-    padding: .5rem 0;
+      padding: .5rem 0;
+    }
 
-    .p-card-subtitle {
+    &-title {
       color: colors.$text;
     }
 
-    .p-card-subtitle {
+    &-subtitle {
       color: colors.$second-text;
     }
 
-    .p-card-content {
+    &-content {
       @include mixins.fontMix(1.5rem, 800);
 
       color: colors.$text;
       padding: .8rem 0;
+    }
+
+    &-footer {
+      padding-top: 0;
     }
   }
 }

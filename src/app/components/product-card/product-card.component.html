@@ -7,7 +7,10 @@
       ${{ productCard.price }}
     </p>
     <ng-template pTemplate="footer">
-
+        <app-size-color-picker
+            [sizePicker]="productCard.sizes"
+            [colorPicker]="productCard.colors"
+        ></app-size-color-picker>
     </ng-template>
   </p-card>
 </div>

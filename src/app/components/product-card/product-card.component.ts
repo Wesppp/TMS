@@ -3,12 +3,14 @@ import { Component, Input } from '@angular/core';
 import { CardModule } from 'primeng/card';
 
 import { Product } from '../../models/product.interface';
+import { SizeColorPickerComponent } from '../size-color-picker/size-color-picker.component';
 
 @Component({
   selector: 'app-product-card',
   standalone: true,
   imports: [
     CardModule,
+    SizeColorPickerComponent,
   ],
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.scss'
