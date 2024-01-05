@@ -7,13 +7,15 @@
       Shop Now
     </button>
   </div>
-  <div class="home__categories max-width-container">
-    @for (card of categoryCards; track card.title; let idx = $index) {
-      <app-category-card
-        [style.grid-area]="'card' + idx"
-        [isLongCard]="idx === Math.floor(categoryCards.length / 2)"
-        [categoryCard]="card"
-      ></app-category-card>
-    }
+  <div class="max-width-container">
+    <div class="home__categories">
+      @for (card of categoryCards; track card.title; let idx = $index) {
+        <app-category-card
+          [style.grid-area]="'card' + idx"
+          [isLongCard]="idx === Math.floor(categoryCards.length / 2)"
+          [categoryCard]="card"
+        ></app-category-card>
+      }
+    </div>
   </div>
 </div>
