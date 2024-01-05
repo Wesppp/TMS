@@ -1,6 +1,6 @@
-@use "../../../theme/mixins" as mixins;
-@use "../../../theme/colors" as colors;
-@use "../../../theme/constants" as constants;
+@use "mixins" as mixins;
+@use "colors" as colors;
+@use "constants" as constants;
 
 header {
   @include mixins.flexMix($justify: space-between);
