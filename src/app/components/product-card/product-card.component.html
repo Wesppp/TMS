@@ -8,8 +8,8 @@
     </p>
     <ng-template pTemplate="footer">
         <app-size-color-picker
-            [sizePicker]="productCard.sizes"
-            [colorPicker]="productCard.colors"
+            [sizePicker]="isHideSizes ? [] : productCard.sizes"
+            [colorPicker]="isHideColors ? [] : productCard.colors"
         ></app-size-color-picker>
     </ng-template>
   </p-card>

@@ -22,7 +22,7 @@
       <p-tabView>
         <p-tabPanel header="Featured">
           <div class="featured-products__tab">
-            @for (productCard of productCards; track productCard.uuid) {
+            @for (productCard of productLongCards; track productCard.uuid) {
               <app-product-card
                 [productCard]="productCard"
               ></app-product-card>
@@ -42,6 +42,17 @@
           </p>
         </p-tabPanel>
       </p-tabView>
+    </div>
+    <div class="home__latest-products">
+      <h2>Latest Products</h2>
+      <ul class="latest-products__list">
+        @for (productCard of productDefaultsCards; track productCard.uuid) {
+          <app-product-card
+            [productCard]="productCard"
+            [isHideColors]="true"
+          ></app-product-card>
+        }
+      </ul>
     </div>
   </div>
 </div>

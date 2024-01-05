@@ -36,7 +36,8 @@
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
-                "src/theme/"
+                "src/theme/",
+                "src/assets/fonts/"
               ]
             },
             "scripts": [],
