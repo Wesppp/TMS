@@ -1,0 +1,13 @@
+<div class="product-card">
+  <p-card [header]="productCard.title" subheader="(Black)" [style]="{ width: '280px' }">
+    <ng-template pTemplate="header">
+      <img alt="product card" [src]="productCard.images[0]"/>
+    </ng-template>
+    <p>
+      ${{ productCard.price }}
+    </p>
+    <ng-template pTemplate="footer">
+
+    </ng-template>
+  </p-card>
+</div>

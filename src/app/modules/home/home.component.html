@@ -21,10 +21,13 @@
       <h2>Featured Products</h2>
       <p-tabView>
         <p-tabPanel header="Featured">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
+          <div class="featured-products__tab">
+            @for (productCard of productCards; track productCard.uuid) {
+              <app-product-card
+                [productCard]="productCard"
+              ></app-product-card>
+            }
+          </div>
         </p-tabPanel>
         <p-tabPanel header="Best Seller">
           <p>
