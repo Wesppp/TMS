@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { TabViewModule } from 'primeng/tabview';
+
 import { CategoryCardComponent } from './components/category-card/category-card.component';
 import { CategoryCard } from './models/category-card.interface';
 import { CATEGORIES } from './constants/categories';
@@ -9,6 +11,7 @@ import { CATEGORIES } from './constants/categories';
   standalone: true,
   imports: [
     CategoryCardComponent,
+    TabViewModule,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'

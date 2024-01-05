@@ -2,6 +2,27 @@
 @use "colors" as colors;
 @use "constants" as constants;
 
+:host ::ng-deep p-tabView {
+  .p-tabview-nav {
+    border: none;
+    justify-content: center;
+
+    li {
+      &.p-highlight {
+        a {
+          color: colors.$primary;
+        }
+      }
+
+      a {
+        @include mixins.fontMix(.8rem, 600);
+
+        color: colors.$second-text;
+      }
+    }
+  }
+}
+
 .home {
   &__header {
     @include mixins.bg-img('/assets/images/home-header-bg.png');
@@ -28,7 +49,6 @@
   }
 
   &__categories {
-    padding: 3rem 0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
@@ -46,6 +66,19 @@
       "card1 card2"
       "card3 card4";
     }
+  }
+
+  &__featured-products {
+    h2 {
+      @include mixins.fontMix(1.5rem, 700);
+
+      text-align: center;
+      padding-bottom: 1.6rem;
+    }
+  }
+
+  &__featured-products, &__categories {
+    padding: 3rem 0;
   }
 }
 
