@@ -1,0 +1,20 @@
+<div class="size-color-picker">
+  @if (colorPicker.length) {
+    <ul class="size-color-picker__colors">
+      @for (color of colorPicker; track color) {
+        <button [style.background-color]="color">
+
+        </button>
+      }
+    </ul>
+  }
+  @if (sizePicker.length) {
+    <ul class="size-color-picker__sizes">
+      @for (size of sizePicker; track size) {
+        <button>
+          {{ size }}
+        </button>
+      }
+    </ul>
+  }
+</div>
