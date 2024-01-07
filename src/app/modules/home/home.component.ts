@@ -7,7 +7,7 @@ import { CategoryCard } from './models/category-card.interface';
 import { CATEGORIES } from './constants/categories';
 import { ProductCardComponent } from '../../components/product-card/product-card.component';
 import { Product } from '../../models/product.interface';
-import { PRODUCTS } from '../../constants/products';
+import { PRODUCTS_DEFAULT, PRODUCTS_LONG } from '../../constants/products';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +21,8 @@ import { PRODUCTS } from '../../constants/products';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  public productCards: Product[] = PRODUCTS;
+  public productLongCards: Product[] = PRODUCTS_LONG;
+  public productDefaultsCards: Product[] = PRODUCTS_DEFAULT;
   public categoryCards: CategoryCard[] = CATEGORIES;
   public readonly Math: Math = Math;
 }

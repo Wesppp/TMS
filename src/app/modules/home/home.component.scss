@@ -63,6 +63,10 @@
     button {
       margin-top: 1rem;
     }
+
+    span:nth-child(1), h1 {
+      font-family: "Montserrat-Bold", sans-serif;
+    }
   }
 
   &__categories {
@@ -86,20 +90,34 @@
   }
 
   &__featured-products {
+    .featured-products__tab {
+      @include mixins.flexMix($gap: 2.5rem);
+    }
+  }
+
+  &__latest-products {
+    padding: 2rem 0;
+
+    .latest-products__list {
+      padding-top: 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 2.5rem;
+      justify-content: center
+    }
+  }
+
+  &__featured-products, &__categories {
+    padding: 3rem 0;
+  }
+
+  &__featured-products, &__latest-products {
     h2 {
       @include mixins.fontMix(1.5rem, 700);
 
       text-align: center;
       padding-bottom: 1.6rem;
     }
-
-    .featured-products__tab {
-      @include mixins.flexMix($gap: 2.5rem);
-    }
-  }
-
-  &__featured-products, &__categories {
-    padding: 3rem 0;
   }
 }
 

@@ -17,4 +17,6 @@ import { SizeColorPickerComponent } from '../size-color-picker/size-color-picker
 })
 export class ProductCardComponent {
   @Input({ required: true }) public productCard!: Product;
+  @Input() public isHideColors: boolean = false;
+  @Input() public isHideSizes: boolean = false;
 }
