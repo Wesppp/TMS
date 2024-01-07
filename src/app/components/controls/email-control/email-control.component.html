@@ -1,0 +1,12 @@
+<input
+  pInputText
+  type="email"
+  [formControl]="formControl"
+  [placeholder]="placeholder"/>
+<div class="input-errors">
+  @if(control.hasError('required') && control.touched) {
+    <small class="p-error block">Fill in the field!</small>
+  } @else if (control.hasError('pattern') && control.touched) {
+    <small class="p-error block">Enter the email correctly!</small>
+  }
+</div>
