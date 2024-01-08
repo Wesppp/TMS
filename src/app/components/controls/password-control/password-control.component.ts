@@ -12,7 +12,8 @@ import { BaseControlComponent } from '../base-control/base-control.component';
     PasswordModule,
     ReactiveFormsModule,
   ],
-  templateUrl: './password-control.component.html'
+  templateUrl: './password-control.component.html',
+  styleUrl: '../controls.scss'
 })
 export class PasswordControlComponent extends BaseControlComponent {
   constructor(@Attribute('placeholder') readonly placeholder: string) {

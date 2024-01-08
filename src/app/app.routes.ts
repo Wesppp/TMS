@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { RegisterComponent } from './modules/auth/components/register/register.component';
 
 export const routes: Routes = [
   {
@@ -12,6 +13,12 @@ export const routes: Routes = [
   },
   {
     path: 'auth',
-    loadComponent: () => import('./modules/auth/auth.component').then(mod => mod.AuthComponent)
+    loadComponent: () => import('./modules/auth/auth.component').then(mod => mod.AuthComponent),
+    children: [
+      {
+        path: 'register',
+        component: RegisterComponent
+      }
+    ]
   }
 ];

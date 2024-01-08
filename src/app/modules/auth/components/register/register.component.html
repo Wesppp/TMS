@@ -1,0 +1,30 @@
+<form
+  class="form register-form"
+  (ngSubmit)="onFormSubmit()"
+  [formGroup]="registerForm">
+  <h2>Sign Up</h2>
+  <div class="form__field">
+    <app-email-control
+      [control]="registerForm.controls['email']"
+      placeholder="Enter your email"
+    ></app-email-control>
+  </div>
+  <div class="form__field">
+    <app-password-control
+      [control]="registerForm.controls['password']"
+      placeholder="Enter a password"
+    ></app-password-control>
+  </div>
+  <div class="form__field">
+    <app-password-control
+      [control]="registerForm.controls['repeatPassword']"
+      placeholder="Repeat your password"
+    ></app-password-control>
+  </div>
+  <div class="form__actions">
+    <p-button
+      type="submit"
+      [disabled]="registerForm.invalid"
+      label="Submit"></p-button>
+  </div>
+</form>

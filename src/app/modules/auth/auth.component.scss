@@ -1,0 +1,7 @@
+@use "mixins" as mixins;
+
+.auth {
+  @include mixins.flexMix();
+
+  padding-top: 4rem;
+}
