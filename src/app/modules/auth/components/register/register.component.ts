@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { ButtonModule } from 'primeng/button';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 import {
   EmailControlComponent
@@ -8,11 +11,14 @@ import {
 import {
   PasswordControlComponent
 } from '../../../../components/controls/password-control/password-control.component';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RegisterForm } from '../../models/auth-forms.interface';
+import { AuthFormValue, RegisterForm } from '../../models/auth-forms.interface';
 import {
   passwordMatchValidator
 } from '../../../../utils/custom-validators/compare-fields.validator';
+import { isSubmittingSelector } from '../../../../../store/auth/auth.selectors';
+import { AuthService } from '../../services/auth.service';
+import { registerAction } from '../../../../../store/auth/actions/register.action';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-register',
@@ -22,15 +28,23 @@ import {
     PasswordControlComponent,
     ButtonModule,
     ReactiveFormsModule,
+    AsyncPipe,
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent implements OnInit {
+  public isSubmitting$!: Observable<boolean>;
+
   public registerForm!: FormGroup<RegisterForm>;
+
+  constructor(private readonly authService: AuthService,
+              private readonly store: Store) {
+  }
 
   public ngOnInit(): void {
     this.createForm();
+    this.initializeValues();
   }
 
   private createForm(): void {
@@ -52,7 +66,16 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  public initializeValues(): void {
+    this.isSubmitting$ = this.store.select(isSubmittingSelector);
+  }
+
   public onFormSubmit(): void {
-    console.log(this.registerForm.value);
+    const registerRequest: AuthFormValue = {
+      password: this.registerForm.value.password as string,
+      email: this.registerForm.value.email as string
+    }
+
+    this.store.dispatch(registerAction({ registerRequest }));
   }
 }

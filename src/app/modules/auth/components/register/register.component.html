@@ -24,7 +24,7 @@
   <div class="form__actions">
     <p-button
       type="submit"
-      [disabled]="registerForm.invalid"
+      [disabled]="registerForm.invalid || !!(isSubmitting$ | async)"
       label="Submit"></p-button>
   </div>
 </form>

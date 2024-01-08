@@ -5,3 +5,8 @@ export interface RegisterForm {
   password: FormControl<string | null>;
   repeatPassword: FormControl<string | null>;
 }
+
+export interface AuthFormValue {
+  email: string;
+  password: string;
+}
