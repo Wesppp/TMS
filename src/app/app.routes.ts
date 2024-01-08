@@ -8,6 +8,8 @@ import { authFeatureKey } from '../store/auth/auth.state';
 import { authReducer } from '../store/auth/auth.reducer';
 import { RegisterEffect } from '../store/auth/effects/register.effect';
 import { AuthService } from './modules/auth/services/auth.service';
+import { LogoutEffect } from '../store/auth/effects/logout.effect';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -24,7 +26,7 @@ export const routes: Routes = [
     loadComponent: () => import('./modules/auth/auth.component').then(mod => mod.AuthComponent),
     providers: [
       provideState({ name: authFeatureKey, reducer: authReducer }),
-      provideEffects(RegisterEffect),
+      provideEffects(RegisterEffect, LogoutEffect),
       AuthService
     ],
     children: [

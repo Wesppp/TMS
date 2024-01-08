@@ -6,6 +6,7 @@ import {
   registerFailureAction,
   registerSuccessAction,
 } from './actions/register.action';
+import { logoutAction } from './actions/logout.action';
 
 export const authReducer = createReducer(
   initialState,
@@ -18,13 +19,19 @@ export const authReducer = createReducer(
   on(registerSuccessAction,
     (state: AuthState) => ({
       ...state,
-      isSubmitting: false
+      isSubmitting: false,
+      isLoggedIn: true
     })
   ),
   on(registerFailureAction,
     (state: AuthState) => ({
       ...state,
       isSubmitting: false
+    })
+  ),
+  on(logoutAction,
+    () => ({
+      ...initialState
     })
   ),
 );

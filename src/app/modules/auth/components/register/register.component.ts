@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AsyncPipe } from '@angular/common';
 
 import { ButtonModule } from 'primeng/button';
 import { Store } from '@ngrx/store';
@@ -16,9 +17,7 @@ import {
   passwordMatchValidator
 } from '../../../../utils/custom-validators/compare-fields.validator';
 import { isSubmittingSelector } from '../../../../../store/auth/auth.selectors';
-import { AuthService } from '../../services/auth.service';
 import { registerAction } from '../../../../../store/auth/actions/register.action';
-import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-register',
@@ -38,8 +37,7 @@ export class RegisterComponent implements OnInit {
 
   public registerForm!: FormGroup<RegisterForm>;
 
-  constructor(private readonly authService: AuthService,
-              private readonly store: Store) {
+  constructor(private readonly store: Store) {
   }
 
   public ngOnInit(): void {
