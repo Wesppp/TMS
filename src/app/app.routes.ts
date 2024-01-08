@@ -1,5 +1,15 @@
 import { Routes } from '@angular/router';
+
+import { provideState } from '@ngrx/store';
+import { provideEffects } from '@ngrx/effects';
+
 import { RegisterComponent } from './modules/auth/components/register/register.component';
+import { authFeatureKey } from '../store/auth/auth.state';
+import { authReducer } from '../store/auth/auth.reducer';
+import { RegisterEffect } from '../store/auth/effects/register.effect';
+import { AuthService } from './modules/auth/services/auth.service';
+import { LogoutEffect } from '../store/auth/effects/logout.effect';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -14,6 +24,11 @@ export const routes: Routes = [
   {
     path: 'auth',
     loadComponent: () => import('./modules/auth/auth.component').then(mod => mod.AuthComponent),
+    providers: [
+      provideState({ name: authFeatureKey, reducer: authReducer }),
+      provideEffects(RegisterEffect, LogoutEffect),
+      AuthService
+    ],
     children: [
       {
         path: 'register',
