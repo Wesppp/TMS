@@ -9,7 +9,8 @@ import { BaseControlComponent } from '../base-control/base-control.component';
   selector: 'app-email-control',
   standalone: true,
   imports: [InputTextModule, ReactiveFormsModule],
-  templateUrl: './email-control.component.html'
+  templateUrl: './email-control.component.html',
+  styleUrl: '../controls.scss'
 })
 export class EmailControlComponent extends BaseControlComponent {
   constructor(@Attribute('placeholder') readonly placeholder: string) {
