@@ -8,13 +8,14 @@ import { Observable, tap } from 'rxjs';
 import { PersistenceService } from './persistence.service';
 import { AuthTokensEnum } from '../enums/auth-tokens.enum';
 import { logoutAction } from '../../store/auth/actions/logout.action';
+import { AuthState } from '../../store/auth/auth.state';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthInterceptor {
   constructor(private readonly persistence: PersistenceService,
-              private readonly store: Store,
+              private readonly store: Store<AuthState>,
               private readonly jwtHelperService: JwtHelperService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

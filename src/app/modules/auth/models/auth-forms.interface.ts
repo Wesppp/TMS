@@ -6,6 +6,11 @@ export interface RegisterForm {
   repeatPassword: FormControl<string | null>;
 }
 
+export interface LoginForm {
+  email: FormControl<string | null>;
+  password: FormControl<string | null>;
+}
+
 export interface AuthFormValue {
   email: string;
   password: string;

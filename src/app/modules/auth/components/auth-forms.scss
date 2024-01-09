@@ -22,6 +22,11 @@
   }
 
   &__actions {
-    @include mixins.flexMix($justify: flex-end);
+    @include mixins.flexMix($justify: space-between, $gap: .5rem);
+
+    a {
+      color: colors.$second-text;
+      text-decoration: underline;
+    }
   }
 }
