@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
 
-import { AuthService } from '../../../app/modules/auth/services/auth.service';
+import { AuthService } from '../../../app/services/auth.service';
 import {
   registerAction,
   registerFailureAction,
@@ -27,6 +27,7 @@ export class RegisterEffect {
     switchMap(({ registerRequest }) => this.authService.register(registerRequest)),
     map((authTokens: AuthTokens) => {
       this.persistence.setToken(AuthTokensEnum.ACCESS_TOKEN, authTokens.accessToken);
+      this.persistence.setToken(AuthTokensEnum.REFRESH_TOKEN, authTokens.refreshToken);
 
       return registerSuccessAction({ authTokens });
     }),

@@ -19,7 +19,11 @@
         alt="avatar"
         width="50"
         height="50">
-      <a routerLink="#">My Account</a>
+      @if (isLoggedIn$ | async) {
+        <a routerLink="#">My Account</a>
+      } @else {
+        <a routerLink="/auth/login">Sign In</a>
+      }
     </li>
     <li class="account-actions__item">
       <img
