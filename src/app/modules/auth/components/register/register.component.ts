@@ -14,7 +14,7 @@ import {
 } from '../../../../components/controls/password-control/password-control.component';
 import { AuthFormValue, RegisterForm } from '../../models/auth-forms.interface';
 import {
-  passwordMatchValidator
+  validator,
 } from '../../../../utils/custom-validators/compare-fields.validator';
 import { isSubmittingSelector } from '../../../../../store/auth/auth.selectors';
 import { registerAction } from '../../../../../store/auth/actions/register.action';
@@ -63,7 +63,7 @@ export class RegisterComponent implements OnInit {
         Validators.minLength(4)
       ])
     }, {
-      validators: passwordMatchValidator
+      validators: validator<RegisterForm>('password', 'repeatPassword')
     });
   }
 

@@ -7,7 +7,9 @@ import { AuthFormValue } from '../models/auth-forms.interface';
 import { environment } from '../../../../environments/environment';
 import { AuthTokens } from '../../../models/auth-tokens.interface';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
   constructor(private readonly http: HttpClient) { }
 
