@@ -13,4 +13,4 @@ export const isSubmittingSelector = createSelector(
 export const isLoggedInSelector = createSelector(
   authFeatureSelector,
   (authState: AuthState) => authState.isLoggedIn
-)
+);
