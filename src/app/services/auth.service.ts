@@ -3,9 +3,9 @@ import { HttpBackend, HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
-import { AuthFormValue } from '../modules/auth/models/auth-forms.interface';
-import { environment } from '../../environments/environment';
-import { AuthTokens } from '../models/auth-tokens.interface';
+import { AuthFormValue } from '@modules/auth/models/auth-forms.interface';
+import { environment } from '@environments/environment';
+import { AuthTokens } from '@models/auth-tokens.interface';
 
 @Injectable({
   providedIn: 'root'

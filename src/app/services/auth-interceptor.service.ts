@@ -6,10 +6,10 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, tap } from 'rxjs';
 
 import { PersistenceService } from './persistence.service';
-import { AuthTokensEnum } from '../enums/auth-tokens.enum';
-import { logoutAction } from '../../store/auth/actions/logout.action';
-import { AuthState } from '../../store/auth/auth.state';
-import { refreshTokensAction } from '../../store/auth/actions/refresh-tokens.action';
+import { AuthTokensEnum } from '@enums/auth-tokens.enum';
+import { logoutAction } from '@store/auth/actions/logout.action';
+import { AuthState } from '@store/auth/auth.state';
+import { refreshTokensAction } from '@store/auth/actions/refresh-tokens.action';
 
 @Injectable({
   providedIn: 'root'

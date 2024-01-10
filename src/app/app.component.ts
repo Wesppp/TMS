@@ -4,11 +4,11 @@ import { RouterOutlet } from '@angular/router';
 
 import { Store } from '@ngrx/store';
 
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { PersistenceService } from './services/persistence.service';
-import { AuthTokensEnum } from './enums/auth-tokens.enum';
-import { setIsLoggedInAction } from '../store/auth/actions/set-isLoggedIn.action';
+import { HeaderComponent } from '@components/header/header.component';
+import { FooterComponent } from '@components/footer/footer.component';
+import { PersistenceService } from '@services/persistence.service';
+import { AuthTokensEnum } from '@enums/auth-tokens.enum';
+import { setIsLoggedInAction } from '@store/auth/actions/set-isLoggedIn.action';
 
 @Component({
   selector: 'app-root',
@@ -23,8 +23,6 @@ import { setIsLoggedInAction } from '../store/auth/actions/set-isLoggedIn.action
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
-  title = 'TMS-shop';
-
   constructor(private readonly persistence: PersistenceService,
               private readonly store: Store) {
   }

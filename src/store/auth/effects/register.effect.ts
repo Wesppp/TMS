@@ -4,15 +4,15 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
 
-import { AuthService } from '../../../app/services/auth.service';
+import { AuthService } from '@services/auth.service';
 import {
   registerAction,
   registerFailureAction,
   registerSuccessAction,
 } from '../actions/register.action';
-import { AuthTokens } from '../../../app/models/auth-tokens.interface';
-import { PersistenceService } from '../../../app/services/persistence.service';
-import { AuthTokensEnum } from '../../../app/enums/auth-tokens.enum';
+import { AuthTokens } from '@models/auth-tokens.interface';
+import { PersistenceService } from '@services/persistence.service';
+import { AuthTokensEnum } from '@enums/auth-tokens.enum';
 
 @Injectable()
 export class RegisterEffect {
@@ -24,16 +24,17 @@ export class RegisterEffect {
 
   public register$ = createEffect(() => this.actions$.pipe(
     ofType(registerAction),
-    switchMap(({ registerRequest }) => this.authService.register(registerRequest)),
-    map((authTokens: AuthTokens) => {
-      this.persistence.setToken(AuthTokensEnum.ACCESS_TOKEN, authTokens.accessToken);
-      this.persistence.setToken(AuthTokensEnum.REFRESH_TOKEN, authTokens.refreshToken);
+    switchMap(({ registerRequest }) => this.authService.register(registerRequest).pipe(
+      map((authTokens: AuthTokens) => {
+        this.persistence.setToken(AuthTokensEnum.ACCESS_TOKEN, authTokens.accessToken);
+        this.persistence.setToken(AuthTokensEnum.REFRESH_TOKEN, authTokens.refreshToken);
 
-      return registerSuccessAction({ authTokens });
-    }),
-    catchError(() => {
-      return of(registerFailureAction());
-    })
+        return registerSuccessAction({ authTokens });
+      }),
+      catchError(() => {
+        return of(registerFailureAction());
+      })
+    )),
   ));
 
   public redirectAfterSubmit$ = createEffect(() => this.actions$.pipe(

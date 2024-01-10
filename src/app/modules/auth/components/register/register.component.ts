@@ -1,25 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AsyncPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 import { ButtonModule } from 'primeng/button';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import {
   EmailControlComponent
-} from '../../../../components/controls/email-control/email-control.component';
+} from '@components/controls/email-control/email-control.component';
 import {
   PasswordControlComponent
-} from '../../../../components/controls/password-control/password-control.component';
+} from '@components/controls/password-control/password-control.component';
 import { AuthFormValue, RegisterForm } from '../../models/auth-forms.interface';
 import {
-  validator,
-} from '../../../../utils/custom-validators/compare-fields.validator';
-import { isSubmittingSelector } from '../../../../../store/auth/auth.selectors';
-import { registerAction } from '../../../../../store/auth/actions/register.action';
-import { AuthState } from '../../../../../store/auth/auth.state';
-import { RouterLink } from '@angular/router';
+  compareValidator
+} from '@utils/forms/compare-fields.validator';
+import { registerAction } from '@store/auth/actions/register.action';
+import { AuthState } from '@store/auth/auth.state';
+import { EMAIL_PATTERN } from '@constants/patterns';
+import { isAuthLoadingSelector } from '@store/app-loading/app-loading.selectors';
 
 @Component({
   selector: 'app-register',
@@ -36,7 +37,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: '../auth-forms.scss'
 })
 export class RegisterComponent implements OnInit {
-  public isSubmitting$!: Observable<boolean>;
+  public isFormSubmitting: Observable<boolean> = of(false);
 
   public registerForm!: FormGroup<RegisterForm>;
 
@@ -52,7 +53,7 @@ export class RegisterComponent implements OnInit {
     this.registerForm = new FormGroup<RegisterForm>({
       email: new FormControl<string>('', [
         Validators.required,
-        Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
+        Validators.pattern(EMAIL_PATTERN)
       ]),
       password: new FormControl<string>('', [
         Validators.required,
@@ -63,12 +64,12 @@ export class RegisterComponent implements OnInit {
         Validators.minLength(4)
       ])
     }, {
-      validators: validator<RegisterForm>('password', 'repeatPassword')
+      validators: compareValidator<RegisterForm>('password', 'repeatPassword')
     });
   }
 
   public initializeValues(): void {
-    this.isSubmitting$ = this.store.select(isSubmittingSelector);
+    this.isFormSubmitting = this.store.select(isAuthLoadingSelector);
   }
 
   public onFormSubmit(): void {

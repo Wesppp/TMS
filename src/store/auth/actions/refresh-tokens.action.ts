@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
 import { ActionTypes } from '../action-types';
-import { AuthTokens } from '../../../app/models/auth-tokens.interface';
+import { AuthTokens } from '@models/auth-tokens.interface';
 
 export const refreshTokensAction = createAction(
   ActionTypes.REFRESH_TOKENS,

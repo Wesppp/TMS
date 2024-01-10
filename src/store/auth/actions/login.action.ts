@@ -1,8 +1,8 @@
 import { createAction, props } from '@ngrx/store';
 
 import { ActionTypes } from '../action-types';
-import { AuthFormValue } from '../../../app/modules/auth/models/auth-forms.interface';
-import { AuthTokens } from '../../../app/models/auth-tokens.interface';
+import { AuthFormValue } from '@modules/auth/models/auth-forms.interface';
+import { AuthTokens } from '@models/auth-tokens.interface';
 
 export const loginAction = createAction(
   ActionTypes.LOGIN,

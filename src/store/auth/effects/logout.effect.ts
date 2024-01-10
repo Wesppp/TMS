@@ -4,9 +4,9 @@ import { Router } from '@angular/router';
 import { tap } from 'rxjs';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-import { PersistenceService } from '../../../app/services/persistence.service';
+import { PersistenceService } from '@services/persistence.service';
 import { logoutAction } from '../actions/logout.action';
-import { AuthTokensEnum } from '../../../app/enums/auth-tokens.enum';
+import { AuthTokensEnum } from '@enums/auth-tokens.enum';
 
 @Injectable()
 export class LogoutEffect {

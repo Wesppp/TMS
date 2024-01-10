@@ -6,10 +6,12 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 
-import { NavigationLink } from '../../models/nav-link.interface';
-import { NAV_LINKS } from '../../constants/nav-links';
-import { AuthState } from '../../../store/auth/auth.state';
-import { isLoggedInSelector } from '../../../store/auth/auth.selectors';
+import { NavigationLink } from '@models/nav-link.interface';
+import { NAV_LINKS } from '@constants/nav-links';
+import { AuthState } from '@store/auth/auth.state';
+import { isLoggedInSelector } from '@store/auth/auth.selectors';
+import { AccountActions } from '@models/account-actions.interface';
+import { ACCOUNT_ACTIONS } from '@constants/account-actions';
 
 @Component({
   selector: 'app-header',
@@ -29,6 +31,7 @@ export class HeaderComponent implements OnInit {
   public isLoggedIn$: Observable<boolean> = of(false);
 
   public navLinks: NavigationLink[] = NAV_LINKS;
+  public accountActions: AccountActions[] = ACCOUNT_ACTIONS;
   public isHomePage: boolean = false;
 
   constructor(private readonly router: Router,

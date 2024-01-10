@@ -10,11 +10,11 @@ import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { routes } from './app.routes';
-import { AuthInterceptor } from './services/auth-interceptor.service';
-import { RegisterEffect } from '../store/auth/effects/register.effect';
-import { LogoutEffect } from '../store/auth/effects/logout.effect';
-import { LoginEffect } from '../store/auth/effects/login.effect';
-import { reducers } from '../store/app.state';
+import { AuthInterceptor } from '@services/auth-interceptor.service';
+import { RegisterEffect } from '@store/auth/effects/register.effect';
+import { LogoutEffect } from '@store/auth/effects/logout.effect';
+import { LoginEffect } from '@store/auth/effects/login.effect';
+import { reducers } from '@store/app.state';
 
 export const appConfig: ApplicationConfig = {
   providers: [
