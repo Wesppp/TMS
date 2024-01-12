@@ -18,7 +18,7 @@ export class GetLatestProductsEffect {
 
   public login$ = createEffect(() => this.actions$.pipe(
     ofType(getLatestProductsAction),
-    switchMap(() => this.productsService.getLatestProducts().pipe(
+    switchMap(() => this.productsService.getProducts({ count: '8' }).pipe(
       map((products: Product[]) => {
         return getLatestProductsSuccessAction({ products });
       }),
