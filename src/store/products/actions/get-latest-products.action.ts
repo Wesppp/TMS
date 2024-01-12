@@ -11,7 +11,7 @@ export const getLatestProductsAction = createAction(
 
 export const getLatestProductsSuccessAction = createAction(
   ActionTypes.GET_LATEST_PRODUCTS_SUCCESS,
-  props<{ products: Product[] }>()
+  props<{ latestProducts: Product[] }>()
 );
 
 export const getLatestProductsFailureAction = createAction(

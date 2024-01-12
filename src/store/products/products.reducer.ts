@@ -5,19 +5,28 @@ import {
   getLatestProductsSuccessAction,
 } from '@store/products/actions/get-latest-products.action';
 import { getAllProductsSuccessAction } from '@store/products/actions/get-all-products.action';
+import {
+  getFeaturedProductsSuccessAction,
+} from '@store/products/actions/get-featured-products.action';
 
 export const productsReducer = createReducer(
   initialState,
   on(getLatestProductsSuccessAction,
-    (state: ProductsState) => ({
+    (state: ProductsState, { latestProducts }) => ({
       ...state,
-      products: state.products
+      latestProducts
     })
   ),
   on(getAllProductsSuccessAction,
-    (state: ProductsState) => ({
+    (state: ProductsState, { products }) => ({
       ...state,
-      products: state.products
+      products
+    })
+  ),
+  on(getFeaturedProductsSuccessAction,
+    (state: ProductsState, { featuredProducts }) => ({
+      ...state,
+      featuredProducts
     })
   ),
 );

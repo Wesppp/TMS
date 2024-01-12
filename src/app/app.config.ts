@@ -17,6 +17,7 @@ import { reducers } from '@store/app.state';
 import { GetLatestProductsEffect } from '@store/products/effects/get-latest-products.effect';
 import { GetAllProductsEffect } from '@store/products/effects/get-all-products.effect';
 import { AuthInterceptor } from '@services/auth.interceptor';
+import { GetFeaturedProductsEffect } from '@store/products/effects/get-featured-products.effect';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -27,7 +28,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(
       withInterceptorsFromDi()
     ),
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     provideStore(reducers),
     provideEffects([
       RegisterEffect,
@@ -35,7 +35,9 @@ export const appConfig: ApplicationConfig = {
       LoginEffect,
       GetLatestProductsEffect,
       GetAllProductsEffect,
+      GetFeaturedProductsEffect,
     ]),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ]
 };

@@ -9,12 +9,15 @@ import { CategoryCard } from './models/category-card.interface';
 import { CATEGORIES } from './constants/categories';
 import { ProductCardComponent } from '@components/product-card/product-card.component';
 import { Product } from '@models/product.interface';
-import { PRODUCTS_LONG } from '@constants/products';
 import { isProductsLoadingSelector } from '@store/app-loading/app-loading.selectors';
-import { productsSelector } from '@store/products/products.selectors';
+import {
+  featuredProductsSelector,
+  latestProductsSelector,
+} from '@store/products/products.selectors';
 import { getLatestProductsAction } from '@store/products/actions/get-latest-products.action';
 import { AsyncPipe } from '@angular/common';
 import { ProgressSpinnerComponent } from '@components/progress-spinner/progress-spinner.component';
+import { getFeaturedProductsAction } from '@store/products/actions/get-featured-products.action';
 
 @Component({
   selector: 'app-home',
@@ -31,9 +34,10 @@ import { ProgressSpinnerComponent } from '@components/progress-spinner/progress-
 })
 export class HomeComponent implements OnInit {
   public latestProducts$!: Observable<Product[]>;
+  public featuredProducts$!: Observable<Product[]>;
   public isProductsLoading$!: Observable<boolean>;
 
-  public productLongCards: Product[] = PRODUCTS_LONG;
+  // public productLongCards: Product[] = PRODUCTS_LONG;
   public categoryCards: CategoryCard[] = CATEGORIES;
   public readonly Math: Math = Math;
 
@@ -42,11 +46,25 @@ export class HomeComponent implements OnInit {
 
   public ngOnInit(): void {
     this.initializeValues();
-    this.store.dispatch(getLatestProductsAction());
+    this.fetchInitialProducts();
   }
 
   private initializeValues(): void {
     this.isProductsLoading$ = this.store.select(isProductsLoadingSelector);
-    this.latestProducts$ = this.store.select(productsSelector);
+    this.latestProducts$ = this.store.select(latestProductsSelector);
+    this.featuredProducts$ = this.store.select(featuredProductsSelector);
+  }
+
+  private fetchInitialProducts(): void {
+    this.store.dispatch(getLatestProductsAction(
+      {
+        params: { count: '8' }
+      }
+    ));
+    this.store.dispatch(getFeaturedProductsAction(
+      {
+        params: { count: '4' }
+      }
+    ));
   }
 }

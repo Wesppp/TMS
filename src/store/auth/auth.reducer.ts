@@ -11,6 +11,7 @@ import {
   refreshTokensFailureAction,
   refreshTokensSuccessAction,
 } from './actions/refresh-tokens.action';
+import { setIsLoggedInAction } from '@store/auth/actions/set-isLoggedIn.action';
 
 export const authReducer = createReducer(
   initialState,
@@ -38,6 +39,12 @@ export const authReducer = createReducer(
       isLoggedIn: false
     })
   ),
+  on(setIsLoggedInAction,
+    (state: AuthState, { isLoggedIn }) => ({
+      ...state,
+      isLoggedIn: isLoggedIn
+    })
+    ),
   on(logoutAction,
     () => ({
       ...initialState

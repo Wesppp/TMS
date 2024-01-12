@@ -16,11 +16,11 @@ export class GetLatestProductsEffect {
               private readonly actions$: Actions) {
   }
 
-  public login$ = createEffect(() => this.actions$.pipe(
+  public getLatestProducts$ = createEffect(() => this.actions$.pipe(
     ofType(getLatestProductsAction),
     switchMap(( { params } ) => this.productsService.getProducts(params).pipe(
-      map((products: Product[]) => {
-        return getLatestProductsSuccessAction({ products });
+      map((latestProducts: Product[]) => {
+        return getLatestProductsSuccessAction({ latestProducts });
       }),
       catchError(() => {
         return of(getLatestProductsFailureAction());

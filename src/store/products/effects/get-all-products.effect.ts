@@ -16,7 +16,7 @@ export class GetAllProductsEffect {
               private readonly actions$: Actions) {
   }
 
-  public login$ = createEffect(() => this.actions$.pipe(
+  public getAllProducts$ = createEffect(() => this.actions$.pipe(
     ofType(getAllProductsAction),
     switchMap(() => this.productsService.getProducts({}).pipe(
       map((products: Product[]) => {

@@ -30,6 +30,8 @@ export class AppComponent implements OnInit {
   public ngOnInit(): void {
     const token: string | null = this.persistence.getToken(AuthTokensEnum.ACCESS_TOKEN);
 
+    console.log(!!token);
+
     this.store.dispatch(setIsLoggedInAction({ isLoggedIn: !!token }));
   }
 }
