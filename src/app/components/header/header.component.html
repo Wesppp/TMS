@@ -19,31 +19,21 @@
         alt="avatar"
         width="50"
         height="50">
-      <a routerLink="#">My Account</a>
+      @if (isLoggedIn$ | async) {
+        <a routerLink="#">My Account</a>
+      } @else {
+        <a routerLink="/auth/login">Sign In</a>
+      }
     </li>
-    <li class="account-actions__item">
-      <img
-        class="icon"
-        [ngSrc]="isHomePage ? 'assets/icons/favorite-white.svg' : 'assets/icons/favorite-black.svg'"
-        alt="favorite"
-        width="30"
-        height="30">
-    </li>
-    <li class="account-actions__item">
-      <img
-        class="icon"
-        [ngSrc]="isHomePage ? 'assets/icons/basket-white.svg' : 'assets/icons/basket-black.svg'"
-        alt="basket"
-        width="50"
-        height="50">
-    </li>
-    <li class="account-actions__item">
-      <img
-        class="icon"
-        [ngSrc]="isHomePage ? 'assets/icons/menu-white.svg' : 'assets/icons/menu-black.svg'"
-        alt="menu"
-        width="35"
-        height="35">
-    </li>
+    @for (accountAction of accountActions; track accountAction.alt) {
+      <li class="account-actions__item">
+        <img
+          class="icon"
+          [ngSrc]="isHomePage ? accountAction.iconSrc : accountAction.iconSecondSrc"
+          [alt]="accountAction.alt"
+          [width]="accountAction.width"
+          [height]="accountAction.height">
+      </li>
+    }
   </ul>
 </header>
