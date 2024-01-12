@@ -18,7 +18,7 @@ export class GetAllProductsEffect {
 
   public login$ = createEffect(() => this.actions$.pipe(
     ofType(getAllProductsAction),
-    switchMap(() => this.productsService.getAllProducts().pipe(
+    switchMap(() => this.productsService.getProducts({}).pipe(
       map((products: Product[]) => {
         return getAllProductsSuccessAction({ products });
       }),
