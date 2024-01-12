@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpRequest } from '@angular/common/http';
 
 import { Store } from '@ngrx/store';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, tap } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
-import { PersistenceService } from './persistence.service';
+import { AuthState } from '@store/auth/auth.state';
+import { PersistenceService } from '@services/persistence.service';
 import { AuthTokensEnum } from '@enums/auth-tokens.enum';
 import { logoutAction } from '@store/auth/actions/logout.action';
-import { AuthState } from '@store/auth/auth.state';
 import { refreshTokensAction } from '@store/auth/actions/refresh-tokens.action';
 
 @Injectable({

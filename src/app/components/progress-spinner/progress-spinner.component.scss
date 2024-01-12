@@ -1,0 +1,8 @@
+@use "mixins" as mixins;
+
+.progress-spinner {
+  @include mixins.flexMix();
+
+  width: 100%;
+  padding: 2rem 0;
+}

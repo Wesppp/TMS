@@ -3,20 +3,20 @@ import { provideRouter } from '@angular/router';
 import { provideClientHydration } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { routes } from './app.routes';
-import { AuthInterceptor } from '@services/auth-interceptor.service';
 import { RegisterEffect } from '@store/auth/effects/register.effect';
 import { LogoutEffect } from '@store/auth/effects/logout.effect';
 import { LoginEffect } from '@store/auth/effects/login.effect';
 import { reducers } from '@store/app.state';
 import { GetLatestProductsEffect } from '@store/products/effects/get-latest-products.effect';
 import { GetAllProductsEffect } from '@store/products/effects/get-all-products.effect';
+import { AuthInterceptor } from '@services/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -24,7 +24,9 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     BrowserAnimationsModule,
     provideAnimations(),
-    provideHttpClient(),
+    provideHttpClient(
+      withInterceptorsFromDi()
+    ),
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     provideStore(reducers),
     provideEffects([
@@ -34,6 +36,6 @@ export const appConfig: ApplicationConfig = {
       GetLatestProductsEffect,
       GetAllProductsEffect,
     ]),
-    provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })
-]
+    provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
+  ]
 };

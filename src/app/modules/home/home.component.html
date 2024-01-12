@@ -46,11 +46,15 @@
     <div class="home__latest-products">
       <h2>Latest Products</h2>
       <ul class="latest-products__list">
-        @for (productCard of productDefaultsCards; track productCard.uuid) {
-          <app-product-card
-            [productCard]="productCard"
-            [isHideColors]="true"
-          ></app-product-card>
+        @if(isProductsLoading$ | async) {
+          <app-progress-spinner></app-progress-spinner>
+        } @else {
+          @for (product of latestProducts$ | async; track product.uuid) {
+            <app-product-card
+              [productCard]="product"
+              [isHideColors]="true"
+            ></app-product-card>
+          }
         }
       </ul>
     </div>
