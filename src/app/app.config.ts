@@ -15,6 +15,8 @@ import { RegisterEffect } from '@store/auth/effects/register.effect';
 import { LogoutEffect } from '@store/auth/effects/logout.effect';
 import { LoginEffect } from '@store/auth/effects/login.effect';
 import { reducers } from '@store/app.state';
+import { GetLatestProductsEffect } from '@store/products/effects/get-latest-products.effect';
+import { GetAllProductsEffect } from '@store/products/effects/get-all-products.effect';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -28,7 +30,9 @@ export const appConfig: ApplicationConfig = {
     provideEffects([
       RegisterEffect,
       LogoutEffect,
-      LoginEffect
+      LoginEffect,
+      GetLatestProductsEffect,
+      GetAllProductsEffect,
     ]),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })
 ]
