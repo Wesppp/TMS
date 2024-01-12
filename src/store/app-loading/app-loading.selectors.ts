@@ -10,3 +10,8 @@ export const isAuthLoadingSelector = createSelector(
   appLoadingFeatureSelector,
   (appLoadingState: AppLoadingState): boolean => appLoadingState.loadings.has(AppLoadings.AUTH_LOADING)
 );
+
+export const isProductsLoadingSelector = createSelector(
+  appLoadingFeatureSelector,
+  (appLoadingState: AppLoadingState): boolean => appLoadingState.loadings.has(AppLoadings.PRODUCTS_LOADING)
+);

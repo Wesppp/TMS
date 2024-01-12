@@ -3,7 +3,7 @@ export interface AppLoadingState {
 }
 
 export const initialState: AppLoadingState = {
-  loadings: new Set<string>(['object'])
+  loadings: new Set<string>()
 }
 
 export const appLoadingFeatureKey: string = 'appLoading';
