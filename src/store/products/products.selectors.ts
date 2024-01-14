@@ -19,3 +19,13 @@ export const featuredProductsSelector = createSelector(
   productsFeatureSelector,
   (productsState: ProductsState) => productsState.featuredProducts
 );
+
+export const bestSellersProductsSelector = createSelector(
+  productsFeatureSelector,
+  (productsState: ProductsState) => productsState.bestSellersProducts
+);
+
+export const newArrivalsProductsSelector = createSelector(
+  productsFeatureSelector,
+  (productsState: ProductsState) => productsState.newArrivalsProducts
+);

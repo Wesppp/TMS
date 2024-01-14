@@ -11,8 +11,9 @@ import { ProductCardComponent } from '@components/product-card/product-card.comp
 import { Product } from '@models/product.interface';
 import { isProductsLoadingSelector } from '@store/app-loading/app-loading.selectors';
 import {
+  bestSellersProductsSelector,
   featuredProductsSelector,
-  latestProductsSelector,
+  latestProductsSelector, newArrivalsProductsSelector,
 } from '@store/products/products.selectors';
 import { getLatestProductsAction } from '@store/products/actions/get-latest-products.action';
 import { AsyncPipe } from '@angular/common';
@@ -35,9 +36,10 @@ import { getFeaturedProductsAction } from '@store/products/actions/get-featured-
 export class HomeComponent implements OnInit {
   public latestProducts$!: Observable<Product[]>;
   public featuredProducts$!: Observable<Product[]>;
+  public bestSellersProducts$!: Observable<Product[]>;
+  public newArrivalsProducts$!: Observable<Product[]>;
   public isProductsLoading$!: Observable<boolean>;
 
-  // public productLongCards: Product[] = PRODUCTS_LONG;
   public categoryCards: CategoryCard[] = CATEGORIES;
   public readonly Math: Math = Math;
 
@@ -53,6 +55,8 @@ export class HomeComponent implements OnInit {
     this.isProductsLoading$ = this.store.select(isProductsLoadingSelector);
     this.latestProducts$ = this.store.select(latestProductsSelector);
     this.featuredProducts$ = this.store.select(featuredProductsSelector);
+    this.bestSellersProducts$ = this.store.select(bestSellersProductsSelector);
+    this.newArrivalsProducts$ = this.store.select(newArrivalsProductsSelector);
   }
 
   private fetchInitialProducts(): void {
@@ -66,5 +70,9 @@ export class HomeComponent implements OnInit {
         params: { count: '4' }
       }
     ));
+  }
+
+  public onBestSellersTabSelect(): void {
+    console.log('call');
   }
 }

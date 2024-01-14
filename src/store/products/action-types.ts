@@ -10,4 +10,12 @@ export enum ActionTypes {
   GET_FEATURED_PRODUCTS = '[Home] get featured products',
   GET_FEATURED_PRODUCTS_SUCCESS = '[Home] get featured products success',
   GET_FEATURED_PRODUCTS_FAILURE = '[Home] get featured products failure',
+
+  GET_BEST_SELLERS_PRODUCTS = '[Home] get best sellers products',
+  GET_BEST_SELLERS_PRODUCTS_SUCCESS = '[Home] get best sellers products success',
+  GET_BEST_SELLERS_PRODUCTS_FAILURE = '[Home] get best sellers products failure',
+
+  GET_NEW_ARRIVALS_PRODUCTS = '[Home] get new arrivals products',
+  GET_NEW_ARRIVALS_PRODUCTS_SUCCESS = '[Home] get new arrivals products success',
+  GET_NEW_ARRIVALS_PRODUCTS_FAILURE = '[Home] get new arrivals products failure',
 }

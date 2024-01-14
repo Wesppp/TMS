@@ -18,6 +18,12 @@ import { GetLatestProductsEffect } from '@store/products/effects/get-latest-prod
 import { GetAllProductsEffect } from '@store/products/effects/get-all-products.effect';
 import { AuthInterceptor } from '@services/auth.interceptor';
 import { GetFeaturedProductsEffect } from '@store/products/effects/get-featured-products.effect';
+import {
+  GetNewArrivalsProductsEffect
+} from '@store/products/effects/get-new-arrivals-products.effect';
+import {
+  GetBestSellersProductsEffect
+} from '@store/products/effects/get-best-sellers-products.effect';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -36,6 +42,8 @@ export const appConfig: ApplicationConfig = {
       GetLatestProductsEffect,
       GetAllProductsEffect,
       GetFeaturedProductsEffect,
+      GetNewArrivalsProductsEffect,
+      GetBestSellersProductsEffect,
     ]),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

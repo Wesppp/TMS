@@ -17,6 +17,24 @@ import {
   getLatestProductsFailureAction,
   getLatestProductsSuccessAction,
 } from '@store/products/actions/get-latest-products.action';
+import {
+  getNewArrivalsProductsAction,
+  getNewArrivalsProductsSuccessAction,
+} from '@store/products/actions/get-new-arrivals-products.action';
+import {
+  getBestSellersProductsAction,
+  getBestSellersProductsFailureAction,
+  getBestSellersProductsSuccessAction,
+} from '@store/products/actions/get-best-sellers-products.action';
+import {
+  getAllProductsAction,
+  getAllProductsFailureAction,
+  getAllProductsSuccessAction,
+} from '@store/products/actions/get-all-products.action';
+import {
+  getFeaturedProductsAction, getFeaturedProductsFailureAction,
+  getFeaturedProductsSuccessAction,
+} from '@store/products/actions/get-featured-products.action';
 
 function deleteLoadingFromState(state: AppLoadingState, loadingName: AppLoadings): AppLoadingState {
   const loadings: Set<string> = new Set(state.loadings);
@@ -42,13 +60,18 @@ export const appLoadingReducer = createReducer(
       return deleteLoadingFromState(state, AppLoadings.AUTH_LOADING);
     }
   ),
-  on(getLatestProductsAction,
+  on(getLatestProductsAction, getAllProductsAction, getBestSellersProductsAction,
+    getNewArrivalsProductsAction, getFeaturedProductsAction,
     (state: AppLoadingState) => ({
       ...state,
       loadings: state.loadings.add(AppLoadings.PRODUCTS_LOADING)
     })
   ),
   on(getLatestProductsSuccessAction, getLatestProductsFailureAction,
+    getNewArrivalsProductsSuccessAction, getLatestProductsFailureAction,
+    getBestSellersProductsSuccessAction, getBestSellersProductsFailureAction,
+    getAllProductsSuccessAction, getAllProductsFailureAction,
+    getFeaturedProductsSuccessAction, getFeaturedProductsFailureAction,
     (state: AppLoadingState) => {
       return deleteLoadingFromState(state, AppLoadings.PRODUCTS_LOADING);
     }

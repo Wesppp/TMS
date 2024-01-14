@@ -8,6 +8,12 @@ import { getAllProductsSuccessAction } from '@store/products/actions/get-all-pro
 import {
   getFeaturedProductsSuccessAction,
 } from '@store/products/actions/get-featured-products.action';
+import {
+  getBestSellersProductsSuccessAction,
+} from '@store/products/actions/get-best-sellers-products.action';
+import {
+  getNewArrivalsProductsSuccessAction
+} from '@store/products/actions/get-new-arrivals-products.action';
 
 export const productsReducer = createReducer(
   initialState,
@@ -27,6 +33,18 @@ export const productsReducer = createReducer(
     (state: ProductsState, { featuredProducts }) => ({
       ...state,
       featuredProducts
+    })
+  ),
+  on(getBestSellersProductsSuccessAction,
+    (state: ProductsState, { bestSellersProducts }) => ({
+      ...state,
+      bestSellersProducts
+    })
+  ),
+  on(getNewArrivalsProductsSuccessAction,
+    (state: ProductsState, { newArrivalsProducts }) => ({
+      ...state,
+      newArrivalsProducts
     })
   ),
 );
