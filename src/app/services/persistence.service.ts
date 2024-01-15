@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import {AuthTokensEnum} from "@enums/auth-tokens.enum";
+import {jwtDecode, JwtPayload} from "jwt-decode";
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +24,14 @@ export class PersistenceService {
     return null
   }
 
-  public removeToken(key: string): void {
-    sessionStorage.removeItem(key);
+  public removeTokens(): void {
+    sessionStorage.removeItem(AuthTokensEnum.ACCESS_TOKEN);
+    sessionStorage.removeItem(AuthTokensEnum.REFRESH_TOKEN);
+  }
+
+  public isTokenExpired(token: string): boolean {
+    const decodedToken: JwtPayload = jwtDecode(token);
+
+    return decodedToken && decodedToken.exp ? decodedToken.exp < Date.now() / 1000 : false;
   }
 }
