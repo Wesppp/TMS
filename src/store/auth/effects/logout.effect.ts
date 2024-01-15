@@ -20,7 +20,7 @@ export class LogoutEffect {
       tap(() => {
         this.persistence.removeTokens();
 
-        this.router.navigateByUrl('/auth/register')
+        this.router.navigateByUrl('/auth/login')
       })
     ),
     {dispatch: false}

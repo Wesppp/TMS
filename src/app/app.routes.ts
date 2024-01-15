@@ -6,12 +6,18 @@ import { LoginComponent } from '@modules/auth/components/login/login.component';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/store/home',
     pathMatch: 'full'
   },
   {
-    path: 'home',
-    loadComponent: () => import('./modules/home/home.component').then(mod => mod.HomeComponent),
+    path: 'store',
+    loadComponent: () => import('./modules/store/store.component').then(mod => mod.StoreComponent),
+    children: [
+      {
+        path: 'home',
+        loadComponent: () => import('./modules/home/home.component').then(mod => mod.HomeComponent),
+      },
+    ],
   },
   {
     path: 'auth',
