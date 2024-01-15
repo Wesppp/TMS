@@ -91,7 +91,7 @@
 
   &__featured-products {
     .featured-products__tab {
-      @include mixins.flexMix($gap: 2.5rem);
+      @include mixins.flexMix($gap: 2.5rem, $wrap: wrap);
     }
   }
 

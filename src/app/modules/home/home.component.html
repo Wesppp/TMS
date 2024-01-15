@@ -27,6 +27,7 @@
           <div class="featured-products__tab">
             @for (product of featuredProducts$ | async; track product.uuid) {
               <app-product-card
+                [productCardType]="cardType.LONG"
                 [productCard]="product"
               ></app-product-card>
             }
@@ -36,6 +37,7 @@
           <div class="featured-products__tab">
             @for (product of bestSellersProducts$ | async; track product.uuid) {
               <app-product-card
+                [productCardType]="cardType.LONG"
                 [productCard]="product"
               ></app-product-card>
             }
@@ -45,6 +47,7 @@
           <div class="featured-products__tab">
             @for (product of newArrivalsProducts$ | async; track product.uuid) {
               <app-product-card
+                [productCardType]="cardType.LONG"
                 [productCard]="product"
               ></app-product-card>
             }

@@ -33,3 +33,12 @@
     }
   }
 }
+
+.product-card {
+  &--long {
+    img {
+      height: 400px;
+      object-fit: cover;
+    }
+  }
+}

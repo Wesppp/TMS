@@ -19,6 +19,7 @@ import { getLatestProductsAction } from '@store/products/actions/get-latest-prod
 import { AsyncPipe } from '@angular/common';
 import { ProgressSpinnerComponent } from '@components/progress-spinner/progress-spinner.component';
 import { getFeaturedProductsAction } from '@store/products/actions/get-featured-products.action';
+import { CardType } from "@enums/card-type.enum";
 
 @Component({
   selector: 'app-home',
@@ -41,7 +42,8 @@ export class HomeComponent implements OnInit {
   public isProductsLoading$!: Observable<boolean>;
 
   public categoryCards: CategoryCard[] = CATEGORIES;
-  public readonly Math: Math = Math;
+  protected readonly Math: Math = Math;
+  protected readonly cardType = CardType;
 
   constructor(private readonly store: Store) {
   }
@@ -70,9 +72,5 @@ export class HomeComponent implements OnInit {
         params: { count: '4' }
       }
     ));
-  }
-
-  public onBestSellersTabSelect(): void {
-    console.log('call');
   }
 }

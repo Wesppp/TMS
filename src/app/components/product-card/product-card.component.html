@@ -1,7 +1,13 @@
-<div class="product-card">
+<div
+  [ngClass]="{
+    'product-card--long': productCardType === cardType.LONG
+  }"
+  class="product-card">
   <p-card [header]="productCard.title" subheader="(Black)" [style]="{ width: '280px' }">
     <ng-template pTemplate="header">
-      <img alt="product card" [src]="productCard.images[0]"/>
+      <img
+        alt="product card"
+        [src]="productCard.images[0]"/>
     </ng-template>
     <p>
       ${{ productCard.price }}
