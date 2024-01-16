@@ -79,7 +79,7 @@
     border-bottom: 2px solid colors.$light-gray-second;
 
     @media (max-width: constants.$wide-screen) {
-      @include mixins.gridMix(repeat(2, 1fr), $gap: .5rem, $areas:
+      @include mixins.gridMix(repeat(2, 1fr), repeat(2, 1fr), $gap: .5rem, $areas:
         "card0 card2"
         "card1 card2"
         "card3 card4"
