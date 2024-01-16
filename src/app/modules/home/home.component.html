@@ -19,8 +19,8 @@
     </div>
     <div class="home__featured-products">
       <h2>Featured Products</h2>
-      <p-tabView>
-        @if (isProductsLoading$ | async) {
+      <p-tabView (activeIndexChange)="onSelectTab($event)">
+        @if (isFeaturedProductsLoading$ | async) {
           <app-progress-spinner></app-progress-spinner>
         }
         <p-tabPanel header="Featured">

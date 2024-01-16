@@ -18,7 +18,7 @@ import {
   getLatestProductsSuccessAction,
 } from '@store/products/actions/get-latest-products.action';
 import {
-  getNewArrivalsProductsAction,
+  getNewArrivalsProductsAction, getNewArrivalsProductsFailureAction,
   getNewArrivalsProductsSuccessAction,
 } from '@store/products/actions/get-new-arrivals-products.action';
 import {
@@ -60,20 +60,30 @@ export const appLoadingReducer = createReducer(
       return deleteLoadingFromState(state, AppLoadings.AUTH_LOADING);
     }
   ),
-  on(getLatestProductsAction, getAllProductsAction, getBestSellersProductsAction,
-    getNewArrivalsProductsAction, getFeaturedProductsAction,
+  on(getLatestProductsAction, getAllProductsAction,
     (state: AppLoadingState) => ({
       ...state,
       loadings: state.loadings.add(AppLoadings.PRODUCTS_LOADING)
     })
   ),
   on(getLatestProductsSuccessAction, getLatestProductsFailureAction,
-    getNewArrivalsProductsSuccessAction, getLatestProductsFailureAction,
-    getBestSellersProductsSuccessAction, getBestSellersProductsFailureAction,
     getAllProductsSuccessAction, getAllProductsFailureAction,
-    getFeaturedProductsSuccessAction, getFeaturedProductsFailureAction,
     (state: AppLoadingState) => {
       return deleteLoadingFromState(state, AppLoadings.PRODUCTS_LOADING);
+    }
+  ),
+  on(getFeaturedProductsAction, getBestSellersProductsAction,
+    getNewArrivalsProductsAction,
+    (state: AppLoadingState) => ({
+      ...state,
+      loadings: state.loadings.add(AppLoadings.FEATURED_PRODUCTS_LOADING)
+    })
+  ),
+  on(getFeaturedProductsSuccessAction, getFeaturedProductsFailureAction,
+    getNewArrivalsProductsSuccessAction, getNewArrivalsProductsFailureAction,
+    getBestSellersProductsSuccessAction, getBestSellersProductsFailureAction,
+    (state: AppLoadingState) => {
+      return deleteLoadingFromState(state, AppLoadings.FEATURED_PRODUCTS_LOADING);
     }
   ),
 );

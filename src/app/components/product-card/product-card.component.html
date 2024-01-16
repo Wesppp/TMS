@@ -3,9 +3,14 @@
     'product-card--long': productCardType === cardType.LONG
   }"
   class="product-card">
+  <img
+    class="product-card__favorite-btn"
+    src="assets/icons/favorite.svg"
+    alt="add to favorite">
   <p-card [header]="productCard.title" subheader="(Black)" [style]="{ width: '280px' }">
     <ng-template pTemplate="header">
       <img
+        class="header-img"
         alt="product card"
         [src]="productCard.images[0]"/>
     </ng-template>

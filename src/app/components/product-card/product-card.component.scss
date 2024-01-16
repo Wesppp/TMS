@@ -35,8 +35,16 @@
 }
 
 .product-card {
+  position: relative;
+
+  &__favorite-btn {
+    position: absolute;
+    top: .4rem;
+    right: .4rem;
+  }
+
   &--long {
-    img {
+    .header-img {
       height: 400px;
       object-fit: cover;
     }
