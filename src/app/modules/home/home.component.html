@@ -20,9 +20,6 @@
     <div class="home__featured-products">
       <h2>Featured Products</h2>
       <p-tabView (activeIndexChange)="onSelectTab($event)">
-        @if (isFeaturedProductsLoading$ | async) {
-          <app-progress-spinner></app-progress-spinner>
-        }
         <p-tabPanel header="Featured">
           <div class="featured-products__tab">
             @for (product of featuredProducts$ | async; track product.uuid) {

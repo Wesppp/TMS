@@ -100,7 +100,11 @@
 
   &__featured-products {
     .featured-products__tab {
-      @include mixins.flexMix($gap: 2.5rem, $wrap: wrap);
+      @include mixins.flexMix($gap: 2.5rem);
+
+      @media (max-width: constants.$wide-screen) {
+        flex-wrap: wrap;
+      }
     }
   }
 

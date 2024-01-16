@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, of, switchMap } from 'rxjs';
+import { catchError, map, of, switchMap, take } from 'rxjs';
 
 import { Product } from '@models/product.interface';
 import {
@@ -19,6 +19,7 @@ export class GetNewArrivalsProductsEffect {
 
   public newArrivalsProducts$ = createEffect(() => this.actions$.pipe(
     ofType(getNewArrivalsProductsAction),
+    take(1),
     switchMap(( { params } ) => this.productsService.getProducts(params).pipe(
       map((newArrivalsProducts: Product[]) => {
         return getNewArrivalsProductsSuccessAction({ newArrivalsProducts });

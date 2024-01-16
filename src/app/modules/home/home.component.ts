@@ -9,7 +9,7 @@ import { CategoryCard } from './models/category-card.interface';
 import { CATEGORIES } from './constants/categories';
 import { ProductCardComponent } from '@components/product-card/product-card.component';
 import { Product } from '@models/product.interface';
-import { isFeaturedProductsLoadingSelector, isProductsLoadingSelector } from '@store/app-loading/app-loading.selectors';
+import { isProductsLoadingSelector } from '@store/app-loading/app-loading.selectors';
 import {
   bestSellersProductsSelector,
   featuredProductsSelector,
@@ -42,7 +42,6 @@ export class HomeComponent implements OnInit {
   public bestSellersProducts$!: Observable<Product[] | null>;
   public newArrivalsProducts$!: Observable<Product[] | null>;
   public isProductsLoading$!: Observable<boolean>;
-  public isFeaturedProductsLoading$!: Observable<boolean>;
 
   public categoryCards: CategoryCard[] = CATEGORIES;
   protected readonly Math: Math = Math;
@@ -58,7 +57,6 @@ export class HomeComponent implements OnInit {
 
   private initializeValues(): void {
     this.isProductsLoading$ = this.store.select(isProductsLoadingSelector);
-    this.isFeaturedProductsLoading$ = this.store.select(isFeaturedProductsLoadingSelector);
     this.latestProducts$ = this.store.select(latestProductsSelector);
     this.featuredProducts$ = this.store.select(featuredProductsSelector);
     this.bestSellersProducts$ = this.store.select(bestSellersProductsSelector);
