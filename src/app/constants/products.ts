@@ -1,4 +1,4 @@
-import { Product } from '../models/product.interface';
+import { Product } from '@models/product.interface';
 
 export const PRODUCTS_LONG: Product[] = [
   {

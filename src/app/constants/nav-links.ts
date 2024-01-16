@@ -1,4 +1,4 @@
-import { NavigationLink } from '../models/nav-link.interface';
+import { NavigationLink } from '@models/nav-link.interface';
 
 export const NAV_LINKS: NavigationLink[] = [
   { label: 'Home', link: '/home' },
@@ -7,3 +7,5 @@ export const NAV_LINKS: NavigationLink[] = [
   { label: 'Pages', link: '#' },
   { label: 'Blog', link: '#' },
 ];
+
+
