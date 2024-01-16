@@ -37,10 +37,10 @@ import { getNewArrivalsProductsAction } from "@store/products/actions/get-new-ar
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit {
-  public latestProducts$!: Observable<Product[]>;
-  public featuredProducts$!: Observable<Product[]>;
-  public bestSellersProducts$!: Observable<Product[]>;
-  public newArrivalsProducts$!: Observable<Product[]>;
+  public latestProducts$!: Observable<Product[] | null>;
+  public featuredProducts$!: Observable<Product[] | null>;
+  public bestSellersProducts$!: Observable<Product[] | null>;
+  public newArrivalsProducts$!: Observable<Product[] | null>;
   public isProductsLoading$!: Observable<boolean>;
   public isFeaturedProductsLoading$!: Observable<boolean>;
 
