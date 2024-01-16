@@ -1,8 +1,10 @@
 @use "mixins" as mixins;
 @use "colors" as colors;
+@use "constants" as constants;
 
 :host ::ng-deep p-card {
   .p-card {
+    min-width: 280px;
     background: transparent;
     border-radius: 0;
     box-shadow: none;
@@ -31,6 +33,10 @@
     &-footer {
       padding-top: 0;
     }
+
+    @media (max-width: constants.$medium-screen) {
+      width: 100%;
+    }
   }
 }
 
@@ -44,6 +50,8 @@
   }
 
   &--long {
+    width: 280px;
+
     .header-img {
       height: 400px;
       object-fit: cover;

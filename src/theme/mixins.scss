@@ -7,6 +7,14 @@
   flex-wrap: $wrap;
 }
 
+@mixin gridMix($columns: 0, $rows: 0, $gap: 0, $areas: none) {
+  display: grid;
+  grid-template-columns: $columns ;
+  grid-template-rows: $rows;
+  grid-gap: $gap;
+  grid-template-areas: $areas;
+}
+
 @mixin fontMix($size: 1rem, $weight: 400) {
   font-size: $size;
   font-weight: $weight;

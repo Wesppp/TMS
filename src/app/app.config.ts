@@ -25,6 +25,7 @@ import {
   GetBestSellersProductsEffect
 } from '@store/products/effects/get-best-sellers-products.effect';
 import { RefreshTokensEffect } from "@store/auth/effects/refresh-tokens.effect";
+import { provideRouterStore } from '@ngrx/router-store';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -32,22 +33,21 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     BrowserAnimationsModule,
     provideAnimations(),
-    provideHttpClient(
-      withInterceptorsFromDi()
-    ),
+    provideHttpClient(withInterceptorsFromDi()),
     provideStore(reducers),
     provideEffects([
-      RegisterEffect,
-      LogoutEffect,
-      LoginEffect,
-      GetLatestProductsEffect,
-      GetAllProductsEffect,
-      GetFeaturedProductsEffect,
-      GetNewArrivalsProductsEffect,
-      GetBestSellersProductsEffect,
-      RefreshTokensEffect,
+        RegisterEffect,
+        LogoutEffect,
+        LoginEffect,
+        GetLatestProductsEffect,
+        GetAllProductsEffect,
+        GetFeaturedProductsEffect,
+        GetNewArrivalsProductsEffect,
+        GetBestSellersProductsEffect,
+        RefreshTokensEffect,
     ]),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-  ]
+    provideRouterStore()
+]
 };
