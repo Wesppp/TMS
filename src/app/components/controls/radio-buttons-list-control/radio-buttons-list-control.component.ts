@@ -6,16 +6,16 @@ import { RadioButtonClickEvent, RadioButtonModule } from "primeng/radiobutton";
 import { RadioButtonsList } from "@models/radio-buttons-list.interface";
 
 @Component({
-  selector: 'app-radio-buttons-list',
+  selector: 'app-radio-buttons-list-control',
   standalone: true,
   imports: [
     RadioButtonModule,
     ReactiveFormsModule
   ],
-  templateUrl: './radio-buttons-list.component.html',
-  styleUrl: './radio-buttons-list.component.scss'
+  templateUrl: './radio-buttons-list-control.component.html',
+  styleUrl: './radio-buttons-list-control.component.scss'
 })
-export class RadioButtonsListComponent implements ControlValueAccessor {
+export class RadioButtonsListControlComponent implements ControlValueAccessor {
   @Input({ required: true }) public variants!: RadioButtonsList[];
   @Input() public title!: string;
 
