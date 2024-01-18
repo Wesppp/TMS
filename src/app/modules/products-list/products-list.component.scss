@@ -1,0 +1,27 @@
+@use "mixins" as mixins;
+@use "colors" as colors;
+@use "constants" as constants;
+
+:host ::ng-deep app-page-title {
+  .page-title {
+    height: 300px;
+  }
+}
+
+.products-list {
+  &__main {
+    padding-top: 1.8rem;
+  }
+}
+
+.max-width-container {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding-left: 1.8rem;
+  padding-right: 1.8rem;
+
+  @media (max-width: constants.$small-screen) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

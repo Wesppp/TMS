@@ -37,7 +37,7 @@
           bottom: 0;
           left: 25%;
           width: 50%;
-          border-bottom: 2px solid colors.$light-gray;
+          border-bottom: 2px solid colors.$gray-500;
         }
       }
     }
@@ -80,7 +80,7 @@
       "card0 card2 card3"
       "card1 card2 card4"
     );
-    border-bottom: 2px solid colors.$light-gray-second;
+    border-bottom: 2px solid colors.$gray-300;
 
     @media (max-width: constants.$wide-screen) {
       @include mixins.gridMix(repeat(2, 1fr), repeat(2, 1fr), $gap: .5rem, $areas:

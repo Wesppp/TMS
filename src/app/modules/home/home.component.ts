@@ -22,6 +22,7 @@ import { getFeaturedProductsAction } from '@store/products/actions/get-featured-
 import { CardType } from "@enums/card-type.enum";
 import { getBestSellersProductsAction } from "@store/products/actions/get-best-sellers-products.action";
 import { getNewArrivalsProductsAction } from "@store/products/actions/get-new-arrivals-products.action";
+import { PageTitleComponent } from "@components/page-title/page-title.component";
 
 @Component({
   selector: 'app-home',
@@ -32,6 +33,7 @@ import { getNewArrivalsProductsAction } from "@store/products/actions/get-new-ar
     ProductCardComponent,
     AsyncPipe,
     ProgressSpinnerComponent,
+    PageTitleComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'

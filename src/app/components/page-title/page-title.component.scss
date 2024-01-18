@@ -1,0 +1,31 @@
+@use "mixins" as mixins;
+
+.page-title {
+  @include mixins.bg-img('/assets/images/home-header-bg.png');
+  @include mixins.flexMix(column, $gap: .4rem);
+
+  height: 600px;
+  color: #fff;
+  text-align: center;
+  padding: 0 3rem;
+
+  h1 {
+    @include mixins.responsive-font(3rem, 5vw, 3.6rem, 800);
+  }
+
+  span:nth-child(1) {
+    @include mixins.fontMix(1.5rem, 700);
+  }
+
+  span:nth-child(2) {
+    @include mixins.fontMix(1.2rem, 500);
+  }
+
+  button {
+    margin-top: 1rem;
+  }
+
+  span:nth-child(1), h1 {
+    font-family: "Montserrat-Bold", sans-serif;
+  }
+}

@@ -6,7 +6,6 @@ footer {
   @include mixins.flexMix();
 
   padding: 3.5rem 0;
-  margin-top: 5rem;
   background: colors.$dark-background;
 
   .footer-nav {
@@ -14,7 +13,7 @@ footer {
 
     &__item {
       a {
-        color: colors.$light-gray;
+        color: colors.$gray-500;
 
         &.active-link {
           color: #fff;

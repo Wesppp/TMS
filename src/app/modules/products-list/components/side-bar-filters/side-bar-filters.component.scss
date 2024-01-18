@@ -1,0 +1,21 @@
+@use "mixins" as mixins;
+@use "colors" as colors;
+@use "constants" as constants;
+
+.side-bar-filters {
+  width: 380px;
+  background: #fff;
+  border: 1px solid colors.$gray-200;
+  border-radius: .6rem;
+  padding: 0 1.2rem;
+
+  .filters-form {
+    &__field {
+      padding: 1.2rem 0;
+
+      span, input {
+        width: 100%;
+      }
+    }
+  }
+}
