@@ -3,6 +3,10 @@
 @use "constants" as constants;
 
 :host ::ng-deep p-tabView {
+  .p-tabview-panels {
+    padding: 1.5rem 0 0 0;
+  }
+
   .p-tabview-nav {
     border: none;
     justify-content: center;
@@ -100,7 +104,7 @@
 
   &__featured-products {
     .featured-products__tab {
-      @include mixins.flexMix($gap: 2.5rem);
+      @include mixins.flexMix($gap: 2.5rem, $justify: space-between);
 
       @media (max-width: constants.$wide-screen) {
         flex-wrap: wrap;
