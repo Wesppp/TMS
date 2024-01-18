@@ -19,36 +19,48 @@
     </div>
     <div class="home__featured-products">
       <h2>Featured Products</h2>
-      <p-tabView>
+      <p-tabView (activeIndexChange)="onSelectTab($event)">
         <p-tabPanel header="Featured">
           <div class="featured-products__tab">
-            @for (productCard of productLongCards; track productCard.uuid) {
+            @for (product of featuredProducts$ | async; track product.uuid) {
               <app-product-card
-                [productCard]="productCard"
+                [productCardType]="cardType.LONG"
+                [productCard]="product"
               ></app-product-card>
             }
           </div>
         </p-tabPanel>
         <p-tabPanel header="Best Seller">
-          <p>
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
-            ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.
-          </p>
+          <div class="featured-products__tab">
+            @for (product of bestSellersProducts$ | async; track product.uuid) {
+              <app-product-card
+                [productCardType]="cardType.LONG"
+                [productCard]="product"
+              ></app-product-card>
+            }
+          </div>
         </p-tabPanel>
         <p-tabPanel header="New Arrivals">
-          <p>
-            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa
-            qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.
-          </p>
+          <div class="featured-products__tab">
+            @for (product of newArrivalsProducts$ | async; track product.uuid) {
+              <app-product-card
+                [productCardType]="cardType.LONG"
+                [productCard]="product"
+              ></app-product-card>
+            }
+          </div>
         </p-tabPanel>
       </p-tabView>
     </div>
     <div class="home__latest-products">
       <h2>Latest Products</h2>
+      @if (isProductsLoading$ | async) {
+        <app-progress-spinner></app-progress-spinner>
+      }
       <ul class="latest-products__list">
-        @for (productCard of productDefaultsCards; track productCard.uuid) {
+        @for (product of latestProducts$ | async; track product.uuid) {
           <app-product-card
-            [productCard]="productCard"
+            [productCard]="product"
             [isHideColors]="true"
           ></app-product-card>
         }

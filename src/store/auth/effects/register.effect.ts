@@ -40,7 +40,7 @@ export class RegisterEffect {
   public redirectAfterSubmit$ = createEffect(() => this.actions$.pipe(
     ofType(registerSuccessAction),
     tap(() => {
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/store/home');
     })
   ), { dispatch: false });
 }
