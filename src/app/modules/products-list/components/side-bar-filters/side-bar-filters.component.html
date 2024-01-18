@@ -1,13 +1,31 @@
 <div class="side-bar-filters">
-  <form class="filters-form">
+  <form
+    [formGroup]="filtersForm"
+    (ngSubmit)="onSubmit()"
+    class="filters-form">
     <div class="filters-form__field">
       <span class="p-input-icon-right">
         <i class="pi pi-search"></i>
         <input
+          formControlName="search"
           placeholder="Search for products"
           type="text"
           pInputText/>
       </span>
+    </div>
+    <div class="filters-form__field">
+      <app-radio-buttons-list
+        [formControl]="filtersForm.controls['color']"
+        [variants]="colorRadioButtons"
+        [title]="'Color'"
+      ></app-radio-buttons-list>
+    </div>
+    <div class="filters-form__field">
+      <app-radio-buttons-list
+        [formControl]="filtersForm.controls['size']"
+        [variants]="sizeRadioButtons"
+        [title]="'Size'"
+      ></app-radio-buttons-list>
     </div>
   </form>
 </div>

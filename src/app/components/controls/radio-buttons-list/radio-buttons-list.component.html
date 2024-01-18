@@ -1,0 +1,20 @@
+<div class="radio-buttons-list">
+  <strong>{{ title }}</strong>
+  <ul class="field-checkbox">
+    @for(variant of variants; track variant) {
+      <li class="field-checkbox__item">
+        <p-radioButton
+          [formControl]="radioButtonControl"
+          (onClick)="onRadioButtonSelect($event)"
+          [inputId]="variant.key"
+          [value]="variant">
+        </p-radioButton>
+        <label
+          [for]="variant.key"
+          class="ml-2">
+          {{ variant.name }}
+        </label>
+      </li>
+    }
+  </ul>
+</div>
