@@ -1,7 +1,10 @@
 @use "colors" as colors;
-@use "mixins" as mixins;
 
-.radio-buttons-list {
+:host ::ng-deep .p-checkbox-label {
+  margin-left: 0.5rem;
+}
+
+.checkbox-list {
   background: #fff;
   border: 1px solid colors.$gray-200;
   border-radius: .6rem;

@@ -4,9 +4,17 @@ import { FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { InputTextModule } from "primeng/inputtext";
 
 import { RadioButtonsListControlComponent } from "@components/controls/radio-buttons-list-control/radio-buttons-list-control.component";
-import { RadioButtonsList } from "@models/radio-buttons-list.interface";
 import { FiltersForm } from "@modules/products-list/models/filters-form.interface";
 import { RangeControlComponent } from "@components/controls/range-control/range-control.component";
+import { FormChoiceGroup } from "@models/form-choice-group.interface";
+import {
+  CheckboxListControlComponent
+} from "@components/controls/checkbox-list-control/checkbox-list-control.component";
+import {
+  BRAND_CHECKBOXES,
+  COLOR_RADIO_BUTTONS, MAX_PRICE,
+  SIZE_RADIO_BUTTONS
+} from "@modules/products-list/constants/side-bar-filters";
 
 @Component({
   selector: 'app-side-bar-filters',
@@ -16,28 +24,17 @@ import { RangeControlComponent } from "@components/controls/range-control/range-
     RadioButtonsListControlComponent,
     ReactiveFormsModule,
     RangeControlComponent,
+    CheckboxListControlComponent,
   ],
   templateUrl: './side-bar-filters.component.html',
   styleUrl: './side-bar-filters.component.scss'
 })
 export class SideBarFiltersComponent implements OnInit {
   public filtersForm!: FormGroup<FiltersForm>;
-  public colorRadioButtons: RadioButtonsList[] = [
-    { name: 'Red', key: 'Red' },
-    { name: 'Blue', key: 'Blue' },
-    { name: 'Brown', key: 'Brown' },
-    { name: 'Orange', key: 'Orange' },
-    { name: 'Yellow', key: 'Yellow' },
-    { name: 'Pink', key: 'Pink' },
-  ];
-  public sizeRadioButtons: RadioButtonsList[] = [
-    { name: 'Extra Large', key: 'XL' },
-    { name: 'Large', key: 'L' },
-    { name: 'Medium', key: 'M' },
-    { name: 'Small', key: 'S' },
-    { name: 'Extra Small', key: 'XS' },
-  ];
-  public maxPrice: number = 10000;
+  public colorRadioButtons: FormChoiceGroup[] = COLOR_RADIO_BUTTONS;
+  public sizeRadioButtons: FormChoiceGroup[] = SIZE_RADIO_BUTTONS;
+  public brandCheckboxes: FormChoiceGroup[] = BRAND_CHECKBOXES;
+  public maxPrice: number = MAX_PRICE;
 
   public ngOnInit(): void {
     this.createForm();
@@ -48,7 +45,8 @@ export class SideBarFiltersComponent implements OnInit {
       search: new FormControl<string | null>(null),
       color: new FormControl<string | null>(null),
       size: new FormControl<string | null>(null),
-      price: new FormControl<number[] | null>([0, this.maxPrice]),
+      price: new FormControl<number[] | null>([0, this.maxPrice / 2]),
+      brand: new FormControl<string[] | null>(null),
     });
   }
 

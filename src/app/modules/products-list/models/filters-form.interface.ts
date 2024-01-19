@@ -5,4 +5,5 @@ export interface FiltersForm {
   color: FormControl<string | null>;
   size: FormControl<string | null>;
   price: FormControl<number[] | null>;
+  brand: FormControl<string[] | null>;
 }

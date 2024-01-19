@@ -3,7 +3,7 @@ import { ControlValueAccessor, FormControl, NgControl, ReactiveFormsModule } fro
 
 import { RadioButtonClickEvent, RadioButtonModule } from "primeng/radiobutton";
 
-import { RadioButtonsList } from "@models/radio-buttons-list.interface";
+import { FormChoiceGroup } from "@models/form-choice-group.interface";
 
 @Component({
   selector: 'app-radio-buttons-list-control',
@@ -16,7 +16,7 @@ import { RadioButtonsList } from "@models/radio-buttons-list.interface";
   styleUrl: './radio-buttons-list-control.component.scss'
 })
 export class RadioButtonsListControlComponent implements ControlValueAccessor {
-  @Input({ required: true }) public variants!: RadioButtonsList[];
+  @Input({ required: true }) public variants!: FormChoiceGroup[];
   @Input() public title!: string;
 
   public radioButtonControl: FormControl = new FormControl();

@@ -1,8 +1,7 @@
 <div class="radio-buttons-list">
   <strong>{{ title }}</strong>
-  <ul class="field-checkbox">
     @for(variant of variants; track variant) {
-      <li class="field-checkbox__item">
+      <div class="field-checkbox">
         <p-radioButton
           [formControl]="radioButtonControl"
           (onClick)="onRadioButtonSelect($event)"
@@ -14,7 +13,6 @@
           class="ml-2">
           {{ variant.name }}
         </label>
-      </li>
+      </div>
     }
-  </ul>
 </div>

@@ -34,5 +34,13 @@
         [title]="'Filter by price'"
       ></app-range-control>
     </div>
+    <div class="filters-form__field">
+      <app-checkbox-list-control
+        [variants]="brandCheckboxes"
+        [title]="'Brand'"
+        [formControl]="filtersForm.controls['brand']"
+      ></app-checkbox-list-control>
+      <button type="submit">sub</button>
+    </div>
   </form>
 </div>

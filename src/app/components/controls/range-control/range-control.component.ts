@@ -50,6 +50,10 @@ export class RangeControlComponent implements ControlValueAccessor, OnInit {
     ]).pipe(
       takeUntilDestroyed(this.destroyRef)
     ).subscribe((rangeValues: number[]): void => {
+      if(rangeValues.some(el => el > this.maxValue || el < 0)) {
+        return;
+      }
+
       this.rangeControl.setValue(rangeValues);
     });
   }
