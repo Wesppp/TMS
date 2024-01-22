@@ -106,7 +106,7 @@
     .featured-products__tab {
       @include mixins.flexMix($gap: 2.5rem, $justify: space-between);
 
-      @media (max-width: constants.$wide-screen) {
+      @media (max-width: constants.$wide-medium-screen) {
         flex-wrap: wrap;
       }
     }
@@ -122,7 +122,7 @@
       grid-gap: 2.5rem;
       justify-content: center;
 
-      @media (max-width: constants.$wide-screen) {
+      @media (max-width: constants.$wide-medium-screen) {
         grid-template-columns: repeat(3, 1fr);
       }
 

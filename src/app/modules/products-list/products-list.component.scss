@@ -2,6 +2,37 @@
 @use "colors" as colors;
 @use "constants" as constants;
 
+:host ::ng-deep p-paginator {
+  .p-paginator-first, .p-paginator-last  {
+    display: none;
+  }
+
+  .p-paginator {
+    gap: 1rem;
+
+    & .p-paginator-pages .p-paginator-page.p-highlight {
+      color: #fff;
+      background: colors.$primary;
+      border-color: colors.$primary;
+    }
+
+    &-pages {
+      @include mixins.flexMix($gap: 1rem);
+    }
+
+    .p-element {
+      border-radius: .2rem;
+      border: 2px solid colors.$second-primary;
+      color: colors.$second-primary;
+      font-weight: 600;
+
+      .p-icon-wrapper {
+        border: none;
+      }
+    }
+  }
+}
+
 :host ::ng-deep app-page-title {
   .page-title {
     height: 300px;
@@ -14,6 +45,16 @@
 
     padding-top: 1.8rem;
     padding-bottom: 1.8rem;
+
+    ul {
+      @include mixins.gridMix($columns: repeat(4, 1fr), $gap: 1.5rem);
+
+      padding-top: 2rem;
+
+      @media (max-width: constants.$wide-screen) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
   }
 }
 

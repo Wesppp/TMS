@@ -7,6 +7,7 @@ import { Product } from '@models/product.interface';
 import { environment } from '@environments/environment';
 import { GetProductsResponse } from '@models/get-products-response.interface';
 import { ProductsRequestParams } from '@models/products-request-params.interface';
+import { Categories } from "@models/categories.interface";
 
 const mapGetProductsResponse = (response: GetProductsResponse): Product[] => {
   return response.items
@@ -30,5 +31,9 @@ export class ProductsService {
     }).pipe(
         map(mapGetProductsResponse)
     );
+  }
+
+  public getProductsCategories(): Observable<Categories[]> {
+    return this.http.get<Categories[]>(`${environment.apiUrl}/categories`);
   }
 }

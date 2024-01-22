@@ -8,6 +8,25 @@
     <app-side-bar-filters></app-side-bar-filters>
     <div [style]="{ 'width': '100%' }">
       <app-top-bar-filters></app-top-bar-filters>
+      @if(!(isProductsLoading$ | async)) {
+        <ul>
+          @for(product of products$ | async; track product.uuid) {
+            <app-product-card
+              [productCard]="product"
+              [isHideSizes]="true"
+              [isHideColors]="true"
+            ></app-product-card>
+          }
+        </ul>
+        <p-paginator
+          (onPageChange)="onPageChange($event)"
+          [first]="first"
+          [rows]="rows"
+          [totalRecords]="(products$ | async)!.length"
+        ></p-paginator>
+      } @else {
+        <app-progress-spinner></app-progress-spinner>
+      }
     </div>
   </div>
 </div>
