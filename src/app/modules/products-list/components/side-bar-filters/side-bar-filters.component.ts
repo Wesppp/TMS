@@ -14,7 +14,7 @@ import {
   BRAND_CHECKBOXES,
   COLOR_RADIO_BUTTONS, MAX_PRICE,
   SIZE_RADIO_BUTTONS
-} from "@modules/products-list/constants/side-bar-filters";
+} from "@modules/products-list/constants/filters";
 
 @Component({
   selector: 'app-side-bar-filters',

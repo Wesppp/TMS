@@ -10,6 +10,8 @@
 
 .products-list {
   &__main {
+    @include mixins.flexMix($align: normal, $justify: normal, $gap: 1.8rem);
+
     padding-top: 1.8rem;
     padding-bottom: 1.8rem;
   }

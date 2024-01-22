@@ -1,4 +1,6 @@
 import { FormChoiceGroup } from "@models/form-choice-group.interface";
+import { SelectControl } from "@models/select-control.interface";
+import { ToggleControl } from "@modules/products-list/models/toggle-control.interface";
 
 export const COLOR_RADIO_BUTTONS: FormChoiceGroup[] = [
   { name: 'Red', key: 'Red' },
@@ -27,3 +29,16 @@ export const BRAND_CHECKBOXES: FormChoiceGroup[] = [
 ];
 
 export const MAX_PRICE: number = 10000;
+
+export const SORT_VARIANTS: SelectControl[] = [
+  { label: 'Raiting', value: 'raiting' },
+  { label: 'Price', value: 'price' },
+  { label: 'Views', value: 'views' },
+  { label: 'CreatedAt', value: 'createdAt' },
+  { label: 'Brand', value: 'brand' },
+];
+
+export const TOGGLE_VARIANTS: ToggleControl[] = [
+  { label: 'Grid', value: 'grid', icon: 'pi pi-table', },
+  { label: 'Stretch', value: 'stretch', icon: 'pi pi-list', },
+];
