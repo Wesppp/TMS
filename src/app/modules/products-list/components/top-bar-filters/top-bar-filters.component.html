@@ -13,6 +13,7 @@
   </div>
   <div class="top-bar-filters__toggle">
     <p-selectButton
+      (onOptionClick)="onToggle($event)"
       [options]="toggleVariants"
       [formControl]="toggleControl"
       optionLabel="label"

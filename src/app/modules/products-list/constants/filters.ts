@@ -1,6 +1,7 @@
 import { FormChoiceGroup } from "@models/form-choice-group.interface";
 import { SelectControl } from "@models/select-control.interface";
 import { ToggleControl } from "@modules/products-list/models/toggle-control.interface";
+import { CardType } from "@enums/card-type.enum";
 
 export const COLOR_RADIO_BUTTONS: FormChoiceGroup[] = [
   { name: 'Red', key: 'Red' },
@@ -39,6 +40,6 @@ export const SORT_VARIANTS: SelectControl[] = [
 ];
 
 export const TOGGLE_VARIANTS: ToggleControl[] = [
-  { label: 'Grid', value: 'grid', icon: 'pi pi-table', },
-  { label: 'Stretch', value: 'stretch', icon: 'pi pi-list', },
+  { label: 'Grid', value: CardType.DEFAULT, icon: 'pi pi-table', },
+  { label: 'Stretch', value: CardType.STRETCH, icon: 'pi pi-list', },
 ];

@@ -43,10 +43,14 @@
 .product-card {
   position: relative;
 
-  &__favorite-btn {
+  .favorite-btn {
     position: absolute;
-    top: .4rem;
-    right: .4rem;
+    top: .6rem;
+    right: .6rem;
+  }
+
+  .header-img {
+    object-fit: cover;
   }
 
   &--long {
@@ -54,7 +58,21 @@
 
     .header-img {
       height: 400px;
-      object-fit: cover;
+    }
+  }
+
+  &--stretch {
+    width: 100%;
+
+    .header-img {
+      height: 240px;
+    }
+
+    ::ng-deep .p-card {
+      @include mixins.flexMix($justify: flex-start, $gap: 1.5rem);
+
+      padding: 1.4rem;
+      border: 2px solid colors.$gray-400;
     }
   }
 }

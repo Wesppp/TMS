@@ -10,10 +10,11 @@ import { Product } from "@models/product.interface";
 import { isProductsLoadingSelector } from "@store/app-loading/app-loading.selectors";
 import { productsSelector } from "@store/products/products.selectors";
 import { getAllProductsAction } from "@store/products/actions/get-all-products.action";
-import { AsyncPipe } from "@angular/common";
+import { AsyncPipe, NgClass } from "@angular/common";
 import { ProductCardComponent } from "@components/product-card/product-card.component";
 import { PaginatorModule, PaginatorState } from "primeng/paginator";
 import { ProgressSpinnerComponent } from "@components/progress-spinner/progress-spinner.component";
+import { CardType } from "@enums/card-type.enum";
 
 @Component({
   selector: 'app-products-list',
@@ -25,7 +26,8 @@ import { ProgressSpinnerComponent } from "@components/progress-spinner/progress-
     AsyncPipe,
     ProductCardComponent,
     PaginatorModule,
-    ProgressSpinnerComponent
+    ProgressSpinnerComponent,
+    NgClass
   ],
   templateUrl: './products-list.component.html',
   styleUrl: './products-list.component.scss'
@@ -35,6 +37,8 @@ export class ProductsListComponent implements OnInit {
   public titleBgImageSrc: string = '/assets/images/products-list-header-bg.png';
   public first: number = 0;
   public rows: number = 6;
+  public productCardType: CardType = CardType.DEFAULT;
+  protected readonly cardType = CardType;
 
   public products$!: Observable<Product[] | null>;
   public isProductsLoading$!: Observable<boolean>;
@@ -58,5 +62,9 @@ export class ProductsListComponent implements OnInit {
     this.rows = rows!;
 
     console.log(this.first, this.rows)
+  }
+
+  public onToggleCardType(cardType: CardType): void {
+    this.productCardType = cardType;
   }
 }

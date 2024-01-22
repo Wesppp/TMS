@@ -1,4 +1,8 @@
-<div class="products-list">
+<div
+  class="products-list"
+  [ngClass]="{
+    'products-list--stretch': productCardType === cardType.STRETCH
+  }">
   <app-page-title
     [title]="title"
     [isShowBtn]="false"
@@ -7,14 +11,17 @@
   <div class="products-list__main max-width-container">
     <app-side-bar-filters></app-side-bar-filters>
     <div [style]="{ 'width': '100%' }">
-      <app-top-bar-filters></app-top-bar-filters>
-      @if(!(isProductsLoading$ | async)) {
+      <app-top-bar-filters
+        (toggleCardTypeEvent)="onToggleCardType($event)"
+      ></app-top-bar-filters>
+      @if(!(isProductsLoading$ | async) && (products$ | async)) {
         <ul>
           @for(product of products$ | async; track product.uuid) {
             <app-product-card
+              [productCardType]="productCardType"
               [productCard]="product"
-              [isHideSizes]="true"
-              [isHideColors]="true"
+              [isHideSizes]="!(productCardType === cardType.STRETCH)"
+              [isHideColors]="!(productCardType === cardType.STRETCH)"
             ></app-product-card>
           }
         </ul>

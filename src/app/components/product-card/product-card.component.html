@@ -1,11 +1,12 @@
 <div
   [ngClass]="{
-    'product-card--long': productCardType === cardType.LONG
+    'product-card--long': productCardType === cardType.LONG,
+    'product-card--stretch': productCardType === cardType.STRETCH
   }"
   class="product-card">
   <img
-    class="product-card__favorite-btn"
-    src="assets/icons/favorite.svg"
+    class="favorite-btn"
+    [src]="productCardType === cardType.STRETCH ? 'assets/icons/favorite-black-fill.svg' : 'assets/icons/favorite.svg'"
     alt="add to favorite">
   <p-card [header]="productCard.title" subheader="(Black)">
     <ng-template pTemplate="header">
