@@ -151,10 +151,7 @@
 }
 
 .max-width-container {
-  max-width: 1920px;
-  margin: 0 auto;
-  padding-left: 10rem;
-  padding-right: 10rem;
+  @include mixins.maxWidthContainer($p-left: 10rem, $p-right: 10rem);
 
   @media (max-width: constants.$medium-screen) {
     padding-left: 6rem;

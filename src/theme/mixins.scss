@@ -31,3 +31,10 @@
   background-position: $bg-position;
   background-repeat: $bg-repeat;
 }
+
+@mixin maxWidthContainer($max-width: 1920px, $margin: 0 auto, $p-left: 1.8rem, $p-right: 1.8rem) {
+  max-width: $max-width;
+  margin: $margin;
+  padding-left: $p-left;
+  padding-right: $p-right;
+}
