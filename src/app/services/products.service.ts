@@ -19,7 +19,7 @@ const mapGetProductsResponse = (response: GetProductsResponse): Product[] => {
 export class ProductsService {
   constructor(private readonly http: HttpClient) { }
 
-  public getProducts(params: ProductsRequestParams): Observable<Product[]> {
+  public getProducts(params?: ProductsRequestParams): Observable<Product[]> {
     let queryParams: HttpParams = new HttpParams();
 
     for(const key in params) {

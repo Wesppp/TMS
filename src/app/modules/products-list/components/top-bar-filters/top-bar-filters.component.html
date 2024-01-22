@@ -5,6 +5,7 @@
     </label>
     <p-dropdown
       id="sort"
+      (onChange)="onSelect($event)"
       [formControl]="sortControl"
       [options]="sortVariants"
       optionLabel="label"
