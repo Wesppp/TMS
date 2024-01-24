@@ -23,6 +23,8 @@
               [isHideSizes]="!(productCardType === cardType.STRETCH)"
               [isHideColors]="!(productCardType === cardType.STRETCH)"
             ></app-product-card>
+          } @empty {
+            There are no products here...
           }
         </ul>
         <p-paginator

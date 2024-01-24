@@ -27,6 +27,7 @@ import {
 } from '@store/products/effects/get-best-sellers-products.effect';
 import { RefreshTokensEffect } from "@store/auth/effects/refresh-tokens.effect";
 import { GetCategoriesEffect } from "@store/products/effects/get-categories.effect";
+import { FilterProductsEffect } from "@store/products/effects/filter-products.effect";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -47,6 +48,7 @@ export const appConfig: ApplicationConfig = {
       GetBestSellersProductsEffect,
       RefreshTokensEffect,
       GetCategoriesEffect,
+      FilterProductsEffect,
     ]),
     provideStoreDevtools({maxAge: 25, logOnly: !isDevMode()}),
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

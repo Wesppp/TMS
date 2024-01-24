@@ -36,7 +36,7 @@ export class ProductsListComponent implements OnInit {
   public title: string = 'Fashion';
   public titleBgImageSrc: string = '/assets/images/products-list-header-bg.png';
   public first: number = 0;
-  public rows: number = 6;
+  public rows: number = 5;
   public productCardType: CardType = CardType.DEFAULT;
   protected readonly cardType = CardType;
 

@@ -17,7 +17,7 @@ export const SIZE_RADIO_BUTTONS: FormChoiceGroup[] = [
   { name: 'Large', key: 'L' },
   { name: 'Medium', key: 'M' },
   { name: 'Small', key: 'S' },
-  { name: 'Extra Small', key: 'XS' },
+  { name: 'Extra Small', key: 'Xs' },
 ];
 
 export const BRAND_CHECKBOXES: FormChoiceGroup[] = [

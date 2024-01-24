@@ -35,6 +35,11 @@ import {
   getFeaturedProductsAction, getFeaturedProductsFailureAction,
   getFeaturedProductsSuccessAction,
 } from '@store/products/actions/get-featured-products.action';
+import {
+  filterProductsAction,
+  filterProductsFailureAction,
+  filterProductsSuccessAction
+} from "@store/products/actions/filter-products.action";
 
 function deleteLoadingFromState(state: AppLoadingState, loadingName: AppLoadings): AppLoadingState {
   const loadings: Set<string> = new Set(state.loadings);
@@ -61,6 +66,7 @@ export const appLoadingReducer = createReducer(
     }
   ),
   on(getLatestProductsAction, getAllProductsAction,
+    filterProductsAction,
     (state: AppLoadingState) => ({
       ...state,
       loadings: state.loadings.add(AppLoadings.PRODUCTS_LOADING)
@@ -68,6 +74,7 @@ export const appLoadingReducer = createReducer(
   ),
   on(getLatestProductsSuccessAction, getLatestProductsFailureAction,
     getAllProductsSuccessAction, getAllProductsFailureAction,
+    filterProductsSuccessAction, filterProductsFailureAction,
     (state: AppLoadingState) => {
       return deleteLoadingFromState(state, AppLoadings.PRODUCTS_LOADING);
     }

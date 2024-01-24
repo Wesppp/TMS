@@ -22,4 +22,8 @@ export enum ActionTypes {
   GET_CATEGORIES = '[Products list] get categories',
   GET_CATEGORIES_SUCCESS = '[Products list] get categories success',
   GET_CATEGORIES_FAILURE = '[Products list] get categories failure',
+
+  FILTER_PRODUCTS = '[Products list] filter products',
+  FILTER_PRODUCTS_SUCCESS = '[Products list] filter products success',
+  FILTER_PRODUCTS_FAILURE = '[Products list] filter products failure',
 }

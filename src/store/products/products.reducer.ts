@@ -15,6 +15,7 @@ import {
   getNewArrivalsProductsSuccessAction
 } from '@store/products/actions/get-new-arrivals-products.action';
 import { getCategoriesSuccessAction } from "@store/products/actions/get-categories.action";
+import { filterProductsSuccessAction } from "@store/products/actions/filter-products.action";
 
 export const productsReducer = createReducer(
   initialState,
@@ -52,6 +53,12 @@ export const productsReducer = createReducer(
     (state: ProductsState, { categories })  => ({
       ...state,
       categories
+    })
+  ),
+  on(filterProductsSuccessAction,
+    (state: ProductsState, { products }) => ({
+      ...state,
+      products
     })
   ),
 );

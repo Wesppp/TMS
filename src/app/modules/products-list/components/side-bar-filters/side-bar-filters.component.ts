@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DestroyRef, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { AsyncPipe } from "@angular/common";
 
 import { InputTextModule } from "primeng/inputtext";
 import { Store } from "@ngrx/store";
-import { Observable } from "rxjs";
+import { debounceTime, distinctUntilChanged, Observable } from "rxjs";
 
 import { RadioButtonsListControlComponent } from "@components/controls/radio-buttons-list-control/radio-buttons-list-control.component";
 import { FiltersForm } from "@modules/products-list/models/filters-form.interface";
@@ -22,6 +22,9 @@ import { AccordionControlComponent } from "@components/controls/accordion-contro
 import { categoriesForAccordionSelector } from "@store/products/products.selectors";
 import { getCategoriesAction } from "@store/products/actions/get-categories.action";
 import { AccordionControlElement } from "@models/accordion-control-element.interface";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
+import { FilterFormValues } from "@models/filter-form-values.interface";
+import { filterProductsAction } from "@store/products/actions/filter-products.action";
 
 @Component({
   selector: 'app-side-bar-filters',
@@ -47,18 +50,31 @@ export class SideBarFiltersComponent implements OnInit {
   public brandCheckboxes: FormChoiceGroup[] = BRAND_CHECKBOXES;
   public maxPrice: number = MAX_PRICE;
 
-  constructor(private readonly store: Store) {
+  constructor(private readonly store: Store,
+              private readonly destroyRef: DestroyRef) {
   }
 
   public ngOnInit(): void {
     this.createForm();
     this.initializeValues();
+    this.initializeListeners();
 
     this.store.dispatch(getCategoriesAction());
   }
 
   private initializeValues(): void {
     this.categories$ = this.store.select(categoriesForAccordionSelector);
+  }
+
+  private initializeListeners(): void {
+    this.filtersForm.valueChanges
+      .pipe(
+        debounceTime(300),
+        distinctUntilChanged(),
+        takeUntilDestroyed(this.destroyRef)
+      ).subscribe((filters: Partial<FilterFormValues>): void => {
+        this.store.dispatch(filterProductsAction({ filters }));
+    });
   }
 
   private createForm(): void {
