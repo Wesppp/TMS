@@ -12,7 +12,10 @@ import { FormChoiceGroup } from "@models/form-choice-group.interface";
     CheckboxModule
   ],
   templateUrl: './checkbox-list-control.component.html',
-  styleUrl: './checkbox-list-control.component.scss'
+  styleUrls: [
+    './checkbox-list-control.component.scss',
+    '../controls.scss'
+  ]
 })
 export class CheckboxListControlComponent implements ControlValueAccessor {
   @Input({ required: true }) public variants!: FormChoiceGroup[];

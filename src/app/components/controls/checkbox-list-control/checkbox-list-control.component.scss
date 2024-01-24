@@ -1,15 +1,8 @@
-@use "colors" as colors;
-
 :host ::ng-deep .p-checkbox-label {
   margin-left: 0.5rem;
 }
 
 .checkbox-list {
-  background: #fff;
-  border: 1px solid colors.$gray-200;
-  border-radius: .6rem;
-  padding: 1.2rem;
-
   strong {
     display: block;
     padding-bottom: .5rem;

@@ -13,7 +13,10 @@ import { FormChoiceGroup } from "@models/form-choice-group.interface";
     ReactiveFormsModule
   ],
   templateUrl: './radio-buttons-list-control.component.html',
-  styleUrl: './radio-buttons-list-control.component.scss'
+  styleUrls: [
+    './radio-buttons-list-control.component.scss',
+    '../controls.scss'
+  ]
 })
 export class RadioButtonsListControlComponent implements ControlValueAccessor {
   @Input({ required: true }) public variants!: FormChoiceGroup[];

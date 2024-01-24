@@ -6,4 +6,5 @@ export interface FiltersForm {
   size: FormControl<string | null>;
   price: FormControl<number[] | null>;
   brand: FormControl<string[] | null>;
+  category: FormControl<string | null>;
 }

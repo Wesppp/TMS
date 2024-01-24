@@ -1,12 +1,4 @@
-@use "colors" as colors;
-@use "mixins" as mixins;
-
 .radio-buttons-list {
-  background: #fff;
-  border: 1px solid colors.$gray-200;
-  border-radius: .6rem;
-  padding: 1.2rem;
-
   strong {
     display: block;
     padding-bottom: .5rem;

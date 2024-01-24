@@ -15,7 +15,10 @@ import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
     InputNumberModule
   ],
   templateUrl: './range-control.component.html',
-  styleUrl: './range-control.component.scss'
+  styleUrls: [
+    './range-control.component.scss',
+    '../controls.scss'
+  ]
 })
 export class RangeControlComponent implements ControlValueAccessor, OnInit {
   @Input() public title: string = 'Select a range';
