@@ -1,4 +1,4 @@
-import { Component, DestroyRef, OnInit } from '@angular/core';
+import { Component, DestroyRef, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { AsyncPipe } from "@angular/common";
 
@@ -42,9 +42,12 @@ import { filterProductsAction } from "@store/products/actions/filter-products.ac
   styleUrl: './side-bar-filters.component.scss'
 })
 export class SideBarFiltersComponent implements OnInit {
+  @Output() public searchEvent: EventEmitter<string> = new EventEmitter<string>();
+
   public categories$!: Observable<AccordionControlElement[] | null>;
 
   public filtersForm!: FormGroup<FiltersForm>;
+  public searchControl: FormControl = new FormControl<string>('');
   public colorRadioButtons: FormChoiceGroup[] = COLOR_RADIO_BUTTONS;
   public sizeRadioButtons: FormChoiceGroup[] = SIZE_RADIO_BUTTONS;
   public brandCheckboxes: FormChoiceGroup[] = BRAND_CHECKBOXES;
@@ -75,11 +78,19 @@ export class SideBarFiltersComponent implements OnInit {
       ).subscribe((filters: Partial<FilterFormValues>): void => {
         this.store.dispatch(filterProductsAction({ filters }));
     });
+
+    this.searchControl.valueChanges
+      .pipe(
+        debounceTime(300),
+        distinctUntilChanged(),
+        takeUntilDestroyed(this.destroyRef)
+      ).subscribe((searchValue: string): void => {
+        this.searchEvent.emit(searchValue);
+    });
   }
 
   private createForm(): void {
     this.filtersForm = new FormGroup<FiltersForm>({
-      search: new FormControl<string | null>(null),
       color: new FormControl<string | null>(null),
       size: new FormControl<string | null>(null),
       price: new FormControl<number[] | null>([0, this.maxPrice / 2]),

@@ -9,14 +9,16 @@
     [bgImageSrc]="titleBgImageSrc"
   ></app-page-title>
   <div class="products-list__main max-width-container">
-    <app-side-bar-filters></app-side-bar-filters>
+    <app-side-bar-filters
+      (searchEvent)="onSearchProducts($event)"
+    ></app-side-bar-filters>
     <div [style]="{ 'width': '100%' }">
       <app-top-bar-filters
         (toggleCardTypeEvent)="onToggleCardType($event)"
       ></app-top-bar-filters>
       @if(!(isProductsLoading$ | async) && (products$ | async)) {
         <ul>
-          @for(product of products$ | async; track product.uuid) {
+          @for(product of products$ | async | search: 'title' : searchProductsValue; track product.uuid) {
             <app-product-card
               [productCardType]="productCardType"
               [productCard]="product"

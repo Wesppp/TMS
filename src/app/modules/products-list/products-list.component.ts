@@ -15,6 +15,7 @@ import { ProductCardComponent } from "@components/product-card/product-card.comp
 import { PaginatorModule, PaginatorState } from "primeng/paginator";
 import { ProgressSpinnerComponent } from "@components/progress-spinner/progress-spinner.component";
 import { CardType } from "@enums/card-type.enum";
+import { SearchPipe } from "../../pipes/search.pipe";
 
 @Component({
   selector: 'app-products-list',
@@ -27,7 +28,8 @@ import { CardType } from "@enums/card-type.enum";
     ProductCardComponent,
     PaginatorModule,
     ProgressSpinnerComponent,
-    NgClass
+    NgClass,
+    SearchPipe
   ],
   templateUrl: './products-list.component.html',
   styleUrl: './products-list.component.scss'
@@ -39,6 +41,7 @@ export class ProductsListComponent implements OnInit {
   public rows: number = 5;
   public productCardType: CardType = CardType.DEFAULT;
   protected readonly cardType = CardType;
+  public searchProductsValue: string = '';
 
   public products$!: Observable<Product[] | null>;
   public isProductsLoading$!: Observable<boolean>;
@@ -66,5 +69,9 @@ export class ProductsListComponent implements OnInit {
 
   public onToggleCardType(cardType: CardType): void {
     this.productCardType = cardType;
+  }
+
+  public onSearchProducts(searchValue: string): void {
+    this.searchProductsValue = searchValue;
   }
 }
