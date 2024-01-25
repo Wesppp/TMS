@@ -18,7 +18,7 @@
       ></app-top-bar-filters>
       @if(!(isProductsLoading$ | async) && (products$ | async)) {
         <ul>
-          @for(product of products$ | async | search: 'title' : searchProductsValue; track product.uuid) {
+          @for(product of (products$ | async)!.slice(first, first + rows) | search: 'title' : searchProductsValue; track product.uuid) {
             <app-product-card
               [productCardType]="productCardType"
               [productCard]="product"

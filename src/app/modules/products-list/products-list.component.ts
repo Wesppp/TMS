@@ -63,8 +63,6 @@ export class ProductsListComponent implements OnInit {
   public onPageChange({ first, rows }: PaginatorState): void {
     this.first = first!;
     this.rows = rows!;
-
-    console.log(this.first, this.rows)
   }
 
   public onToggleCardType(cardType: CardType): void {
