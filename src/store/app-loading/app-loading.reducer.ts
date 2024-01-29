@@ -40,6 +40,11 @@ import {
   filterProductsFailureAction,
   filterProductsSuccessAction
 } from "@store/products/actions/filter-products.action";
+import {
+  getProductAction,
+  getProductFailureAction,
+  getProductSuccessAction
+} from "@store/products/actions/get-product.action";
 
 function deleteLoadingFromState(state: AppLoadingState, loadingName: AppLoadings): AppLoadingState {
   const loadings: Set<string> = new Set(state.loadings);
@@ -91,6 +96,17 @@ export const appLoadingReducer = createReducer(
     getBestSellersProductsSuccessAction, getBestSellersProductsFailureAction,
     (state: AppLoadingState) => {
       return deleteLoadingFromState(state, AppLoadings.FEATURED_PRODUCTS_LOADING);
+    }
+  ),
+  on(getProductAction,
+    (state: AppLoadingState) => ({
+      ...state,
+      loadings: state.loadings.add(AppLoadings.PRODUCT_LOADING)
+    })
+  ),
+  on(getProductSuccessAction, getProductFailureAction,
+    (state: AppLoadingState) => {
+      return deleteLoadingFromState(state, AppLoadings.PRODUCT_LOADING);
     }
   ),
 );

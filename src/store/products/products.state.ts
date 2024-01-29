@@ -8,6 +8,7 @@ export interface ProductsState {
   bestSellersProducts: Product[] | null;
   newArrivalsProducts: Product[] | null;
   categories: Categories[] | null;
+  product: Product | null;
 }
 
 export const initialState: ProductsState = {
@@ -17,6 +18,7 @@ export const initialState: ProductsState = {
   bestSellersProducts: null,
   newArrivalsProducts: null,
   categories: null,
+  product: null,
 }
 
 export const productsFeatureKey: string = 'products';

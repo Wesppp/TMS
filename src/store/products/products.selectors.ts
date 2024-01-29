@@ -43,3 +43,8 @@ export const categoriesForAccordionSelector = createSelector(
       { value: ctg.translation, nestedValues: ctg.nested?.map(nestedEl => nestedEl.translation) })
     ) as AccordionControlElement[] : null
 );
+
+export const productSelector = createSelector(
+  productsFeatureSelector,
+  (productsState: ProductsState) => productsState.product
+);
