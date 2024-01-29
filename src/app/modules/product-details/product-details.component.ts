@@ -19,6 +19,9 @@ import { ButtonTheme } from "@enums/button-theme.enum";
 import { AccordionControlComponent } from "@components/controls/accordion-control/accordion-control.component";
 import { ADDITIONAL_INFO } from "@modules/product-details/constants/additional-info";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
+import { TabMenuModule } from "primeng/tabmenu";
+import { TAB_MENU_ITEMS } from "@modules/product-details/constants/tab-menu-items";
+import { TabViewModule } from "primeng/tabview";
 
 @Component({
   selector: 'app-product-details',
@@ -32,6 +35,8 @@ import { FormControl, ReactiveFormsModule } from "@angular/forms";
     CustomButtonComponent,
     AccordionControlComponent,
     ReactiveFormsModule,
+    TabMenuModule,
+    TabViewModule,
   ],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss'
@@ -63,6 +68,7 @@ export class ProductDetailsComponent implements OnInit {
   protected readonly buttonIconPos = ButtonIconPos;
   protected readonly ButtonTheme = ButtonTheme;
   protected readonly ADDITIONAL_INFO = ADDITIONAL_INFO;
+  protected readonly TAB_MENU_ITEMS = TAB_MENU_ITEMS;
 
   constructor(private readonly store: Store,
               private readonly destroyRef: DestroyRef) {

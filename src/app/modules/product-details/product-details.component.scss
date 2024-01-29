@@ -33,6 +33,25 @@
   }
 }
 
+:host ::ng-deep p-tabView {
+  .p-tabview-panels {
+    padding: 2rem 1.25rem;
+    color: colors.$text;
+
+    p {
+      padding-bottom: 2rem;
+    }
+
+    ul {
+      padding-top: .8rem;
+
+      li {
+        padding: .4rem 0;
+      }
+    }
+  }
+}
+
 .max-width-container {
   @include mixins.maxWidthContainer($p-left: 8rem, $p-right: 8rem);
 
@@ -102,7 +121,8 @@
         padding-top: 1.4rem;
 
         span {
-          font-weight: 700;
+          @include mixins.fontMix(1.1rem, 800);
+
           color: colors.$second-text;
         }
       }
@@ -131,5 +151,9 @@
         padding-top: 4rem;
       }
     }
+  }
+
+  &__footer {
+    padding-top: 5rem;
   }
 }
