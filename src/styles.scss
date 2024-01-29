@@ -33,6 +33,14 @@ a {
   }
 }
 
-i, i::before {
+i, i::before, .pi, .pi::before {
   font-family: 'primeicons', sans-serif;
+}
+
+.p-button-icon-left {
+  margin-right: .5rem;
+}
+
+p-button-icon-right {
+  margin-left: .5rem;
 }

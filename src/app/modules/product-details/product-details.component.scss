@@ -40,6 +40,11 @@
     padding-left: 1rem;
     padding-right: 1rem;
   }
+
+  @media (max-width: constants.$wide-screen) {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
 }
 
 .product-details {
@@ -100,6 +105,12 @@
           font-weight: 700;
           color: colors.$second-text;
         }
+      }
+
+      &__actions {
+        @include mixins.flexMix($justify: normal, $gap: .6rem);
+
+        padding-top: 2.2rem;
       }
     }
   }

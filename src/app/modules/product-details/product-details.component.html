@@ -36,7 +36,15 @@
           ></app-size-color-picker>
         </div>
         <div class="product-info__actions">
-
+          <app-custom-button
+            [label]="'Add To Wishlist'"
+            [icon]="'pi-heart'"
+            [iconPos]="buttonIconPos.LEFT"
+            [buttonTheme]="ButtonTheme.GRAY"
+          ></app-custom-button>
+          <app-custom-button
+            [label]="'Add To Card'"
+          ></app-custom-button>
         </div>
       </div>
     </div>

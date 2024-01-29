@@ -1,0 +1,19 @@
+@use "colors";
+
+.custom-button {
+  ::ng-deep p-button {
+    button {
+      font-size: .8rem;
+    }
+  }
+
+  &--gray {
+    ::ng-deep p-button {
+      button {
+        background: colors.$gray-500;
+        border: colors.$gray-500;
+        box-shadow: 0 0 0 0 colors.$gray-500;
+      }
+    }
+  }
+}
