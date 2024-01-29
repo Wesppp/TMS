@@ -3,6 +3,7 @@
     'product-card--long': productCardType === cardType.LONG,
     'product-card--stretch': productCardType === cardType.STRETCH
   }"
+  [routerLink]="['../products', productCard.uuid]"
   class="product-card">
   <img
     class="favorite-btn"

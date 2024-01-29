@@ -1,0 +1,27 @@
+@use "mixins" as mixins;
+@use "colors" as colors;
+@use "constants" as constants;
+
+.max-width-container {
+  @include mixins.maxWidthContainer($p-left: 8rem, $p-right: 8rem);
+
+  @media (max-width: constants.$small-screen) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+.product-details {
+  padding-top: 1.8rem;
+  padding-bottom: 4rem;
+
+  .product-card {
+    @include mixins.flexMix($gap: 2.4rem);
+
+    padding: 2rem 2rem 3.4rem 2rem;
+    background: #FFF;
+    border: 1px solid colors.$gray-500;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10);
+    border-radius: .6rem;
+  }
+}

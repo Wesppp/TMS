@@ -6,6 +6,7 @@ import { Product } from '@models/product.interface';
 import { SizeColorPickerComponent } from '../size-color-picker/size-color-picker.component';
 import { CardType } from "@enums/card-type.enum";
 import {NgClass} from "@angular/common";
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-product-card',
@@ -14,6 +15,7 @@ import {NgClass} from "@angular/common";
     CardModule,
     SizeColorPickerComponent,
     NgClass,
+    RouterLink,
   ],
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.scss'
