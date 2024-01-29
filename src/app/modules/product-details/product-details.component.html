@@ -1,10 +1,46 @@
 .<div class="product-details max-width-container">
-  <div class="product-card">
-    <div class="product-card__gallery">
+  @if(product && !(isProductLoading$ | async)) {
+    <div class="product">
+      <div class="product-gallery">
+        <p-galleria
+          [value]="product.images"
+          [responsiveOptions]="galleryOptions"
+          [containerStyle]="{ 'max-width': '640px' }"
+          [numVisible]="4">
+          <ng-template pTemplate="item" let-item>
+            <img [src]="item" style="width: 100%;" />
+          </ng-template>
+          <ng-template pTemplate="thumbnail" let-item>
+            <div class="grid grid-nogutter justify-content-center">
+              <img [src]="item" />
+            </div>
+          </ng-template>
+        </p-galleria>
+      </div>
+      <div class="product-info">
+        <div class="product-info__title">
+          <strong>Product</strong>
+          <span>(4-pack)</span>
+        </div>
+        <div class="product-info__rating">
+          <p-rating [cancel]="false"></p-rating>
+          <span>10 Reviews</span>
+        </div>
+        <div class="product-info__price">
+          ${{ product.price }}
+        </div>
+        <div class="product-info__color">
+          <span>Color</span>
+          <app-size-color-picker
+            [colorPicker]="product.colors"
+          ></app-size-color-picker>
+        </div>
+        <div class="product-info__actions">
 
+        </div>
+      </div>
     </div>
-    <div class="product-card__info">
-
-    </div>
-  </div>
+  } @else {
+    <app-progress-spinner></app-progress-spinner>
+  }
 </div>
