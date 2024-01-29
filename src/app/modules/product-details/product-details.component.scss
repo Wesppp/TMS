@@ -63,7 +63,7 @@
 
     &-gallery {
       max-width: 550px;
-      height: 800px;
+      min-height: 800px;
     }
 
     &-info {
@@ -110,7 +110,25 @@
       &__actions {
         @include mixins.flexMix($justify: normal, $gap: .6rem);
 
-        padding-top: 2.2rem;
+        padding-top: 2.4rem;
+      }
+
+      &__description {
+        padding-top: 2.4rem;
+
+        strong {
+          font-size: 1.4rem;
+        }
+
+        p {
+          padding-top: .6rem;
+          color: colors.$second-text;
+          line-height: 1.4rem;
+        }
+      }
+
+      &__additional {
+        padding-top: 4rem;
       }
     }
   }

@@ -16,6 +16,9 @@ import { SizeColorPickerComponent } from "@components/size-color-picker/size-col
 import { CustomButtonComponent } from "@components/custom-button/custom-button.component";
 import { ButtonIconPos } from "@enums/button-icon-pos.enum";
 import { ButtonTheme } from "@enums/button-theme.enum";
+import { AccordionControlComponent } from "@components/controls/accordion-control/accordion-control.component";
+import { ADDITIONAL_INFO } from "@modules/product-details/constants/additional-info";
+import { FormControl, ReactiveFormsModule } from "@angular/forms";
 
 @Component({
   selector: 'app-product-details',
@@ -27,6 +30,8 @@ import { ButtonTheme } from "@enums/button-theme.enum";
     RatingModule,
     SizeColorPickerComponent,
     CustomButtonComponent,
+    AccordionControlComponent,
+    ReactiveFormsModule,
   ],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss'
@@ -38,6 +43,7 @@ export class ProductDetailsComponent implements OnInit {
 
   public isProductLoading$!: Observable<boolean>;
 
+  public control: FormControl = new FormControl();
   public product!: Product | null;
   public galleryOptions: any[] = [
     {
@@ -53,7 +59,10 @@ export class ProductDetailsComponent implements OnInit {
       numVisible: 1
     }
   ];
+
   protected readonly buttonIconPos = ButtonIconPos;
+  protected readonly ButtonTheme = ButtonTheme;
+  protected readonly ADDITIONAL_INFO = ADDITIONAL_INFO;
 
   constructor(private readonly store: Store,
               private readonly destroyRef: DestroyRef) {
@@ -72,6 +81,4 @@ export class ProductDetailsComponent implements OnInit {
     });
     this.isProductLoading$ = this.store.select(isProductLoadingSelector);
   }
-
-  protected readonly ButtonTheme = ButtonTheme;
 }
