@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
+import { NgClass } from "@angular/common";
 
 import { CardModule } from 'primeng/card';
 
 import { Product } from '@models/product.interface';
 import { SizeColorPickerComponent } from '../size-color-picker/size-color-picker.component';
 import { CardType } from "@enums/card-type.enum";
-import {NgClass} from "@angular/common";
 import { RouterLink } from "@angular/router";
 
 @Component({
