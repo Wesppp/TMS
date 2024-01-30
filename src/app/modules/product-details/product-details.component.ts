@@ -22,6 +22,7 @@ import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { TabMenuModule } from "primeng/tabmenu";
 import { TAB_MENU_ITEMS } from "@modules/product-details/constants/tab-menu-items";
 import { TabViewModule } from "primeng/tabview";
+import { TruncateTextDirective } from "../../directives/truncate-text.directive";
 
 @Component({
   selector: 'app-product-details',
@@ -37,6 +38,7 @@ import { TabViewModule } from "primeng/tabview";
     ReactiveFormsModule,
     TabMenuModule,
     TabViewModule,
+    TruncateTextDirective,
   ],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss'

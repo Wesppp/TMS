@@ -1,14 +1,12 @@
-import { Component, DestroyRef, OnInit } from '@angular/core';
-import { RouterLink, RouterLinkActive, Router, NavigationEnd } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AsyncPipe, NgClass, NgOptimizedImage, NgStyle } from '@angular/common';
 
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 
 import { NavigationLink } from '@models/nav-link.interface';
 import { NAV_LINKS } from '@constants/nav-links';
-import { AuthState } from '@store/auth/auth.state';
 import { isLoggedInSelector } from '@store/auth/auth.selectors';
 import { AccountActions } from '@models/account-actions.interface';
 import { ACCOUNT_ACTIONS } from '@constants/account-actions';
