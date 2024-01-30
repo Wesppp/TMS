@@ -29,6 +29,7 @@ import { RefreshTokensEffect } from "@store/auth/effects/refresh-tokens.effect";
 import { GetCategoriesEffect } from "@store/products/effects/get-categories.effect";
 import { FilterProductsEffect } from "@store/products/effects/filter-products.effect";
 import { GetProductEffect } from "@store/products/effects/get-product.effect";
+import { AuthLoadingsEffect } from "@store/auth/effects/auth-loadings.effect";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -51,6 +52,7 @@ export const appConfig: ApplicationConfig = {
       GetCategoriesEffect,
       FilterProductsEffect,
       GetProductEffect,
+      AuthLoadingsEffect,
     ]),
     provideStoreDevtools({maxAge: 25, logOnly: !isDevMode()}),
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
