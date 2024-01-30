@@ -54,6 +54,18 @@
       @media (max-width: constants.$wide-screen) {
         grid-template-columns: repeat(3, 1fr);
       }
+
+      @media (max-width: constants.$wide-medium-screen) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (max-width: constants.$small-medium-screen) {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+
+    @media (max-width: constants.$medium-screen) {
+      display: block;
     }
   }
 
@@ -67,8 +79,8 @@
 .max-width-container {
   @include mixins.maxWidthContainer();
 
-  @media (max-width: constants.$small-screen) {
-    padding-left: 1rem;
-    padding-right: 1rem;
+  @media (max-width: constants.$medium-screen) {
+    padding-left: .6rem;
+    padding-right: .6rem;
   }
 }

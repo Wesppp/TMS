@@ -18,4 +18,8 @@
       }
     }
   }
+
+  @media (max-width: constants.$medium-screen) {
+    display: none;
+  }
 }

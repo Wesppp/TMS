@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { AsyncPipe, NgClass, NgOptimizedImage, NgStyle } from '@angular/common';
+import { AsyncPipe, NgClass, NgOptimizedImage, NgStyle, NgTemplateOutlet } from '@angular/common';
 
 import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
@@ -22,6 +22,7 @@ import { isSecondHeaderSelector } from "@store/header/header.selectors";
     NgClass,
     NgStyle,
     AsyncPipe,
+    NgTemplateOutlet,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'

@@ -13,7 +13,9 @@
       "@services/*": ["app/services/*"],
       "@utils/*": ["app/utils/*"],
       "@environments/*": ["environments/*"],
-      "@store/*": ["store/*"]
+      "@store/*": ["store/*"],
+      "@pipes/*": ["pipes/*"],
+      "@directives/*": ["directives/*"]
     },
     "forceConsistentCasingInFileNames": true,
     "strict": true,

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AsyncPipe, NgClass } from "@angular/common";
 
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
+import { PaginatorModule, PaginatorState } from "primeng/paginator";
 
 import { PageTitleComponent } from "@components/page-title/page-title.component";
 import { SideBarFiltersComponent } from "@modules/products-list/components/side-bar-filters/side-bar-filters.component";
@@ -10,12 +12,11 @@ import { Product } from "@models/product.interface";
 import { isProductsLoadingSelector } from "@store/app-loading/app-loading.selectors";
 import { productsSelector } from "@store/products/products.selectors";
 import { getAllProductsAction } from "@store/products/actions/get-all-products.action";
-import { AsyncPipe, NgClass } from "@angular/common";
 import { ProductCardComponent } from "@components/product-card/product-card.component";
-import { PaginatorModule, PaginatorState } from "primeng/paginator";
 import { ProgressSpinnerComponent } from "@components/progress-spinner/progress-spinner.component";
 import { CardType } from "@enums/card-type.enum";
 import { SearchPipe } from "../../pipes/search.pipe";
+import { BreakpointObserver } from "@angular/cdk/layout";
 
 @Component({
   selector: 'app-products-list',
@@ -46,7 +47,8 @@ export class ProductsListComponent implements OnInit {
   public products$!: Observable<Product[] | null>;
   public isProductsLoading$!: Observable<boolean>;
 
-  constructor(private readonly store: Store) {
+  constructor(private readonly store: Store,
+              private readonly breakpointObserver: BreakpointObserver) {
   }
 
   public ngOnInit(): void {
@@ -58,6 +60,10 @@ export class ProductsListComponent implements OnInit {
   private initializeValues(): void {
     this.isProductsLoading$ = this.store.select(isProductsLoadingSelector);
     this.products$ = this.store.select(productsSelector);
+  }
+
+  private initializeListeners(): void {
+
   }
 
   public onPageChange({ first, rows }: PaginatorState): void {
