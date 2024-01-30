@@ -1,4 +1,4 @@
-<ng-template #headerTemplate let-isSecondHeader>
+
   <header [class.second]="isSecondHeader">
     <ul class="nav-list">
       @for (navLink of navLinks; track navLink.label) {
@@ -20,7 +20,7 @@
           alt="avatar"
           width="50"
           height="50">
-        @if (isLoggedIn$ | async) {
+        @if (isLoggedIn) {
           <a routerLink="#">My Account</a>
         } @else {
           <a routerLink="/auth/login">Sign In</a>
@@ -38,5 +38,3 @@
       }
     </ul>
   </header>
-</ng-template>
-<ng-container *ngTemplateOutlet="headerTemplate; context: { $implicit: isSecondHeader$ | async }"></ng-container>
