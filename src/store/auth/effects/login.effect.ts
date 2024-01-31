@@ -36,7 +36,7 @@ export class LoginEffect {
   public redirectAfterSubmit$ = createEffect(() => this.actions$.pipe(
     ofType(loginSuccessAction),
     tap(() => {
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/store/home');
     })
   ), { dispatch: false });
 }

@@ -12,6 +12,7 @@ import { AuthState } from '@store/auth/auth.state';
 import { isLoggedInSelector } from '@store/auth/auth.selectors';
 import { AccountActions } from '@models/account-actions.interface';
 import { ACCOUNT_ACTIONS } from '@constants/account-actions';
+import { isSecondHeaderSelector } from "@store/header/header.selectors";
 
 @Component({
   selector: 'app-header',
@@ -29,25 +30,20 @@ import { ACCOUNT_ACTIONS } from '@constants/account-actions';
 })
 export class HeaderComponent implements OnInit {
   public isLoggedIn$: Observable<boolean> = of(false);
+  public isSecondHeader$: Observable<boolean> = of(false);
 
   public navLinks: NavigationLink[] = NAV_LINKS;
   public accountActions: AccountActions[] = ACCOUNT_ACTIONS;
-  public isHomePage: boolean = false;
 
-  constructor(private readonly router: Router,
-              private readonly destroyRef: DestroyRef,
-              private readonly store: Store<AuthState>) {
+  constructor(private readonly store: Store) {
   }
 
   public ngOnInit(): void {
-    this.isLoggedIn$ = this.store.select(isLoggedInSelector)
+    this.initializeValues();
+  }
 
-    this.router.events.pipe(
-     takeUntilDestroyed(this.destroyRef)
-    ).subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.isHomePage = this.router.url.includes('home');
-      }
-    });
+  private initializeValues(): void {
+    this.isLoggedIn$ = this.store.select(isLoggedInSelector);
+    this.isSecondHeader$ = this.store.select(isSecondHeaderSelector);
   }
 }

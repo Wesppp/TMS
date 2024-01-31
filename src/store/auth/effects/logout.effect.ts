@@ -6,7 +6,6 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 
 import { PersistenceService } from '@services/persistence.service';
 import { logoutAction } from '../actions/logout.action';
-import { AuthTokensEnum } from '@enums/auth-tokens.enum';
 
 @Injectable()
 export class LogoutEffect {
@@ -19,9 +18,9 @@ export class LogoutEffect {
     () => this.actions$.pipe(
       ofType(logoutAction),
       tap(() => {
-        this.persistence.removeToken(AuthTokensEnum.ACCESS_TOKEN);
+        this.persistence.removeTokens();
 
-        this.router.navigateByUrl('/auth/register')
+        this.router.navigateByUrl('/auth/login')
       })
     ),
     {dispatch: false}

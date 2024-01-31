@@ -1,4 +1,4 @@
-<header [class.second]="isHomePage">
+<header [class.second]="isSecondHeader$ | async">
   <ul class="nav-list">
     @for (navLink of navLinks; track navLink.label) {
       <li
@@ -15,7 +15,7 @@
     <li class="account-actions__item">
       <img
         class="icon"
-        [ngSrc]="isHomePage ? 'assets/icons/avatar-white.svg' : 'assets/icons/avatar-black.svg'"
+        [ngSrc]="(isSecondHeader$ | async) ? 'assets/icons/avatar-white.svg' : 'assets/icons/avatar-black.svg'"
         alt="avatar"
         width="50"
         height="50">
@@ -29,7 +29,7 @@
       <li class="account-actions__item">
         <img
           class="icon"
-          [ngSrc]="isHomePage ? accountAction.iconSrc : accountAction.iconSecondSrc"
+          [ngSrc]="(isSecondHeader$ | async) ? accountAction.iconSrc : accountAction.iconSecondSrc"
           [alt]="accountAction.alt"
           [width]="accountAction.width"
           [height]="accountAction.height">
