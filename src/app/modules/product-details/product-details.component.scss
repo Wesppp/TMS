@@ -11,6 +11,11 @@
     img {
       width: 100px;
       height: 60px;
+
+      @media (max-width: constants.$wide-medium-screen) {
+        width: 80px;
+        height: 50px;
+      }
     }
   }
 
@@ -20,6 +25,10 @@
     img {
       height: 100%;
       object-fit: cover;
+    }
+
+    @media (max-width: constants.$medium-screen) {
+      height: 500px;
     }
   }
 
@@ -55,14 +64,24 @@
 .max-width-container {
   @include mixins.maxWidthContainer($p-left: 8rem, $p-right: 8rem);
 
-  @media (max-width: constants.$small-screen) {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
   @media (max-width: constants.$wide-screen) {
     padding-left: 6rem;
     padding-right: 6rem;
+  }
+
+  @media (max-width: constants.$wide-medium-screen) {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  @media (max-width: constants.$medium-screen) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  @media (max-width: constants.$small-screen) {
+    padding-left: .6rem;
+    padding-right: .6rem;
   }
 }
 
@@ -83,6 +102,11 @@
     &-gallery {
       max-width: 550px;
       min-height: 800px;
+
+      @media (max-width: constants.$wide-medium-screen) {
+        width: 100%;
+        min-height: 650px;
+      }
     }
 
     &-info {
@@ -156,6 +180,12 @@
       &__additional {
         padding-top: 4rem;
       }
+    }
+
+    @media (max-width: constants.$medium-screen) {
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
     }
   }
 

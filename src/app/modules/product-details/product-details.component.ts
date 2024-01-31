@@ -54,11 +54,11 @@ export class ProductDetailsComponent implements OnInit {
   public product!: Product | null;
   public galleryOptions: any[] = [
     {
-      breakpoint: '1024px',
-      numVisible: 5
+      breakpoint: '1600px',
+      numVisible: 4
     },
     {
-      breakpoint: '768px',
+      breakpoint: '1050px',
       numVisible: 3
     },
     {
