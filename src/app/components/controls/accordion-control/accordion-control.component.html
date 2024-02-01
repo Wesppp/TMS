@@ -1,24 +1,27 @@
-<div class="accordion-control control">
-  <p-accordion class="w-full">
-    @for(element of accordionElements; track element.value) {
-      <p-accordionTab>
-        <ng-template pTemplate="header">
-          <div class="accordion-control__header">
-            <span class="header__title">{{ element.value }}</span>
-            <button class="header__button">+</button>
-          </div>
-        </ng-template>
-        <ul>
-          <li>
-            <a
-              (click)="onSelect(element.value)">View All</a>
-          </li>
-          <li *ngFor="let nestedValue of element?.nestedValues">
-            <a
-              (click)="onSelect(nestedValue)">{{ nestedValue }}</a>
-          </li>
-        </ul>
-      </p-accordionTab>
-    }
-  </p-accordion>
-</div>
+@if (accordionElements) {
+  <div class="accordion-control control">
+    <p-accordion class="w-full">
+      @for (element of accordionElements; track element.value) {
+        <p-accordionTab>
+          <ng-template pTemplate="header">
+            <div class="accordion-control__header">
+              <span class="header__title">{{ element.value }}</span>
+              <button class="header__button">+</button>
+            </div>
+          </ng-template>
+          <ul>
+            <li>
+              <a
+                (click)="onSelect(element.value)">View All</a>
+            </li>
+            @for (nestedValue of element.nestedValues; track nestedValue) {
+              <li>
+                <a (click)="onSelect(nestedValue)">{{ nestedValue }}</a>
+              </li>
+            }
+          </ul>
+        </p-accordionTab>
+      }
+    </p-accordion>
+  </div>
+}
