@@ -44,7 +44,7 @@ import { filterProductsAction } from "@store/products/actions/filter-products.ac
 export class SideBarFiltersComponent implements OnInit {
   @Output() public searchEvent: EventEmitter<string> = new EventEmitter<string>();
 
-  public categories$!: Observable<AccordionControlElement[] | null>;
+  public categories$!: Observable<AccordionControlElement<string>[] | null>;
 
   public filtersForm!: FormGroup<FiltersForm>;
   public searchControl: FormControl = new FormControl<string>('');

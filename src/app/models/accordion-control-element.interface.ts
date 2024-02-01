@@ -1,4 +1,4 @@
-export interface AccordionControlElement {
-  value: string;
+export interface AccordionControlElement<T> {
+  value: T;
   nestedValues?: string[];
 }

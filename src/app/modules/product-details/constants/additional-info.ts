@@ -1,6 +1,6 @@
 import { AccordionControlElement } from "@models/accordion-control-element.interface";
 
-export const ADDITIONAL_INFO: AccordionControlElement[] = [
+export const ADDITIONAL_INFO: AccordionControlElement<string>[] = [
   {
     value: 'Composition',
     nestedValues: [

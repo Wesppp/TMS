@@ -31,7 +31,7 @@ export const BRAND_CHECKBOXES: FormChoiceGroup[] = [
 
 export const MAX_PRICE: number = 10000;
 
-export const SORT_VARIANTS: SelectControl[] = [
+export const SORT_VARIANTS: SelectControl<string>[] = [
   { label: 'Raiting', value: 'raiting' },
   { label: 'Price', value: 'price' },
   { label: 'Views', value: 'views' },

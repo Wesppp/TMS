@@ -20,7 +20,7 @@ import { ControlValueAccessor, NgControl } from "@angular/forms";
   ]
 })
 export class AccordionControlComponent implements ControlValueAccessor {
-  @Input({ required: true }) public accordionElements!: AccordionControlElement[] | null;
+  @Input({ required: true }) public accordionElements!: AccordionControlElement<string>[] | null;
 
   private onTouched!: () => void;
   private onChange!: (_: string) => void;

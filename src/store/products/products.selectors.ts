@@ -38,10 +38,10 @@ export const categoriesSelector = createSelector(
 
 export const categoriesForAccordionSelector = createSelector(
   productsFeatureSelector,
-  (productsState: ProductsState) => productsState.categories ?
+  (productsState: ProductsState): AccordionControlElement<string>[] => productsState.categories ?
     productsState.categories?.map(ctg => (
       { value: ctg.translation, nestedValues: ctg.nested?.map(nestedEl => nestedEl.translation) })
-    ) as AccordionControlElement[] : null
+    ) : []
 );
 
 export const productSelector = createSelector(
