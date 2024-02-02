@@ -26,3 +26,13 @@ a {
   color: colors.$primary;
   font-weight: 800;
 }
+
+.p-input-icon-right, .p-input-icon-left {
+  i {
+    margin-top: -0.5rem;
+  }
+}
+
+i, i::before {
+  font-family: 'primeicons', sans-serif;
+}

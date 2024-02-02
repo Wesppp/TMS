@@ -7,6 +7,7 @@ import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@a
 
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
+import { provideRouterStore } from '@ngrx/router-store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { routes } from './app.routes';
@@ -25,7 +26,8 @@ import {
   GetBestSellersProductsEffect
 } from '@store/products/effects/get-best-sellers-products.effect';
 import { RefreshTokensEffect } from "@store/auth/effects/refresh-tokens.effect";
-import { provideRouterStore } from '@ngrx/router-store';
+import { GetCategoriesEffect } from "@store/products/effects/get-categories.effect";
+import { FilterProductsEffect } from "@store/products/effects/filter-products.effect";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -36,18 +38,20 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptorsFromDi()),
     provideStore(reducers),
     provideEffects([
-        RegisterEffect,
-        LogoutEffect,
-        LoginEffect,
-        GetLatestProductsEffect,
-        GetAllProductsEffect,
-        GetFeaturedProductsEffect,
-        GetNewArrivalsProductsEffect,
-        GetBestSellersProductsEffect,
-        RefreshTokensEffect,
+      RegisterEffect,
+      LogoutEffect,
+      LoginEffect,
+      GetLatestProductsEffect,
+      GetAllProductsEffect,
+      GetFeaturedProductsEffect,
+      GetNewArrivalsProductsEffect,
+      GetBestSellersProductsEffect,
+      RefreshTokensEffect,
+      GetCategoriesEffect,
+      FilterProductsEffect,
     ]),
-    provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    provideStoreDevtools({maxAge: 25, logOnly: !isDevMode()}),
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     provideRouterStore()
-]
+  ]
 };

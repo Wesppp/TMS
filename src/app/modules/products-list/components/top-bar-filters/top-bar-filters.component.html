@@ -1,0 +1,26 @@
+<div class="top-bar-filters">
+  <div class="top-bar-filters__sort">
+    <label for="sort">
+      Sort by:
+    </label>
+    <p-dropdown
+      id="sort"
+      (onChange)="onSelect($event)"
+      [formControl]="sortControl"
+      [options]="sortVariants"
+      optionLabel="label"
+      placeholder="Select something"></p-dropdown>
+  </div>
+  <div class="top-bar-filters__toggle">
+    <p-selectButton
+      (onOptionClick)="onToggle($event)"
+      [options]="toggleVariants"
+      [formControl]="toggleControl"
+      optionLabel="label"
+      optionValue="value">
+      <ng-template let-item pTemplate>
+        <i [class]="item.icon"></i>
+      </ng-template>
+    </p-selectButton>
+  </div>
+</div>

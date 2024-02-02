@@ -1,0 +1,12 @@
+<div
+  [style.background-image]="'url(' + bgImageSrc + ')'"
+  class="page-title">
+  <span>SUMMER 2020</span>
+  <h1>{{ title }}</h1>
+  <span>Find The Perfect style for you</span>
+  @if(isShowBtn) {
+    <button class="light-large-btn">
+      Shop Now
+    </button>
+  }
+</div>

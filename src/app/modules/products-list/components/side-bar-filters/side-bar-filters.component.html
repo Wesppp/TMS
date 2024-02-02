@@ -1,0 +1,51 @@
+<div class="side-bar-filters">
+  <form
+    [formGroup]="filtersForm"
+    (ngSubmit)="onSubmit()"
+    class="filters-form">
+    <div class="filters-form__field">
+      <span class="p-input-icon-right">
+        <i class="pi pi-search"></i>
+        <input
+          [formControl]="searchControl"
+          placeholder="Search for products"
+          type="text"
+          pInputText/>
+      </span>
+    </div>
+    <div class="filters-form__field">
+      <app-accordion-control
+        [accordionElements]="categories$ | async"
+        formControlName="category"
+      ></app-accordion-control>
+    </div>
+    <div class="filters-form__field">
+      <app-radio-buttons-list-control
+        [formControl]="filtersForm.controls['color']"
+        [variants]="colorRadioButtons"
+        [title]="'Color'"
+      ></app-radio-buttons-list-control>
+    </div>
+    <div class="filters-form__field">
+      <app-radio-buttons-list-control
+        [formControl]="filtersForm.controls['size']"
+        [variants]="sizeRadioButtons"
+        [title]="'Size'"
+      ></app-radio-buttons-list-control>
+    </div>
+    <div class="filters-form__field">
+      <app-range-control
+        [maxValue]="maxPrice"
+        [formControl]="filtersForm.controls['price']"
+        [title]="'Filter by price'"
+      ></app-range-control>
+    </div>
+    <div class="filters-form__field">
+      <app-checkbox-list-control
+        [variants]="brandCheckboxes"
+        [title]="'Brand'"
+        [formControl]="filtersForm.controls['brand']"
+      ></app-checkbox-list-control>
+    </div>
+  </form>
+</div>

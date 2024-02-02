@@ -10,14 +10,14 @@
       height: 1.6rem;
       border-radius: 50%;
       border: 2px solid #fff;
-      box-shadow: 0 0 3px 0 colors.$light-gray-second;
+      box-shadow: 0 0 3px 0 colors.$gray-300;
     }
   }
 
   &__sizes {
     button {
       background: #fff;
-      border: 2px solid colors.$light-gray-second;
+      border: 2px solid colors.$gray-300;
       font-weight: 700;
       padding: .3rem .5rem;
       color: colors.$second-text;

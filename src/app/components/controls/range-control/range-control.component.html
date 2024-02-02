@@ -1,0 +1,26 @@
+<div class="range-control control">
+  <strong>
+    {{ title }}
+    <span>(max price is {{ maxValue }})</span>
+  </strong>
+  <div class="range-control__slider">
+    <p-slider
+      (onChange)="onRangeChange($event)"
+      [max]="maxValue"
+      [formControl]="rangeControl"
+      [range]="true"
+    ></p-slider>
+    <div class="range-control__inputs">
+      <p-inputNumber
+        [formControl]="startRangeInput"
+        [max]="maxValue - 1"
+        inputId="rangeStart"
+        suffix="$"></p-inputNumber>
+      <p-inputNumber
+        [formControl]="endRangeInput"
+        [max]="maxValue"
+        inputId="rangeEnd"
+        suffix="$"></p-inputNumber>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div
+  class="products-list"
+  [ngClass]="{
+    'products-list--stretch': productCardType === cardType.STRETCH
+  }">
+  <app-page-title
+    [title]="title"
+    [isShowBtn]="false"
+    [bgImageSrc]="titleBgImageSrc"
+  ></app-page-title>
+  <div class="products-list__main max-width-container">
+    <app-side-bar-filters
+      (searchEvent)="onSearchProducts($event)"
+    ></app-side-bar-filters>
+    <div [style]="{ 'width': '100%' }">
+      <app-top-bar-filters
+        (toggleCardTypeEvent)="onToggleCardType($event)"
+      ></app-top-bar-filters>
+      @if(!(isProductsLoading$ | async) && (products$ | async)) {
+        <ul>
+          @for(product of (products$ | async)!.slice(first, first + rows) | search: 'title' : searchProductsValue; track product.uuid) {
+            <app-product-card
+              [productCardType]="productCardType"
+              [productCard]="product"
+              [isHideSizes]="!(productCardType === cardType.STRETCH)"
+              [isHideColors]="!(productCardType === cardType.STRETCH)"
+            ></app-product-card>
+          } @empty {
+            There are no products here...
+          }
+        </ul>
+        <p-paginator
+          (onPageChange)="onPageChange($event)"
+          [first]="first"
+          [rows]="rows"
+          [totalRecords]="(products$ | async)!.length"
+        ></p-paginator>
+      } @else {
+        <app-progress-spinner></app-progress-spinner>
+      }
+    </div>
+  </div>
+</div>
