@@ -1,0 +1,92 @@
+@if (product && !(isProductLoading$ | async)) {
+  <div class="product-details max-width-container">
+    <div class="product">
+      <div class="product-gallery">
+        <p-galleria
+          [value]="product.images"
+          [responsiveOptions]="galleryOptions"
+          [containerStyle]="{ 'max-width': '640px' }"
+          [numVisible]="4">
+          <ng-template pTemplate="item" let-item>
+            <img [src]="item" style="width: 100%;"/>
+          </ng-template>
+          <ng-template pTemplate="thumbnail" let-item>
+            <div class="grid grid-nogutter justify-content-center">
+              <img [src]="item"/>
+            </div>
+          </ng-template>
+        </p-galleria>
+      </div>
+      <div class="product-info">
+        <div class="product-info__title">
+          <strong>Product</strong>
+          <span>(4-pack)</span>
+        </div>
+        <div class="product-info__rating">
+          <p-rating [cancel]="false"></p-rating>
+          <span>10 Reviews</span>
+        </div>
+        <div class="product-info__price">
+          ${{ product.price }}
+        </div>
+        <div class="product-info__color">
+          <span>Color</span>
+          <app-size-color-picker
+            [colorPicker]="product.colors"
+          ></app-size-color-picker>
+        </div>
+        <div class="product-info__actions">
+          <app-custom-button
+            [label]="'Add To Wishlist'"
+            [icon]="'pi-heart'"
+            [iconPos]="buttonIconPos.LEFT"
+            [buttonTheme]="ButtonTheme.GRAY"
+          ></app-custom-button>
+          <app-custom-button
+            [label]="'Add To Card'"
+          ></app-custom-button>
+        </div>
+        <div class="product-info__description">
+          <strong>Product Description</strong>
+          <p [appTruncateText]="100">
+            A shirt is a type of clothing that is typically made of cotton and is designed with short sleeves and a round neckline.
+            It is a versatile piece of clothing that can be dressed up or down and worn for a variety of occasions.
+            T-shirts come in a variety of colors, patterns, and styles, and can be customized with graphics or text.
+            They are a staple of casual wear and are often worn alone or layered with jackets or sweaters.
+            T-shirts are comfortable, stylish, and practical, making them a popular choice among people of all ages and genders.
+          </p>
+        </div>
+        <div class="product-info__additional">
+          <app-accordion-control
+            [accordionElements]="ADDITIONAL_INFO"
+            [formControl]="control"
+          ></app-accordion-control>
+        </div>
+      </div>
+    </div>
+    <div class="product-details__footer">
+      <p-tabView>
+        <p-tabPanel header="Description">
+          <div class="footer-description">
+            <p>
+              Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stum ptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcat cher synth. Cosby sweater eu banh mi
+            </p>
+            <strong>Product Features :</strong>
+            <ul>
+              <li>- Unlimited product updates</li>
+              <li>- Unlimited Shares</li>
+              <li>- Every feature in Figmaland</li>
+            </ul>
+          </div>
+        </p-tabPanel>
+        <p-tabPanel header="Reviews ( 20 )">
+          <p>
+            Reviews here
+          </p>
+        </p-tabPanel>
+      </p-tabView>
+    </div>
+  </div>
+} @else {
+  <app-progress-spinner></app-progress-spinner>
+}

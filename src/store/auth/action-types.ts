@@ -13,5 +13,7 @@ export enum ActionTypes {
   REFRESH_TOKENS_SUCCESS = '[Auth] Refresh tokens success',
   REFRESH_TOKENS_FAILURE = '[Auth] Refresh tokens failure',
 
-  SET_ISLOGGEDIN = '[Auth] Set isLoggedIn'
+  SET_ISLOGGEDIN = '[Auth] Set isLoggedIn',
+
+
 }

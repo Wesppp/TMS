@@ -6,6 +6,7 @@ header {
   @include mixins.flexMix($justify: space-between);
 
   padding: 1.4rem 2.7rem 1.4rem 0;
+  background: #fff;
 
   .nav-list {
     @include mixins.flexMix($gap: 2.2rem);

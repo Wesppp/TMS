@@ -20,3 +20,8 @@ export const isFeaturedProductsLoadingSelector = createSelector(
   appLoadingFeatureSelector,
   (appLoadingState: AppLoadingState): boolean => appLoadingState.loadings.has(AppLoadings.FEATURED_PRODUCTS_LOADING)
 );
+
+export const isProductLoadingSelector = createSelector(
+  appLoadingFeatureSelector,
+  (appLoadingState: AppLoadingState): boolean => appLoadingState.loadings.has(AppLoadings.PRODUCT_LOADING)
+);

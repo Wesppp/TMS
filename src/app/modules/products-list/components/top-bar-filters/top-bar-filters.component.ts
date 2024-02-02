@@ -25,10 +25,10 @@ import { CardType } from "@enums/card-type.enum";
 export class TopBarFiltersComponent {
   @Output() public toggleCardTypeEvent = new EventEmitter<CardType>();
 
-  public sortVariants: SelectControl[] = SORT_VARIANTS;
+  public sortVariants: SelectControl<string>[] = SORT_VARIANTS;
   public toggleVariants: ToggleControl[] = TOGGLE_VARIANTS;
 
-  public sortControl: FormControl = new FormControl<SelectControl | null>(null);
+  public sortControl: FormControl = new FormControl<SelectControl<string> | null>(null);
   public toggleControl: FormControl = new FormControl<ToggleControl | null>(null);
 
   constructor(private readonly store: Store) {

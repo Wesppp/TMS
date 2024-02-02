@@ -3,6 +3,10 @@ export enum ActionTypes {
   GET_ALL_PRODUCTS_SUCCESS = '[Products list] get all products success',
   GET_ALL_PRODUCTS_FAILURE = '[Products list] get all products failure',
 
+  GET_PRODUCT = '[Product details] get product',
+  GET_PRODUCT_SUCCESS = '[Product details] get product success',
+  GET_PRODUCT_FAILURE = '[Product details] get product failure',
+
   GET_LATEST_PRODUCTS = '[Home] get latest products',
   GET_LATEST_PRODUCTS_SUCCESS = '[Home] get latest products success',
   GET_LATEST_PRODUCTS_FAILURE = '[Home] get latest products failure',

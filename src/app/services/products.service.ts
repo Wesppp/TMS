@@ -52,4 +52,8 @@ export class ProductsService {
 
     return of([])
   }
+
+  public getProduct(id: string): Observable<Product> {
+    return this.http.get<Product>(`${environment.apiUrl}/products/${id}`);
+  }
 }

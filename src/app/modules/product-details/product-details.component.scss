@@ -1,0 +1,195 @@
+@use "mixins" as mixins;
+@use "colors" as colors;
+@use "constants" as constants;
+
+:host ::ng-deep p-galleria {
+  .p-galleria-thumbnail-container {
+    background: transparent;
+  }
+
+  .p-galleria-thumbnail-items-container p-galleriaitemslot {
+    img {
+      width: 100px;
+      height: 60px;
+
+      @media (max-width: constants.$wide-medium-screen) {
+        width: 80px;
+        height: 50px;
+      }
+    }
+  }
+
+  .p-galleria-item-container p-galleriaitemslot {
+    height: 700px;
+
+    img {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media (max-width: constants.$medium-screen) {
+      height: 500px;
+    }
+  }
+
+  .p-galleria-thumbnail-prev, .p-galleria-thumbnail-next {
+    border: 1px solid colors.$gray-500;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10);
+
+    svg {
+      color: colors.$primary;
+    }
+  }
+}
+
+:host ::ng-deep p-tabView {
+  .p-tabview-panels {
+    padding: 2rem 1.25rem;
+    color: colors.$text;
+
+    p {
+      padding-bottom: 2rem;
+    }
+
+    ul {
+      padding-top: .8rem;
+
+      li {
+        padding: .4rem 0;
+      }
+    }
+  }
+}
+
+.max-width-container {
+  @include mixins.maxWidthContainer($p-left: 8rem, $p-right: 8rem);
+
+  @media (max-width: constants.$wide-screen) {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+
+  @media (max-width: constants.$wide-medium-screen) {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  @media (max-width: constants.$medium-screen) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  @media (max-width: constants.$small-screen) {
+    padding-left: .6rem;
+    padding-right: .6rem;
+  }
+}
+
+.product-details {
+  max-width: 1160px;
+  padding-top: 1.8rem;
+  padding-bottom: 4rem;
+
+  .product {
+    @include mixins.flexMix($align: normal, $justify: normal, $gap: 2.4rem);
+
+    padding: 2rem 2rem 3.4rem 2rem;
+    background: #FFF;
+    border: 1px solid colors.$gray-500;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10);
+    border-radius: .6rem;
+
+    &-gallery {
+      max-width: 550px;
+      min-height: 800px;
+
+      @media (max-width: constants.$wide-medium-screen) {
+        width: 100%;
+        min-height: 650px;
+      }
+    }
+
+    &-info {
+      &__title {
+        font-size: 1.4rem;
+
+        span {
+          color: colors.$gray-500;
+          margin-left: .4rem;
+        }
+      }
+
+      &__rating {
+        @include mixins.flexMix($justify: normal, $gap: 1rem);
+
+        padding-top: 1rem;
+
+        ::ng-deep p-rating {
+          svg {
+            color: yellow;
+          }
+        }
+
+        span {
+          @include mixins.fontMix(.9rem);
+        }
+      }
+
+      &__price {
+        @include mixins.fontMix(1.4rem, 700);
+
+        padding-top: 1rem;
+      }
+
+      &__color {
+        padding-top: 1.4rem;
+
+        span {
+          @include mixins.fontMix(1.1rem, 800);
+
+          color: colors.$second-text;
+        }
+      }
+
+      &__actions {
+        @include mixins.flexMix($justify: normal, $gap: .6rem);
+
+        padding-top: 2.4rem;
+      }
+
+      &__description {
+        padding-top: 2.4rem;
+
+        strong {
+          font-size: 1.4rem;
+        }
+
+        p {
+          padding-top: .6rem;
+          color: colors.$second-text;
+          line-height: 1.4rem;
+        }
+
+        a {
+          color: colors.$primary;
+          margin-left: .4rem;
+          cursor: pointer;
+        }
+      }
+
+      &__additional {
+        padding-top: 4rem;
+      }
+    }
+
+    @media (max-width: constants.$medium-screen) {
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+  }
+
+  &__footer {
+    padding-top: 5rem;
+  }
+}

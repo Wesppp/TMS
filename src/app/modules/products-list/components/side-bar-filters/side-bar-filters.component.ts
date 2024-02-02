@@ -4,7 +4,7 @@ import { AsyncPipe } from "@angular/common";
 
 import { InputTextModule } from "primeng/inputtext";
 import { Store } from "@ngrx/store";
-import { debounceTime, distinctUntilChanged, Observable } from "rxjs";
+import { debounceTime, distinctUntilChanged, Observable, of } from "rxjs";
 
 import { RadioButtonsListControlComponent } from "@components/controls/radio-buttons-list-control/radio-buttons-list-control.component";
 import { FiltersForm } from "@modules/products-list/models/filters-form.interface";
@@ -44,7 +44,7 @@ import { filterProductsAction } from "@store/products/actions/filter-products.ac
 export class SideBarFiltersComponent implements OnInit {
   @Output() public searchEvent: EventEmitter<string> = new EventEmitter<string>();
 
-  public categories$!: Observable<AccordionControlElement[] | null>;
+  public categories$: Observable<AccordionControlElement<string>[]> = of([]);
 
   public filtersForm!: FormGroup<FiltersForm>;
   public searchControl: FormControl = new FormControl<string>('');

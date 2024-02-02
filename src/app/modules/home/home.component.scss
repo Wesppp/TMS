@@ -104,7 +104,7 @@
 
   &__featured-products {
     .featured-products__tab {
-      @include mixins.flexMix($gap: 2.5rem, $justify: space-between);
+      @include mixins.flexMix($gap: 2.5rem, $justify: center);
 
       @media (max-width: constants.$wide-medium-screen) {
         flex-wrap: wrap;

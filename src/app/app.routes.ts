@@ -11,21 +11,30 @@ export const routes: Routes = [
   },
   {
     path: 'store',
-    loadComponent: () => import('./modules/store/store.component').then(mod => mod.StoreComponent),
+    loadComponent: () => import('./modules/store/store.component')
+      .then(mod => mod.StoreComponent),
     children: [
       {
         path: 'home',
-        loadComponent: () => import('./modules/home/home.component').then(mod => mod.HomeComponent),
+        loadComponent: () => import('./modules/home/home.component')
+          .then(mod => mod.HomeComponent),
       },
       {
         path: 'products',
-        loadComponent: () => import('./modules/products-list/products-list.component').then(mod => mod.ProductsListComponent),
+        loadComponent: () => import('./modules/products-list/products-list.component')
+          .then(mod => mod.ProductsListComponent),
+      },
+      {
+        path: 'products/:id',
+        loadComponent: () => import('./modules/product-details/product-details.component')
+          .then(mod => mod.ProductDetailsComponent),
       },
     ],
   },
   {
     path: 'auth',
-    loadComponent: () => import('./modules/auth/auth.component').then(mod => mod.AuthComponent),
+    loadComponent: () => import('./modules/auth/auth.component')
+      .then(mod => mod.AuthComponent),
     children: [
       {
         path: 'register',

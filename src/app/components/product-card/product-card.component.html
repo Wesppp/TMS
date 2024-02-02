@@ -3,6 +3,7 @@
     'product-card--long': productCardType === cardType.LONG,
     'product-card--stretch': productCardType === cardType.STRETCH
   }"
+  [routerLink]="['../products', productCard.uuid]"
   class="product-card">
   <img
     class="favorite-btn"
@@ -20,8 +21,8 @@
     </p>
     <ng-template pTemplate="footer">
       <app-size-color-picker
-        [sizePicker]="isHideSizes ? [] : productCard.sizes"
-        [colorPicker]="isHideColors ? [] : productCard.colors"
+        [sizePicker]="isHideSizes && productCardType !== cardType.STRETCH ? [] : productCard.sizes"
+        [colorPicker]="isHideColors && productCardType !== cardType.STRETCH ? [] : productCard.colors"
       ></app-size-color-picker>
     </ng-template>
   </p-card>

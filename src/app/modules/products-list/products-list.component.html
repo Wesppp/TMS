@@ -22,8 +22,8 @@
             <app-product-card
               [productCardType]="productCardType"
               [productCard]="product"
-              [isHideSizes]="!(productCardType === cardType.STRETCH)"
-              [isHideColors]="!(productCardType === cardType.STRETCH)"
+              [isHideSizes]="!isMobileScreen"
+              [isHideColors]="!isMobileScreen"
             ></app-product-card>
           } @empty {
             There are no products here...

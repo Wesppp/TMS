@@ -1,5 +1,5 @@
 import { ApplicationConfig, isDevMode } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { provideClientHydration } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideAnimations } from '@angular/platform-browser/animations';
@@ -28,10 +28,12 @@ import {
 import { RefreshTokensEffect } from "@store/auth/effects/refresh-tokens.effect";
 import { GetCategoriesEffect } from "@store/products/effects/get-categories.effect";
 import { FilterProductsEffect } from "@store/products/effects/filter-products.effect";
+import { GetProductEffect } from "@store/products/effects/get-product.effect";
+import { AuthLoadingsEffect } from "@store/auth/effects/auth-loadings.effect";
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes),
+    provideRouter(routes, withComponentInputBinding()),
     provideClientHydration(),
     BrowserAnimationsModule,
     provideAnimations(),
@@ -49,6 +51,8 @@ export const appConfig: ApplicationConfig = {
       RefreshTokensEffect,
       GetCategoriesEffect,
       FilterProductsEffect,
+      GetProductEffect,
+      AuthLoadingsEffect,
     ]),
     provideStoreDevtools({maxAge: 25, logOnly: !isDevMode()}),
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

@@ -1,0 +1,12 @@
+<div
+  [ngClass]="{
+    'custom-button--primary': buttonTheme === ButtonTheme.PRIMARY,
+    'custom-button--gray': buttonTheme === ButtonTheme.GRAY
+  }"
+  class="custom-button">
+  <p-button
+    [label]="label"
+    [icon]="'pi ' + icon"
+    [iconPos]="iconPos"
+  ></p-button>
+</div>

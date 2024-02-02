@@ -1,39 +1,40 @@
-<header [class.second]="isSecondHeader$ | async">
-  <ul class="nav-list">
-    @for (navLink of navLinks; track navLink.label) {
-      <li
-        class="nav-list__item">
-        <a
-          routerLinkActive="active-link"
-          [routerLink]="navLink.link">
-          {{ navLink.label }}
-        </a>
-      </li>
-    }
-  </ul>
-  <ul class="account-actions">
-    <li class="account-actions__item">
-      <img
-        class="icon"
-        [ngSrc]="(isSecondHeader$ | async) ? 'assets/icons/avatar-white.svg' : 'assets/icons/avatar-black.svg'"
-        alt="avatar"
-        width="50"
-        height="50">
-      @if (isLoggedIn$ | async) {
-        <a routerLink="#">My Account</a>
-      } @else {
-        <a routerLink="/auth/login">Sign In</a>
+
+  <header [class.second]="isSecondHeader">
+    <ul class="nav-list">
+      @for (navLink of navLinks; track navLink.label) {
+        <li
+          class="nav-list__item">
+          <a
+            routerLinkActive="active-link"
+            [routerLink]="navLink.link">
+            {{ navLink.label }}
+          </a>
+        </li>
       }
-    </li>
-    @for (accountAction of accountActions; track accountAction.alt) {
+    </ul>
+    <ul class="account-actions">
       <li class="account-actions__item">
         <img
           class="icon"
-          [ngSrc]="(isSecondHeader$ | async) ? accountAction.iconSrc : accountAction.iconSecondSrc"
-          [alt]="accountAction.alt"
-          [width]="accountAction.width"
-          [height]="accountAction.height">
+          [ngSrc]="isSecondHeader ? 'assets/icons/avatar-white.svg' : 'assets/icons/avatar-black.svg'"
+          alt="avatar"
+          width="50"
+          height="50">
+        @if (isLoggedIn) {
+          <a routerLink="#">My Account</a>
+        } @else {
+          <a routerLink="/auth/login">Sign In</a>
+        }
       </li>
-    }
-  </ul>
-</header>
+      @for (accountAction of accountActions; track accountAction.alt) {
+        <li class="account-actions__item">
+          <img
+            class="icon"
+            [ngSrc]="isSecondHeader ? accountAction.iconSrc : accountAction.iconSecondSrc"
+            [alt]="accountAction.alt"
+            [width]="accountAction.width"
+            [height]="accountAction.height">
+        </li>
+      }
+    </ul>
+  </header>
