@@ -21,30 +21,30 @@
     </div>
     <div class="filters-form__field">
       <app-radio-buttons-list-control
-        [formControl]="filtersForm.controls['color']"
+        formControlName="color"
         [variants]="colorRadioButtons"
         [title]="'Color'"
       ></app-radio-buttons-list-control>
     </div>
     <div class="filters-form__field">
       <app-radio-buttons-list-control
-        [formControl]="filtersForm.controls['size']"
+        formControlName="size"
         [variants]="sizeRadioButtons"
         [title]="'Size'"
       ></app-radio-buttons-list-control>
     </div>
     <div class="filters-form__field">
       <app-range-control
+        formControlName="price"
         [maxValue]="maxPrice"
-        [formControl]="filtersForm.controls['price']"
         [title]="'Filter by price'"
       ></app-range-control>
     </div>
     <div class="filters-form__field">
       <app-checkbox-list-control
+        formControlName="brand"
         [variants]="brandCheckboxes"
         [title]="'Brand'"
-        [formControl]="filtersForm.controls['brand']"
       ></app-checkbox-list-control>
     </div>
   </form>

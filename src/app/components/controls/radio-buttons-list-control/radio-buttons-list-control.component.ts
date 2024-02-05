@@ -31,7 +31,9 @@ export class RadioButtonsListControlComponent implements ControlValueAccessor {
     this.ngControl.valueAccessor = this;
   }
 
-  public writeValue(value: string): void {}
+  public writeValue(value: FormChoiceGroup): void {
+    this.radioButtonControl.setValue(value);
+  }
 
   public registerOnChange(fn: (_: string) => void): void {
     this.onChange = fn;
@@ -41,7 +43,7 @@ export class RadioButtonsListControlComponent implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  public onRadioButtonSelect({ value } : RadioButtonClickEvent) {
+  public onRadioButtonSelect({ value } : RadioButtonClickEvent): void {
     this.onChange(value.key);
   }
 }

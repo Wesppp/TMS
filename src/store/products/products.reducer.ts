@@ -26,7 +26,7 @@ export const productsReducer = createReducer(
       latestProducts
     })
   ),
-  on(getAllProductsSuccessAction, filterProductsSuccessAction,
+  on(getAllProductsSuccessAction,
     (state: ProductsState, { products }) => ({
       ...state,
       products
@@ -60,6 +60,12 @@ export const productsReducer = createReducer(
     (state: ProductsState, { product }) => ({
       ...state,
       product
+    })
+  ),
+  on(filterProductsSuccessAction,
+    (state: ProductsState, { products }) => ({
+      ...state,
+      filteredProducts: products
     })
   ),
 );

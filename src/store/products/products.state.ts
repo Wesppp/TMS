@@ -1,8 +1,10 @@
 import { Product } from '@models/product.interface';
 import { Categories } from "@models/categories.interface";
+import { PRODUCTS } from "@constants/temp-products";
 
 export interface ProductsState {
   products: Product[];
+  filteredProducts: Product[];
   latestProducts: Product[];
   featuredProducts: Product[];
   bestSellersProducts: Product[];
@@ -12,13 +14,14 @@ export interface ProductsState {
 }
 
 export const initialState: ProductsState = {
-  products: [],
+  products: PRODUCTS,
+  filteredProducts: PRODUCTS,
   latestProducts: [],
   featuredProducts: [],
   bestSellersProducts: [],
   newArrivalsProducts: [],
   categories: [],
-  product: null,
+  product: PRODUCTS[0],
 }
 
 export const productsFeatureKey: string = 'products';

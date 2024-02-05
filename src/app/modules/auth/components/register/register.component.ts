@@ -13,7 +13,7 @@ import {
 import {
   PasswordControlComponent
 } from '@components/controls/password-control/password-control.component';
-import { AuthFormValue, RegisterForm } from '../../models/auth-forms.interface';
+import { AuthForm, RegisterForm } from '../../models/auth-forms.interface';
 import {
   compareValidator
 } from '@utils/forms/compare-fields.validator';
@@ -21,6 +21,7 @@ import { registerAction } from '@store/auth/actions/register.action';
 import { AuthState } from '@store/auth/auth.state';
 import { EMAIL_PATTERN } from '@constants/patterns';
 import { isAuthLoadingSelector } from '@store/app-loading/app-loading.selectors';
+import { FormsBuilder } from "@models/forms-builder.type";
 
 @Component({
   selector: 'app-register',
@@ -39,7 +40,7 @@ import { isAuthLoadingSelector } from '@store/app-loading/app-loading.selectors'
 export class RegisterComponent implements OnInit {
   public isFormSubmitting: Observable<boolean> = of(false);
 
-  public registerForm!: FormGroup<RegisterForm>;
+  public registerForm!: FormGroup<FormsBuilder<RegisterForm>>;
 
   constructor(private readonly store: Store<AuthState>) {
   }
@@ -50,7 +51,7 @@ export class RegisterComponent implements OnInit {
   }
 
   private createForm(): void {
-    this.registerForm = new FormGroup<RegisterForm>({
+    this.registerForm = new FormGroup<FormsBuilder<RegisterForm>>({
       email: new FormControl<string>('', [
         Validators.required,
         Validators.pattern(EMAIL_PATTERN)
@@ -73,7 +74,7 @@ export class RegisterComponent implements OnInit {
   }
 
   public onFormSubmit(): void {
-    const registerRequest: AuthFormValue = {
+    const registerRequest: AuthForm = {
       password: this.registerForm.value.password as string,
       email: this.registerForm.value.email as string
     };
