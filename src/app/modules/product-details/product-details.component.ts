@@ -4,6 +4,8 @@ import { AsyncPipe } from "@angular/common";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { GalleriaModule } from "primeng/galleria";
+import { ToastModule } from "primeng/toast";
+import { MessageService } from "primeng/api";
 
 import { getProductAction } from "@store/products/actions/get-product.action";
 import { Product } from "@models/product.interface";
@@ -13,7 +15,7 @@ import { ProgressSpinnerComponent } from "@components/progress-spinner/progress-
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { RatingModule } from "primeng/rating";
 import { SizeColorPickerComponent } from "@components/size-color-picker/size-color-picker.component";
-import { CustomButtonComponent } from "@components/custom-button/custom-button.component";
+import { CustomButtonComponent } from "@components/buttons/custom-button/custom-button.component";
 import { ButtonIconPos } from "@enums/button-icon-pos.enum";
 import { ButtonTheme } from "@enums/button-theme.enum";
 import { AccordionControlComponent } from "@components/controls/accordion-control/accordion-control.component";
@@ -24,6 +26,9 @@ import { TAB_MENU_ITEMS } from "@modules/product-details/constants/tab-menu-item
 import { TabViewModule } from "primeng/tabview";
 import { TruncateTextDirective } from "../../directives/truncate-text.directive";
 import { GALLERY_OPTIONS } from "@modules/product-details/constants/gallery-options";
+import { SizeColorPickerValue } from "@models/size-color-picker-value.interface";
+import { CartProduct } from "@models/cart-product.interface";
+import { addProductAction } from "@store/cart/actions/add-product.action";
 
 @Component({
   selector: 'app-product-details',
@@ -40,6 +45,10 @@ import { GALLERY_OPTIONS } from "@modules/product-details/constants/gallery-opti
     TabMenuModule,
     TabViewModule,
     TruncateTextDirective,
+    ToastModule,
+  ],
+  providers: [
+    MessageService,
   ],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss'
@@ -60,8 +69,11 @@ export class ProductDetailsComponent implements OnInit {
   protected readonly TAB_MENU_ITEMS = TAB_MENU_ITEMS;
   protected readonly galleryOptions = GALLERY_OPTIONS;
 
+  private sizeColorValue: SizeColorPickerValue | null = null;
+
   constructor(private readonly store: Store,
-              private readonly destroyRef: DestroyRef) {
+              private readonly destroyRef: DestroyRef,
+              private messageService: MessageService) {
   }
 
   public ngOnInit(): void {
@@ -76,5 +88,24 @@ export class ProductDetailsComponent implements OnInit {
         this.product = product;
     });
     this.isProductLoading$ = this.store.select(isProductLoadingSelector);
+  }
+
+  public onAddToCart(): void {
+    if(!this.product || !this.sizeColorValue?.size || !this.sizeColorValue?.color) {
+      this.messageService.add({ severity: 'info', summary: 'Info', detail: 'Choose the color and size of the product.' });
+
+      return;
+    }
+
+    const cartProduct: CartProduct = {
+      uuid: this.product.uuid,
+      ...this.sizeColorValue,
+    }
+
+    this.store.dispatch(addProductAction({ cartProduct }));
+  }
+
+  public onColorSizePick(value: SizeColorPickerValue): void {
+    this.sizeColorValue = value;
   }
 }

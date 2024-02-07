@@ -21,6 +21,7 @@ export class CustomButtonComponent {
   @Input() public icon: string = '';
   @Input() public iconPos: ButtonIconPos = ButtonIconPos.RIGHT;
   @Input() public buttonTheme: ButtonTheme = ButtonTheme.PRIMARY;
+  @Input() public disabled: boolean = false;
 
   protected readonly ButtonTheme = ButtonTheme;
 }

@@ -41,6 +41,7 @@ header {
       @include mixins.flexMix($gap: .8rem);
 
       font-weight: 600;
+      cursor: pointer;
 
       &:nth-last-child(1) {
         display: none;

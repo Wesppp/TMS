@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
+import { SizeColorPickerValue } from "@models/size-color-picker-value.interface";
 
 @Component({
   selector: 'app-size-color-picker',
@@ -10,4 +12,16 @@ import { Component, Input } from '@angular/core';
 export class SizeColorPickerComponent {
   @Input() public colorPicker!: string[];
   @Input() public sizePicker!: string[];
+  @Output() public pickEvent: EventEmitter<SizeColorPickerValue> = new EventEmitter<SizeColorPickerValue>();
+
+  public sizeColorValue: SizeColorPickerValue = { color: '', size: '' };
+
+  public onPick(value: Partial<SizeColorPickerValue>): void {
+    this.sizeColorValue = {
+      ...this.sizeColorValue,
+      ...value,
+    }
+
+    this.pickEvent.emit(this.sizeColorValue);
+  }
 }

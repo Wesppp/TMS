@@ -59,6 +59,12 @@ p-tabview {
   }
 }
 
+p-toast {
+  .p-toast-message-text {
+    margin: 0 0 0 1rem;
+  }
+}
+
 .p-paginator {
   background: transparent;
 }

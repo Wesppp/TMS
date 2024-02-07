@@ -30,9 +30,10 @@
           ${{ product.price }}
         </div>
         <div class="product-info__color">
-          <span>Color</span>
           <app-size-color-picker
+            (pickEvent)="onColorSizePick($event)"
             [colorPicker]="product.colors"
+            [sizePicker]="product.sizes"
           ></app-size-color-picker>
         </div>
         <div class="product-info__actions">
@@ -43,7 +44,8 @@
             [buttonTheme]="ButtonTheme.GRAY"
           ></app-custom-button>
           <app-custom-button
-            [label]="'Add To Card'"
+            (click)="onAddToCart()"
+            [label]="'Add To Cart'"
           ></app-custom-button>
         </div>
         <div class="product-info__description">
@@ -87,6 +89,7 @@
       </p-tabView>
     </div>
   </div>
+  <p-toast [life]="4000"></p-toast>
 } @else {
   <app-progress-spinner></app-progress-spinner>
 }
