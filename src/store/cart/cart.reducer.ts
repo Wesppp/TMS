@@ -13,9 +13,9 @@ export const cartReducer = createReducer(
     })
   ),
   on(removeProductFromCartAction,
-    (state: CartState, { uuid }) => ({
+    (state: CartState, { index }) => ({
       ...state,
-      cartProducts: state.cartProducts.filter(product => product.uuid !== uuid),
+      cartProducts: state.cartProducts.filter((_, i) => i !== index),
     })
   ),
 )

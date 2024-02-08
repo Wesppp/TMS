@@ -47,7 +47,7 @@ export class CartComponent implements OnInit {
     this.totalCost$ = this.store.select(cartProductsTotalCost);
   }
 
-  public onRemoveProduct({ uuid }: Product): void {
-    this.store.dispatch(removeProductFromCartAction({ uuid }));
+  public onRemoveProduct(index: number): void {
+    this.store.dispatch(removeProductFromCartAction({ index }));
   }
 }

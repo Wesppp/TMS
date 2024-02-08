@@ -19,21 +19,29 @@ export class CartService {
     return of(product);
   }
 
-  public removeProductFromCart(uuid: string): Observable<string> {
+  public removeProductFromCart(index: number): Observable<number> {
     const cartProducts: CartProduct[] = JSON.parse(localStorage.getItem(Cart.PRODUCTS)!);
-    const updatedCart: CartProduct[] = cartProducts.filter(product => product.uuid !== uuid);
+    const updatedCart: CartProduct[] = cartProducts.filter((_, i) => i !== index);
 
     localStorage.setItem(Cart.PRODUCTS, JSON.stringify(updatedCart));
 
-    return of(uuid);
+    return of(index);
   }
 
   public getCartProducts(products: Product[]): Observable<Product[]> {
     const existingCart: string | null = localStorage.getItem(Cart.PRODUCTS);
     const cartProducts: CartProduct[] = existingCart ? JSON.parse(existingCart) : [];
-    const filteredProducts: Product[] = products.filter((product: Product) =>
-      cartProducts.some((cartProduct: CartProduct) => cartProduct.uuid === product.uuid)
-    );
+    let filteredProducts: Product[] = [];
+
+    if(products && products.length) {
+      filteredProducts = cartProducts.map((cartProduct: CartProduct) => ({
+          ...products.find((product: Product) => product.uuid === cartProduct.uuid)!,
+          ...cartProduct,
+        })
+      );
+    }
+
+    console.log(filteredProducts)
 
     return of(filteredProducts);
   }

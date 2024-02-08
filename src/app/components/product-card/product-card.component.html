@@ -21,6 +21,7 @@
     </p>
     <ng-template pTemplate="footer">
       <app-size-color-picker
+        [sizeColorValue]="sizeColor"
         [sizePicker]="isHideSizes && productCardType !== cardType.STRETCH ? [] : productCard.sizes"
         [colorPicker]="isHideColors && productCardType !== cardType.STRETCH ? [] : productCard.colors"
       ></app-size-color-picker>

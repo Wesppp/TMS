@@ -17,9 +17,9 @@ export class RemoveCartProductEffect {
 
   public removeProductFromCart$ = createEffect(() => this.actions$.pipe(
     ofType(removeProductFromCartAction),
-    switchMap(({ uuid }) => this.cartService.removeProductFromCart(uuid).pipe(
-      map((uuid: string) => {
-        return removeProductFromCartSuccessAction({ uuid });
+    switchMap(({ index }) => this.cartService.removeProductFromCart(index).pipe(
+      map((index) => {
+        return removeProductFromCartSuccessAction({ index });
       }),
       catchError(() => {
         return of(removeProductFromCartFailureAction());

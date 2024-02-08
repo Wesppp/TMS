@@ -12,9 +12,8 @@ import { SizeColorPickerValue } from "@models/size-color-picker-value.interface"
 export class SizeColorPickerComponent {
   @Input() public colorPicker!: string[];
   @Input() public sizePicker!: string[];
+  @Input() public sizeColorValue: SizeColorPickerValue = { color: '', size: '' };
   @Output() public pickEvent: EventEmitter<SizeColorPickerValue> = new EventEmitter<SizeColorPickerValue>();
-
-  public sizeColorValue: SizeColorPickerValue = { color: '', size: '' };
 
   public onPick(value: Partial<SizeColorPickerValue>): void {
     this.sizeColorValue = {

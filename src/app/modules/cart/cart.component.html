@@ -3,14 +3,14 @@
   @if(cartProducts$ | async; as products) {
     <div class="cart-content">
       <ul class="cart-content__list">
-        @for(product of products; track product.uuid) {
+        @for(product of products; track product.uuid; let idx = $index) {
           <li>
             <app-product-card
               [productCard]="product"
               [productCardType]="CardType.STRETCH"
             ></app-product-card>
             <p-button
-              (onClick)="onRemoveProduct(product)"
+              (onClick)="onRemoveProduct(idx)"
               icon="pi pi-times"
               [rounded]="true"
               severity="danger"></p-button>

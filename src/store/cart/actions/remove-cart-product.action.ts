@@ -4,12 +4,12 @@ import { ActionTypes } from "@store/cart/action-types";
 
 export const removeProductFromCartAction = createAction(
   ActionTypes.REMOVE_PRODUCT_FROM_CART,
-  props<{ uuid: string }>()
+  props<{ index: number }>()
 );
 
 export const removeProductFromCartSuccessAction = createAction(
   ActionTypes.REMOVE_PRODUCT_FROM_CART_SUCCESS,
-  props<{ uuid: string }>()
+  props<{ index: number }>()
 );
 
 export const removeProductFromCartFailureAction = createAction(
