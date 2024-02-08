@@ -10,7 +10,7 @@ import { SideBarFiltersComponent } from "@modules/products-list/components/side-
 import { TopBarFiltersComponent } from "@modules/products-list/components/top-bar-filters/top-bar-filters.component";
 import { Product } from "@models/product.interface";
 import { isProductsLoadingSelector } from "@store/app-loading/app-loading.selectors";
-import { productsSelector } from "@store/products/products.selectors";
+import { filteredProductsSelector } from "@store/products/products.selectors";
 import { getAllProductsAction } from "@store/products/actions/get-all-products.action";
 import { ProductCardComponent } from "@components/product-card/product-card.component";
 import { ProgressSpinnerComponent } from "@components/progress-spinner/progress-spinner.component";
@@ -19,6 +19,10 @@ import { SearchPipe } from "../../pipes/search.pipe";
 import { BreakpointObserver, BreakpointState } from "@angular/cdk/layout";
 import { Breakpoints } from "@enums/breakpoints.enum";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
+import { ButtonTheme } from "@enums/button-theme.enum";
+import { ButtonIconPos } from "@enums/button-icon-pos.enum";
+import { CustomButtonComponent } from "@components/custom-button/custom-button.component";
+import { SidebarModule } from "primeng/sidebar";
 
 @Component({
   selector: 'app-products-list',
@@ -32,7 +36,9 @@ import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
     PaginatorModule,
     ProgressSpinnerComponent,
     NgClass,
-    SearchPipe
+    SearchPipe,
+    CustomButtonComponent,
+    SidebarModule
   ],
   templateUrl: './products-list.component.html',
   styleUrl: './products-list.component.scss'
@@ -45,6 +51,7 @@ export class ProductsListComponent implements OnInit {
   public productCardType: CardType = CardType.DEFAULT;
   public searchProductsValue: string = '';
   public isMobileScreen: boolean = false;
+  public sidebarVisible: boolean = false;
   protected readonly cardType = CardType;
 
   public products$!: Observable<Product[] | null>;
@@ -64,7 +71,7 @@ export class ProductsListComponent implements OnInit {
 
   private initializeValues(): void {
     this.isProductsLoading$ = this.store.select(isProductsLoadingSelector);
-    this.products$ = this.store.select(productsSelector);
+    this.products$ = this.store.select(filteredProductsSelector);
   }
 
   private initializeListeners(): void {
@@ -88,4 +95,7 @@ export class ProductsListComponent implements OnInit {
   public onSearchProducts(searchValue: string): void {
     this.searchProductsValue = searchValue;
   }
+
+  protected readonly ButtonTheme = ButtonTheme;
+  protected readonly buttonIconPos = ButtonIconPos;
 }

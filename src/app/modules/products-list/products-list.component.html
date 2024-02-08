@@ -9,16 +9,30 @@
     [bgImageSrc]="titleBgImageSrc"
   ></app-page-title>
   <div class="products-list__main max-width-container">
+    <p-sidebar [(visible)]="sidebarVisible">
+      <app-side-bar-filters
+        (searchEvent)="onSearchProducts($event)"
+      ></app-side-bar-filters>
+    </p-sidebar>
     <app-side-bar-filters
       (searchEvent)="onSearchProducts($event)"
     ></app-side-bar-filters>
     <div [style]="{ 'width': '100%' }">
-      <app-top-bar-filters
-        (toggleCardTypeEvent)="onToggleCardType($event)"
-      ></app-top-bar-filters>
-      @if(!(isProductsLoading$ | async) && (products$ | async)) {
+      <div class="top-bar-filters">
+        <app-top-bar-filters
+          (toggleCardTypeEvent)="onToggleCardType($event)"
+        ></app-top-bar-filters>
+        <app-custom-button
+          (click)="sidebarVisible = true"
+          [label]="'Filters'"
+          [icon]="'pi-filter'"
+          [iconPos]="buttonIconPos.RIGHT"
+          [buttonTheme]="ButtonTheme.GRAY"
+        ></app-custom-button>
+      </div>
+      @if (!(isProductsLoading$ | async) && (products$ | async)) {
         <ul>
-          @for(product of (products$ | async)!.slice(first, first + rows) | search: 'title' : searchProductsValue; track product.uuid) {
+          @for (product of (products$ | async)!.slice(first, first + rows) | search: 'title' : searchProductsValue; track product.uuid) {
             <app-product-card
               [productCardType]="productCardType"
               [productCard]="product"

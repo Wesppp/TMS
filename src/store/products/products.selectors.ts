@@ -11,6 +11,11 @@ export const productsSelector = createSelector(
   (productsState: ProductsState) => productsState.products
 );
 
+export const filteredProductsSelector = createSelector(
+  productsFeatureSelector,
+  (productsState: ProductsState) => productsState.filteredProducts
+);
+
 export const latestProductsSelector = createSelector(
   productsFeatureSelector,
   (productsState: ProductsState) => productsState.latestProducts

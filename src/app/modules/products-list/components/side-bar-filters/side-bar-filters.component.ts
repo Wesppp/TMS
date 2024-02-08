@@ -7,7 +7,6 @@ import { Store } from "@ngrx/store";
 import { debounceTime, distinctUntilChanged, Observable, of } from "rxjs";
 
 import { RadioButtonsListControlComponent } from "@components/controls/radio-buttons-list-control/radio-buttons-list-control.component";
-import { FiltersForm } from "@modules/products-list/models/filters-form.interface";
 import { RangeControlComponent } from "@components/controls/range-control/range-control.component";
 import { FormChoiceGroup } from "@models/form-choice-group.interface";
 import {
@@ -25,6 +24,7 @@ import { AccordionControlElement } from "@models/accordion-control-element.inter
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { FilterFormValues } from "@models/filter-form-values.interface";
 import { filterProductsAction } from "@store/products/actions/filter-products.action";
+import { FormsBuilder } from "@models/forms-builder.type";
 
 @Component({
   selector: 'app-side-bar-filters',
@@ -46,7 +46,7 @@ export class SideBarFiltersComponent implements OnInit {
 
   public categories$: Observable<AccordionControlElement<string>[]> = of([]);
 
-  public filtersForm!: FormGroup<FiltersForm>;
+  public filtersForm!: FormGroup<FormsBuilder<FilterFormValues>>;
   public searchControl: FormControl = new FormControl<string>('');
   public colorRadioButtons: FormChoiceGroup[] = COLOR_RADIO_BUTTONS;
   public sizeRadioButtons: FormChoiceGroup[] = SIZE_RADIO_BUTTONS;
@@ -90,8 +90,8 @@ export class SideBarFiltersComponent implements OnInit {
   }
 
   private createForm(): void {
-    this.filtersForm = new FormGroup<FiltersForm>({
-      color: new FormControl<string | null>(null),
+    this.filtersForm = new FormGroup<FormsBuilder<FilterFormValues>>({
+      color: new FormControl<FormChoiceGroup | string | null>(null),
       size: new FormControl<string | null>(null),
       price: new FormControl<number[] | null>([0, this.maxPrice / 2]),
       brand: new FormControl<string[] | null>(null),

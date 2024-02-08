@@ -28,5 +28,11 @@
       color: colors.$second-text;
       text-decoration: underline;
     }
+
+    ::ng-deep p-button {
+      span {
+        margin-left: .5rem;
+      }
+    }
   }
 }

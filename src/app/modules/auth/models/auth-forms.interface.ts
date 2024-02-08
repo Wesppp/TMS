@@ -1,17 +1,8 @@
-import { FormControl } from '@angular/forms';
-
-export interface RegisterForm {
-  email: FormControl<string | null>;
-  password: FormControl<string | null>;
-  repeatPassword: FormControl<string | null>;
-}
-
-export interface LoginForm {
-  email: FormControl<string | null>;
-  password: FormControl<string | null>;
-}
-
-export interface AuthFormValue {
+export interface AuthForm {
   email: string;
   password: string;
+}
+
+export interface RegisterForm extends AuthForm {
+  repeatPassword: string;
 }

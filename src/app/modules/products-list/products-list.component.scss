@@ -33,6 +33,24 @@
   }
 }
 
+:host ::ng-deep p-sidebar {
+  .p-sidebar-left {
+    width: 28rem;
+
+    @media (max-width: constants.$small-medium-screen) {
+      width: 100%;
+    }
+  }
+
+  .p-sidebar-content {
+    @include mixins.flexMix($align: normal);
+  }
+
+  ::ng-deep app-side-bar-filters .side-bar-filters {
+    display: block;
+  }
+}
+
 :host ::ng-deep app-page-title {
   .page-title {
     height: 300px;
@@ -45,6 +63,18 @@
 
     padding-top: 1.8rem;
     padding-bottom: 1.8rem;
+
+    .top-bar-filters {
+      @include mixins.flexMix(column, normal, $gap: .8rem);
+
+      app-custom-button {
+        display: none;
+
+        @media (max-width: constants.$medium-screen) {
+          display: block;
+        }
+      }
+    }
 
     ul {
       @include mixins.gridMix($columns: repeat(4, 1fr), $gap: 1.5rem);

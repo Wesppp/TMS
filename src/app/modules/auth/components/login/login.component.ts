@@ -8,7 +8,6 @@ import { Store } from '@ngrx/store';
 import { ButtonModule } from 'primeng/button';
 import { PaginatorModule } from 'primeng/paginator';
 
-import { AuthFormValue, LoginForm } from '../../models/auth-forms.interface';
 import {
   EmailControlComponent
 } from '@components/controls/email-control/email-control.component';
@@ -18,6 +17,8 @@ import {
 import { loginAction } from '@store/auth/actions/login.action';
 import { EMAIL_PATTERN } from '@constants/patterns';
 import { isAuthLoadingSelector } from '@store/app-loading/app-loading.selectors';
+import { FormsBuilder } from "@models/forms-builder.type";
+import { AuthForm } from "@modules/auth/models/auth-forms.interface";
 
 @Component({
   selector: 'app-login',
@@ -38,7 +39,7 @@ import { isAuthLoadingSelector } from '@store/app-loading/app-loading.selectors'
 export class LoginComponent implements OnInit {
   public isFormSubmitting: Observable<boolean> = of(false);
 
-  public loginForm!: FormGroup<LoginForm>;
+  public loginForm!: FormGroup<FormsBuilder<AuthForm>>;
 
   constructor(private readonly store: Store) {
   }
@@ -49,7 +50,7 @@ export class LoginComponent implements OnInit {
   }
 
   private createForm(): void {
-    this.loginForm = new FormGroup<LoginForm>({
+    this.loginForm = new FormGroup<FormsBuilder<AuthForm>>({
       email: new FormControl<string>('', [
         Validators.required,
         Validators.pattern(EMAIL_PATTERN)
@@ -66,8 +67,8 @@ export class LoginComponent implements OnInit {
   }
 
   public onFormSubmit(): void {
-    const loginRequest: AuthFormValue = {
-      ...this.loginForm.value as AuthFormValue
+    const loginRequest: AuthForm = {
+      ...this.loginForm.value as AuthForm
     };
 
     this.store.dispatch(loginAction({ loginRequest }));

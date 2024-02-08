@@ -23,6 +23,7 @@ import { TabMenuModule } from "primeng/tabmenu";
 import { TAB_MENU_ITEMS } from "@modules/product-details/constants/tab-menu-items";
 import { TabViewModule } from "primeng/tabview";
 import { TruncateTextDirective } from "../../directives/truncate-text.directive";
+import { GALLERY_OPTIONS } from "@modules/product-details/constants/gallery-options";
 
 @Component({
   selector: 'app-product-details',
@@ -52,25 +53,12 @@ export class ProductDetailsComponent implements OnInit {
 
   public control: FormControl = new FormControl();
   public product!: Product | null;
-  public galleryOptions: any[] = [
-    {
-      breakpoint: '1600px',
-      numVisible: 4
-    },
-    {
-      breakpoint: '1050px',
-      numVisible: 3
-    },
-    {
-      breakpoint: '560px',
-      numVisible: 1
-    }
-  ];
 
   protected readonly buttonIconPos = ButtonIconPos;
   protected readonly ButtonTheme = ButtonTheme;
   protected readonly ADDITIONAL_INFO = ADDITIONAL_INFO;
   protected readonly TAB_MENU_ITEMS = TAB_MENU_ITEMS;
+  protected readonly galleryOptions = GALLERY_OPTIONS;
 
   constructor(private readonly store: Store,
               private readonly destroyRef: DestroyRef) {

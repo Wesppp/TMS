@@ -43,7 +43,7 @@ export class ProductsService {
   public filterProducts(filters: Partial<FilterFormValues>, products: Product[] | null): Observable<Product[]> {
     if (products) {
       return of(products.filter(product =>
-        (!filters.color || product.colors.includes(filters.color)) &&
+        (!filters.color || product.colors.includes(filters.color as string)) &&
         (!filters.size || product.sizes.includes(filters.size)) &&
         (!filters.price || (product.price >= filters.price[0] && product.price <= filters.price[1])) &&
         (!filters.brand || filters.brand.includes(product.brand)) &&
