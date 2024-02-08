@@ -1,0 +1,9 @@
+<div class="loading-button">
+  <p-button
+    type="submit"
+    iconPos="right"
+    [label]="label"
+    [icon]="isLoading ? 'pi pi-spin pi-spinner' : 'pi'"
+    [disabled]="isDisabled || isLoading"
+  ></p-button>
+</div>

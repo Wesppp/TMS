@@ -1,0 +1,34 @@
+<div class="cart max-width-container">
+  <h1>Your cart</h1>
+  @if(cartProducts$ | async; as products) {
+    <div class="cart-content">
+      <ul class="cart-content__list">
+        @for(product of products; track product.uuid; let idx = $index) {
+          <li>
+            <app-product-card
+              [productCard]="product"
+              [productCardType]="CardType.STRETCH"
+            ></app-product-card>
+            <p-button
+              (onClick)="onRemoveProduct(idx)"
+              icon="pi pi-times"
+              [rounded]="true"
+              severity="danger"></p-button>
+          </li>
+        } @empty {
+          <li>
+            No products here
+          </li>
+        }
+      </ul>
+      <div class="cart-content__payment">
+        <app-payment
+          [totalCost]="totalCost$ | async"
+          [productsAmount]="products.length"
+        ></app-payment>
+      </div>
+    </div>
+  } @else {
+    <app-progress-spinner></app-progress-spinner>
+  }
+</div>

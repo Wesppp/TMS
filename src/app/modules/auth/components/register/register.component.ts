@@ -21,7 +21,8 @@ import { registerAction } from '@store/auth/actions/register.action';
 import { AuthState } from '@store/auth/auth.state';
 import { EMAIL_PATTERN } from '@constants/patterns';
 import { isAuthLoadingSelector } from '@store/app-loading/app-loading.selectors';
-import { FormsBuilder } from "@models/forms-builder.type";
+import { BuildForm } from "@models/forms-builder.type";
+import { LoadingButtonComponent } from "@components/buttons/loading-button/loading-button.component";
 
 @Component({
   selector: 'app-register',
@@ -33,14 +34,15 @@ import { FormsBuilder } from "@models/forms-builder.type";
     ReactiveFormsModule,
     AsyncPipe,
     RouterLink,
+    LoadingButtonComponent,
   ],
   templateUrl: './register.component.html',
   styleUrl: '../auth-forms.scss'
 })
 export class RegisterComponent implements OnInit {
-  public isFormSubmitting: Observable<boolean> = of(false);
+  public isFormSubmitting$: Observable<boolean> = of(false);
 
-  public registerForm!: FormGroup<FormsBuilder<RegisterForm>>;
+  public registerForm!: FormGroup<BuildForm<RegisterForm>>;
 
   constructor(private readonly store: Store<AuthState>) {
   }
@@ -51,7 +53,7 @@ export class RegisterComponent implements OnInit {
   }
 
   private createForm(): void {
-    this.registerForm = new FormGroup<FormsBuilder<RegisterForm>>({
+    this.registerForm = new FormGroup<BuildForm<RegisterForm>>({
       email: new FormControl<string>('', [
         Validators.required,
         Validators.pattern(EMAIL_PATTERN)
@@ -70,7 +72,7 @@ export class RegisterComponent implements OnInit {
   }
 
   public initializeValues(): void {
-    this.isFormSubmitting = this.store.select(isAuthLoadingSelector);
+    this.isFormSubmitting$ = this.store.select(isAuthLoadingSelector);
   }
 
   public onFormSubmit(): void {

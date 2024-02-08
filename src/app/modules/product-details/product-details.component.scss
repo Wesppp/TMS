@@ -143,12 +143,6 @@
 
       &__color {
         padding-top: 1.4rem;
-
-        span {
-          @include mixins.fontMix(1.1rem, 800);
-
-          color: colors.$second-text;
-        }
       }
 
       &__actions {

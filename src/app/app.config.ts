@@ -30,6 +30,9 @@ import { GetCategoriesEffect } from "@store/products/effects/get-categories.effe
 import { FilterProductsEffect } from "@store/products/effects/filter-products.effect";
 import { GetProductEffect } from "@store/products/effects/get-product.effect";
 import { AuthLoadingsEffect } from "@store/auth/effects/auth-loadings.effect";
+import { AddProductEffect } from "@store/cart/effects/add-product.effect";
+import { GetCartProductsEffect } from "@store/cart/effects/get-cart-products.effect";
+import { RemoveCartProductEffect } from "@store/cart/effects/remove-cart-product.effect";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -43,16 +46,19 @@ export const appConfig: ApplicationConfig = {
       RegisterEffect,
       LogoutEffect,
       LoginEffect,
-      // GetLatestProductsEffect,
-      // GetAllProductsEffect,
-      // GetFeaturedProductsEffect,
-      // GetNewArrivalsProductsEffect,
-      // GetBestSellersProductsEffect,
-      // RefreshTokensEffect,
-      // GetCategoriesEffect,
-      // FilterProductsEffect,
-      // GetProductEffect,
-      // AuthLoadingsEffect,
+      AddProductEffect,
+      GetCartProductsEffect,
+      RemoveCartProductEffect,
+      GetLatestProductsEffect,
+      GetAllProductsEffect,
+      GetFeaturedProductsEffect,
+      GetNewArrivalsProductsEffect,
+      GetBestSellersProductsEffect,
+      RefreshTokensEffect,
+      GetCategoriesEffect,
+      FilterProductsEffect,
+      GetProductEffect,
+      AuthLoadingsEffect,
     ]),
     provideStoreDevtools({maxAge: 25, logOnly: !isDevMode()}),
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

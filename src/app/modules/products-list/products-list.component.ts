@@ -21,7 +21,7 @@ import { Breakpoints } from "@enums/breakpoints.enum";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { ButtonTheme } from "@enums/button-theme.enum";
 import { ButtonIconPos } from "@enums/button-icon-pos.enum";
-import { CustomButtonComponent } from "@components/custom-button/custom-button.component";
+import { CustomButtonComponent } from "@components/buttons/custom-button/custom-button.component";
 import { SidebarModule } from "primeng/sidebar";
 
 @Component({

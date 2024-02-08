@@ -29,7 +29,8 @@ export const productsReducer = createReducer(
   on(getAllProductsSuccessAction,
     (state: ProductsState, { products }) => ({
       ...state,
-      products
+      products,
+      filteredProducts: products,
     })
   ),
   on(getFeaturedProductsSuccessAction,
