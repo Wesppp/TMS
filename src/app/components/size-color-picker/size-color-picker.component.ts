@@ -15,7 +15,9 @@ export class SizeColorPickerComponent {
   @Input() public sizeColorValue: SizeColorPickerValue = { color: '', size: '' };
   @Output() public pickEvent: EventEmitter<SizeColorPickerValue> = new EventEmitter<SizeColorPickerValue>();
 
-  public onPick(value: Partial<SizeColorPickerValue>): void {
+  public onPick(value: Partial<SizeColorPickerValue>, event: MouseEvent): void {
+    event.stopPropagation();
+
     this.sizeColorValue = {
       ...this.sizeColorValue,
       ...value,

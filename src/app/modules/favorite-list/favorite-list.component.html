@@ -1,0 +1,42 @@
+<div class="favorite-list max-width-container">
+  <div class="favorite-list__header">
+    <h1>Your Favourites Products</h1>
+    <p>
+      <strong>There will be selected products here</strong>
+      <br>
+      You will always be aware of the availability of selected products.
+    </p>
+  </div>
+  @if (favoriteProducts$ | async; as products) {
+    <div class="favorite-list__main">
+      <ul>
+        @for(product of products; track product.uuid) {
+          <li>
+            <app-product-card
+              [isHideFavoriteBtn]="true"
+              [productCard]="product"
+              [productCardType]="CardType.STRETCH"
+            ></app-product-card>
+            <div class="button-set">
+              <p-button
+                (onClick)="onRemoveProduct(product)"
+                icon="pi pi-times"
+                [rounded]="true"
+                severity="danger"></p-button>
+              <p-button
+                (onClick)="onCartAdd(product)"
+                icon="pi pi-cart-plus"
+                [rounded]="true"></p-button>
+            </div>
+          </li>
+        } @empty {
+          <li>
+            No products here
+          </li>
+        }
+      </ul>
+    </div>
+  } @else {
+    <app-progress-spinner></app-progress-spinner>
+  }
+</div>

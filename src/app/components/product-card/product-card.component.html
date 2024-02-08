@@ -5,10 +5,13 @@
   }"
   [routerLink]="['../products', productCard.uuid]"
   class="product-card">
-  <img
-    class="favorite-btn"
-    [src]="productCardType === cardType.STRETCH ? 'assets/icons/favorite-black-fill.svg' : 'assets/icons/favorite.svg'"
-    alt="add to favorite">
+  @if(!isHideFavoriteBtn) {
+    <img
+      class="favorite-btn"
+      (click)="onFavoriteAdd(productCard, $event)"
+      [src]="productCardType === cardType.STRETCH ? 'assets/icons/favorite-black-fill.svg' : 'assets/icons/favorite.svg'"
+      alt="add to favorite">
+  }
   <p-card [header]="productCard.title" subheader="(Black)">
     <ng-template pTemplate="header">
       <img
@@ -21,6 +24,7 @@
     </p>
     <ng-template pTemplate="footer">
       <app-size-color-picker
+        (pickEvent)="onPickEvent($event)"
         [sizeColorValue]="sizeColor"
         [sizePicker]="isHideSizes && productCardType !== cardType.STRETCH ? [] : productCard.sizes"
         [colorPicker]="isHideColors && productCardType !== cardType.STRETCH ? [] : productCard.colors"

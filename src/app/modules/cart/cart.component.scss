@@ -27,6 +27,10 @@
         @include mixins.flexMix($justify: normal, $gap: 2rem);
 
         margin-bottom: 1rem;
+
+        app-product-card {
+          width: 100%;
+        }
       }
     }
   }

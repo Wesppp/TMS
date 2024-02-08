@@ -38,6 +38,7 @@
         </div>
         <div class="product-info__actions">
           <app-custom-button
+            (click)="onAddToFavorites(product)"
             [label]="'Add To Wishlist'"
             [icon]="'pi-heart'"
             [iconPos]="buttonIconPos.LEFT"
@@ -89,7 +90,6 @@
       </p-tabView>
     </div>
   </div>
-  <p-toast [life]="4000"></p-toast>
 } @else {
   <app-progress-spinner></app-progress-spinner>
 }

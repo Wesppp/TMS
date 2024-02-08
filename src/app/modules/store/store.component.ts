@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from "@angular/router";
+import { AsyncPipe } from "@angular/common";
 
 import { Observable } from "rxjs";
 import { Store } from "@ngrx/store";
+import { ToastModule } from "primeng/toast";
 
 import { FooterComponent } from "@components/footer/footer.component";
 import { HeaderComponent } from "@components/header/header.component";
 import { isLoggedInSelector } from "@store/auth/auth.selectors";
 import { isSecondHeaderSelector } from "@store/header/header.selectors";
-import { AsyncPipe } from "@angular/common";
 
 @Component({
   selector: 'app-store',
@@ -17,7 +18,8 @@ import { AsyncPipe } from "@angular/common";
     FooterComponent,
     HeaderComponent,
     RouterOutlet,
-    AsyncPipe
+    AsyncPipe,
+    ToastModule
   ],
   templateUrl: './store.component.html',
   styleUrl: './store.component.scss'

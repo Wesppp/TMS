@@ -3,7 +3,7 @@
     <ul class="size-color-picker__colors">
       @for (color of colorPicker; track color) {
         <button
-          (click)="onPick({ color })"
+          (click)="onPick({ color }, $event)"
           [class.hightlight]="color === sizeColorValue.color"
           [style.background-color]="color"></button>
       }
@@ -13,7 +13,7 @@
     <ul class="size-color-picker__sizes">
       @for (size of sizePicker; track size) {
         <button
-          (click)="onPick({ size })"
+          (click)="onPick({ size }, $event)"
           [class.hightlight]="size === sizeColorValue.size">{{ size }}</button>
       }
     </ul>

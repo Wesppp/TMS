@@ -5,15 +5,16 @@
       <ul class="cart-content__list">
         @for(product of products; track product.uuid; let idx = $index) {
           <li>
-            <app-product-card
-              [productCard]="product"
-              [productCardType]="CardType.STRETCH"
-            ></app-product-card>
             <p-button
               (onClick)="onRemoveProduct(idx)"
               icon="pi pi-times"
               [rounded]="true"
               severity="danger"></p-button>
+            <app-product-card
+              [isHideFavoriteBtn]="true"
+              [productCard]="product"
+              [productCardType]="CardType.STRETCH"
+            ></app-product-card>
           </li>
         } @empty {
           <li>

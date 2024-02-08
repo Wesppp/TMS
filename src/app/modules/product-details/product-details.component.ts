@@ -5,7 +5,6 @@ import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { GalleriaModule } from "primeng/galleria";
 import { ToastModule } from "primeng/toast";
-import { MessageService } from "primeng/api";
 
 import { getProductAction } from "@store/products/actions/get-product.action";
 import { Product } from "@models/product.interface";
@@ -29,6 +28,7 @@ import { GALLERY_OPTIONS } from "@modules/product-details/constants/gallery-opti
 import { SizeColorPickerValue } from "@models/size-color-picker-value.interface";
 import { CartProduct } from "@models/cart-product.interface";
 import { addProductAction } from "@store/cart/actions/add-product.action";
+import { addToFavoriteAction } from "@store/favorite-list/actions/add-to-favorite.action";
 
 @Component({
   selector: 'app-product-details',
@@ -46,9 +46,6 @@ import { addProductAction } from "@store/cart/actions/add-product.action";
     TabViewModule,
     TruncateTextDirective,
     ToastModule,
-  ],
-  providers: [
-    MessageService,
   ],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss'
@@ -72,8 +69,7 @@ export class ProductDetailsComponent implements OnInit {
   private sizeColorValue: SizeColorPickerValue | null = null;
 
   constructor(private readonly store: Store,
-              private readonly destroyRef: DestroyRef,
-              private messageService: MessageService) {
+              private readonly destroyRef: DestroyRef) {
   }
 
   public ngOnInit(): void {
@@ -91,15 +87,12 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   public onAddToCart(): void {
-    if(!this.product || !this.sizeColorValue?.size || !this.sizeColorValue?.color) {
-      this.messageService.add({ severity: 'info', summary: 'Info', detail: 'Choose the color and size of the product.' });
-
-      return;
-    }
+    if(!this.product) { return; }
 
     const cartProduct: CartProduct = {
       uuid: this.product.uuid,
-      ...this.sizeColorValue,
+      color: this.sizeColorValue?.color || '',
+      size: this.sizeColorValue?.size || '',
     }
 
     this.store.dispatch(addProductAction({ cartProduct }));
@@ -107,5 +100,9 @@ export class ProductDetailsComponent implements OnInit {
 
   public onColorSizePick(value: SizeColorPickerValue): void {
     this.sizeColorValue = value;
+  }
+
+  public onAddToFavorites({ uuid }: Product): void {
+    this.store.dispatch(addToFavoriteAction({ productUuid: uuid }));
   }
 }

@@ -10,6 +10,8 @@ import { HeaderState } from "@store/header/header.state";
 import { headerReducer } from "@store/header/header.reducer";
 import { CartState } from "@store/cart/cart.state";
 import { cartReducer } from "@store/cart/cart.reducer";
+import { FavoriteListState } from "@store/favorite-list/favorite-list.state";
+import { favoriteListReducer } from "@store/favorite-list/favorite-list.reducer";
 
 export interface AppState {
   auth: AuthState;
@@ -17,6 +19,7 @@ export interface AppState {
   products: ProductsState;
   header: HeaderState;
   cart: CartState;
+  favorite: FavoriteListState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
@@ -25,4 +28,5 @@ export const reducers: ActionReducerMap<AppState> = {
   products: productsReducer,
   header: headerReducer,
   cart: cartReducer,
+  favorite: favoriteListReducer,
 }
