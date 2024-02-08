@@ -1,0 +1,43 @@
+@use "mixins" as mixins;
+@use "colors" as colors;
+@use "constants" as constants;
+
+.favorite-list {
+  padding: 3rem 0;
+
+  &__header {
+    @include mixins.flexMix($justify: space-between);
+
+    h1, strong {
+      color: colors.$text;
+    }
+
+    p {
+      color: colors.$second-text;
+    }
+  }
+
+  &__main {
+    padding: 2rem 0;
+
+    ul {
+      li {
+        @include mixins.flexMix($justify: space-between, $gap: 1.2rem);
+
+        margin-bottom: 1rem;
+
+        app-product-card {
+          width: 100%;
+        }
+
+        .button-set {
+          @include mixins.flexMix(column, $gap: .8rem);
+        }
+      }
+    }
+  }
+
+  &.max-width-container {
+    @include mixins.maxWidthContainer($p-left: 3rem, $p-right: 3rem);
+  }
+}

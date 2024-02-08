@@ -24,7 +24,7 @@ import { AccordionControlElement } from "@models/accordion-control-element.inter
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { FilterFormValues } from "@models/filter-form-values.interface";
 import { filterProductsAction } from "@store/products/actions/filter-products.action";
-import { FormsBuilder } from "@models/forms-builder.type";
+import { BuildForm } from "@models/forms-builder.type";
 
 @Component({
   selector: 'app-side-bar-filters',
@@ -46,7 +46,7 @@ export class SideBarFiltersComponent implements OnInit {
 
   public categories$: Observable<AccordionControlElement<string>[]> = of([]);
 
-  public filtersForm!: FormGroup<FormsBuilder<FilterFormValues>>;
+  public filtersForm!: FormGroup<BuildForm<FilterFormValues>>;
   public searchControl: FormControl = new FormControl<string>('');
   public colorRadioButtons: FormChoiceGroup[] = COLOR_RADIO_BUTTONS;
   public sizeRadioButtons: FormChoiceGroup[] = SIZE_RADIO_BUTTONS;
@@ -90,7 +90,7 @@ export class SideBarFiltersComponent implements OnInit {
   }
 
   private createForm(): void {
-    this.filtersForm = new FormGroup<FormsBuilder<FilterFormValues>>({
+    this.filtersForm = new FormGroup<BuildForm<FilterFormValues>>({
       color: new FormControl<FormChoiceGroup | string | null>(null),
       size: new FormControl<string | null>(null),
       price: new FormControl<number[] | null>([0, this.maxPrice / 2]),

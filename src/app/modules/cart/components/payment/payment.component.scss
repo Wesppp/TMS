@@ -1,0 +1,41 @@
+@use "mixins" as mixins;
+@use "colors" as colors;
+@use "constants" as constants;
+
+.payment {
+  width: 350px;
+  padding: 1rem;
+  background: colors.$dark-background;
+  color: #FFFFFF;
+  border-radius: 1.6rem;
+
+  h2 {
+    @include mixins.fontMix(2.2rem, 800);
+
+    padding-bottom: .6rem;
+  }
+
+  &__count {
+    padding-bottom: .4rem;
+  }
+
+  &__action {
+    padding: .4rem 0;
+
+    button {
+      @include mixins.fontMix(1.4rem, 800);
+
+      padding: 1rem 2.6rem;
+      border-radius: 1rem;
+      width: 100%;
+      border: none;
+      background: #fff;
+      color: colors.$text;
+      cursor: pointer;
+    }
+  }
+
+  h2, &__count, &__action {
+    @include mixins.flexMix($align: center, $justify: space-between);
+  }
+}

@@ -2,18 +2,19 @@
   @if (colorPicker && colorPicker.length) {
     <ul class="size-color-picker__colors">
       @for (color of colorPicker; track color) {
-        <button [style.background-color]="color">
-
-        </button>
+        <button
+          (click)="onPick({ color }, $event)"
+          [class.hightlight]="color === sizeColorValue.color"
+          [style.background-color]="color"></button>
       }
     </ul>
   }
   @if (sizePicker && sizePicker.length) {
     <ul class="size-color-picker__sizes">
       @for (size of sizePicker; track size) {
-        <button>
-          {{ size }}
-        </button>
+        <button
+          (click)="onPick({ size }, $event)"
+          [class.hightlight]="size === sizeColorValue.size">{{ size }}</button>
       }
     </ul>
   }

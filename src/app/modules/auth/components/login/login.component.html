@@ -17,11 +17,10 @@
   </div>
   <div class="form__actions">
     <a routerLink="/auth/register">Go to registration</a>
-    <p-button
-      [icon]="(isFormSubmitting | async) ? 'pi pi-spin pi-spinner' : 'pi'"
-      iconPos="right"
-      type="submit"
-      [disabled]="loginForm.invalid || !!(isFormSubmitting | async)"
-      label="Submit"></p-button>
+    <app-loading-button
+      [label]="'Submit'"
+      [isDisabled]="loginForm.invalid"
+      [isLoading]="!!(isFormSubmitting$ | async)"
+    ></app-loading-button>
   </div>
 </form>

@@ -4,6 +4,7 @@ import { AsyncPipe } from "@angular/common";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { GalleriaModule } from "primeng/galleria";
+import { ToastModule } from "primeng/toast";
 
 import { getProductAction } from "@store/products/actions/get-product.action";
 import { Product } from "@models/product.interface";
@@ -13,7 +14,7 @@ import { ProgressSpinnerComponent } from "@components/progress-spinner/progress-
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { RatingModule } from "primeng/rating";
 import { SizeColorPickerComponent } from "@components/size-color-picker/size-color-picker.component";
-import { CustomButtonComponent } from "@components/custom-button/custom-button.component";
+import { CustomButtonComponent } from "@components/buttons/custom-button/custom-button.component";
 import { ButtonIconPos } from "@enums/button-icon-pos.enum";
 import { ButtonTheme } from "@enums/button-theme.enum";
 import { AccordionControlComponent } from "@components/controls/accordion-control/accordion-control.component";
@@ -24,6 +25,10 @@ import { TAB_MENU_ITEMS } from "@modules/product-details/constants/tab-menu-item
 import { TabViewModule } from "primeng/tabview";
 import { TruncateTextDirective } from "../../directives/truncate-text.directive";
 import { GALLERY_OPTIONS } from "@modules/product-details/constants/gallery-options";
+import { SizeColorPickerValue } from "@models/size-color-picker-value.interface";
+import { CartProduct } from "@models/cart-product.interface";
+import { addProductAction } from "@store/cart/actions/add-product.action";
+import { addToFavoriteAction } from "@store/favorite-list/actions/add-to-favorite.action";
 
 @Component({
   selector: 'app-product-details',
@@ -40,6 +45,7 @@ import { GALLERY_OPTIONS } from "@modules/product-details/constants/gallery-opti
     TabMenuModule,
     TabViewModule,
     TruncateTextDirective,
+    ToastModule,
   ],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss'
@@ -60,6 +66,8 @@ export class ProductDetailsComponent implements OnInit {
   protected readonly TAB_MENU_ITEMS = TAB_MENU_ITEMS;
   protected readonly galleryOptions = GALLERY_OPTIONS;
 
+  private sizeColorValue: SizeColorPickerValue | null = null;
+
   constructor(private readonly store: Store,
               private readonly destroyRef: DestroyRef) {
   }
@@ -76,5 +84,25 @@ export class ProductDetailsComponent implements OnInit {
         this.product = product;
     });
     this.isProductLoading$ = this.store.select(isProductLoadingSelector);
+  }
+
+  public onAddToCart(): void {
+    if(!this.product) { return; }
+
+    const cartProduct: CartProduct = {
+      uuid: this.product.uuid,
+      color: this.sizeColorValue?.color || '',
+      size: this.sizeColorValue?.size || '',
+    }
+
+    this.store.dispatch(addProductAction({ cartProduct }));
+  }
+
+  public onColorSizePick(value: SizeColorPickerValue): void {
+    this.sizeColorValue = value;
+  }
+
+  public onAddToFavorites({ uuid }: Product): void {
+    this.store.dispatch(addToFavoriteAction({ productUuid: uuid }));
   }
 }

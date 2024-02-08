@@ -29,6 +29,16 @@ export const routes: Routes = [
         loadComponent: () => import('./modules/product-details/product-details.component')
           .then(mod => mod.ProductDetailsComponent),
       },
+      {
+        path: 'cart',
+        loadComponent: () => import('./modules/cart/cart.component')
+          .then(mod => mod.CartComponent),
+      },
+      {
+        path: 'favorite',
+        loadComponent: () => import('./modules/favorite-list/favorite-list.component')
+          .then(mod => mod.FavoriteListComponent),
+      },
     ],
   },
   {

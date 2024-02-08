@@ -4,4 +4,5 @@ export interface AccountActions {
   alt: string;
   width: number;
   height: number;
+  route: string;
 }

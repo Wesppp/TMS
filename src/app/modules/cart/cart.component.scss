@@ -1,0 +1,37 @@
+@use "mixins" as mixins;
+@use "colors" as colors;
+@use "constants" as constants;
+
+.cart {
+  padding: 3rem 0;
+
+  h1 {
+    @include mixins.responsive-font(2rem, 5vw, 3.2rem, 800);
+
+    color: colors.$text;
+  }
+
+  &.max-width-container {
+    @include mixins.maxWidthContainer($p-left: 3rem, $p-right: 3rem);
+  }
+
+  &-content {
+    @include mixins.flexMix($align: normal, $justify: space-between);
+
+    padding: 1.4rem 0;
+
+    &__list {
+      flex-basis: 60%;
+
+      li {
+        @include mixins.flexMix($justify: normal, $gap: 2rem);
+
+        margin-bottom: 1rem;
+
+        app-product-card {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

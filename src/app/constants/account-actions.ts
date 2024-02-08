@@ -7,6 +7,7 @@ export const ACCOUNT_ACTIONS: AccountActions[] = [
     alt: 'favorite',
     width: 50,
     height: 50,
+    route: './favorite',
   },
   {
     iconSrc: 'assets/icons/basket-white.svg',
@@ -14,12 +15,6 @@ export const ACCOUNT_ACTIONS: AccountActions[] = [
     alt: 'basket',
     width: 50,
     height: 50,
-  },
-  {
-    iconSrc: 'assets/icons/menu-white.svg',
-    iconSecondSrc: 'assets/icons/menu-black.svg',
-    alt: 'menu',
-    width: 35,
-    height: 35,
+    route: './cart',
   },
 ];

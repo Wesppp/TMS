@@ -17,8 +17,9 @@ import {
 import { loginAction } from '@store/auth/actions/login.action';
 import { EMAIL_PATTERN } from '@constants/patterns';
 import { isAuthLoadingSelector } from '@store/app-loading/app-loading.selectors';
-import { FormsBuilder } from "@models/forms-builder.type";
+import { BuildForm } from "@models/forms-builder.type";
 import { AuthForm } from "@modules/auth/models/auth-forms.interface";
+import { LoadingButtonComponent } from "@components/buttons/loading-button/loading-button.component";
 
 @Component({
   selector: 'app-login',
@@ -32,14 +33,15 @@ import { AuthForm } from "@modules/auth/models/auth-forms.interface";
     ReactiveFormsModule,
     RouterLink,
     JsonPipe,
+    LoadingButtonComponent,
   ],
   templateUrl: './login.component.html',
   styleUrl: '../auth-forms.scss'
 })
 export class LoginComponent implements OnInit {
-  public isFormSubmitting: Observable<boolean> = of(false);
+  public isFormSubmitting$: Observable<boolean> = of(false);
 
-  public loginForm!: FormGroup<FormsBuilder<AuthForm>>;
+  public loginForm!: FormGroup<BuildForm<AuthForm>>;
 
   constructor(private readonly store: Store) {
   }
@@ -50,7 +52,7 @@ export class LoginComponent implements OnInit {
   }
 
   private createForm(): void {
-    this.loginForm = new FormGroup<FormsBuilder<AuthForm>>({
+    this.loginForm = new FormGroup<BuildForm<AuthForm>>({
       email: new FormControl<string>('', [
         Validators.required,
         Validators.pattern(EMAIL_PATTERN)
@@ -63,7 +65,7 @@ export class LoginComponent implements OnInit {
   }
 
   public initializeValues(): void {
-    this.isFormSubmitting = this.store.select(isAuthLoadingSelector);
+    this.isFormSubmitting$ = this.store.select(isAuthLoadingSelector);
   }
 
   public onFormSubmit(): void {

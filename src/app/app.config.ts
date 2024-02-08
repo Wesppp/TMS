@@ -9,6 +9,7 @@ import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideRouterStore } from '@ngrx/router-store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { MessageService } from "primeng/api";
 
 import { routes } from './app.routes';
 import { RegisterEffect } from '@store/auth/effects/register.effect';
@@ -30,6 +31,10 @@ import { GetCategoriesEffect } from "@store/products/effects/get-categories.effe
 import { FilterProductsEffect } from "@store/products/effects/filter-products.effect";
 import { GetProductEffect } from "@store/products/effects/get-product.effect";
 import { AuthLoadingsEffect } from "@store/auth/effects/auth-loadings.effect";
+import { AddProductEffect } from "@store/cart/effects/add-product.effect";
+import { GetCartProductsEffect } from "@store/cart/effects/get-cart-products.effect";
+import { RemoveCartProductEffect } from "@store/cart/effects/remove-cart-product.effect";
+import AllFavoriteEffects from "@store/favorite-list/effects";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -43,19 +48,24 @@ export const appConfig: ApplicationConfig = {
       RegisterEffect,
       LogoutEffect,
       LoginEffect,
-      // GetLatestProductsEffect,
-      // GetAllProductsEffect,
-      // GetFeaturedProductsEffect,
-      // GetNewArrivalsProductsEffect,
-      // GetBestSellersProductsEffect,
-      // RefreshTokensEffect,
-      // GetCategoriesEffect,
-      // FilterProductsEffect,
-      // GetProductEffect,
-      // AuthLoadingsEffect,
+      AddProductEffect,
+      GetCartProductsEffect,
+      RemoveCartProductEffect,
+      GetLatestProductsEffect,
+      GetAllProductsEffect,
+      GetFeaturedProductsEffect,
+      GetNewArrivalsProductsEffect,
+      GetBestSellersProductsEffect,
+      RefreshTokensEffect,
+      GetCategoriesEffect,
+      FilterProductsEffect,
+      GetProductEffect,
+      AuthLoadingsEffect,
+      ...AllFavoriteEffects,
     ]),
     provideStoreDevtools({maxAge: 25, logOnly: !isDevMode()}),
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
-    provideRouterStore()
+    provideRouterStore(),
+    MessageService,
   ]
 };

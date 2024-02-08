@@ -1,8 +1,8 @@
 export interface AuthForm {
-  email: string;
-  password: string;
+  email: string | null;
+  password: string | null;
 }
 
 export interface RegisterForm extends AuthForm {
-  repeatPassword: string;
+  repeatPassword: string | null;
 }
