@@ -10,6 +10,7 @@ import { CardType } from "@enums/card-type.enum";
 import { RouterLink } from "@angular/router";
 import { SizeColorPickerValue } from "@models/size-color-picker-value.interface";
 import { addToFavoriteAction } from "@store/favorite-list/actions/add-to-favorite.action";
+import { updateProductAction } from "@store/favorite-list/actions/update-product.action";
 
 @Component({
   selector: 'app-product-card',
@@ -50,9 +51,11 @@ export class ProductCardComponent implements OnInit {
   }
 
   public onPickEvent(sizeColor: SizeColorPickerValue): void {
-    this.productCard = {
-      ...sizeColor,
+    const product: Product = {
       ...this.productCard,
+      ...sizeColor,
     };
+
+    this.store.dispatch(updateProductAction({ product }));
   }
 }

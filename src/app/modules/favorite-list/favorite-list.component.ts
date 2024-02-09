@@ -12,6 +12,9 @@ import { ButtonModule } from "primeng/button";
 import { CardType } from "@enums/card-type.enum";
 import { ProductCardComponent } from "@components/product-card/product-card.component";
 import { removeFromFavoriteAction } from "@store/favorite-list/actions/remove-from-favorite.action";
+import { addProductAction } from "@store/cart/actions/add-product.action";
+import { CartProduct } from "@models/cart-product.interface";
+import { isFavoriteLoadingSelector } from "@store/app-loading/app-loading.selectors";
 
 @Component({
   selector: 'app-favorite-list',
@@ -27,6 +30,7 @@ import { removeFromFavoriteAction } from "@store/favorite-list/actions/remove-fr
 })
 export class FavoriteListComponent implements OnInit {
   public favoriteProducts$!: Observable<Product[]>;
+  public isFavoriteLoafing$!: Observable<boolean>;
 
   constructor(private readonly store: Store) {
   }
@@ -39,6 +43,7 @@ export class FavoriteListComponent implements OnInit {
 
   private initializeValues(): void {
     this.favoriteProducts$ = this.store.select(favoriteProductsSelector);
+    this.isFavoriteLoafing$ = this.store.select(isFavoriteLoadingSelector);
   }
 
   protected readonly CardType = CardType;
@@ -48,6 +53,12 @@ export class FavoriteListComponent implements OnInit {
   }
 
   public onCartAdd(product: Product): void {
-    console.log(product)
+    const cartProduct: CartProduct = {
+      uuid: product.uuid,
+      color: product.color || '',
+      size: product.size || '',
+    };
+
+    this.store.dispatch(addProductAction({ cartProduct }));
   }
 }

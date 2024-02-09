@@ -2,9 +2,8 @@ import { Injectable } from "@angular/core";
 
 import { Store } from "@ngrx/store";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { catchError, map, of, switchMap, withLatestFrom } from "rxjs";
+import { catchError, map, of, switchMap } from "rxjs";
 
-import { productsSelector } from "@store/products/products.selectors";
 import { Product } from "@models/product.interface";
 import { FavoritesService } from "@services/favorites.service";
 import {
@@ -21,8 +20,7 @@ export class GetFavoritesProductsEffect {
 
   public getFavoriteProducts$ = createEffect(() => this.actions$.pipe(
     ofType(getFavoriteProductsAction),
-    withLatestFrom(this.store.select(productsSelector)),
-    switchMap(([_, products]) => this.favoriteService.getFavoriteProducts(products).pipe(
+    switchMap(() => this.favoriteService.getFavoriteProducts().pipe(
       map((favoriteProducts: Product[]) => {
         return getFavoriteProductsSuccessAction({ favoriteProducts });
       }),

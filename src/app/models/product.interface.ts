@@ -12,4 +12,5 @@ export interface Product extends Partial<SizeColorPickerValue> {
   brand: string;
   raiting: number;
   category: string;
+  count: number;
 }

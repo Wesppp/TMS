@@ -12,29 +12,12 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { MessageService } from "primeng/api";
 
 import { routes } from './app.routes';
-import { RegisterEffect } from '@store/auth/effects/register.effect';
-import { LogoutEffect } from '@store/auth/effects/logout.effect';
-import { LoginEffect } from '@store/auth/effects/login.effect';
 import { reducers } from '@store/app.state';
-import { GetLatestProductsEffect } from '@store/products/effects/get-latest-products.effect';
-import { GetAllProductsEffect } from '@store/products/effects/get-all-products.effect';
 import { AuthInterceptor } from '@services/auth.interceptor';
-import { GetFeaturedProductsEffect } from '@store/products/effects/get-featured-products.effect';
-import {
-  GetNewArrivalsProductsEffect
-} from '@store/products/effects/get-new-arrivals-products.effect';
-import {
-  GetBestSellersProductsEffect
-} from '@store/products/effects/get-best-sellers-products.effect';
-import { RefreshTokensEffect } from "@store/auth/effects/refresh-tokens.effect";
-import { GetCategoriesEffect } from "@store/products/effects/get-categories.effect";
-import { FilterProductsEffect } from "@store/products/effects/filter-products.effect";
-import { GetProductEffect } from "@store/products/effects/get-product.effect";
-import { AuthLoadingsEffect } from "@store/auth/effects/auth-loadings.effect";
-import { AddProductEffect } from "@store/cart/effects/add-product.effect";
-import { GetCartProductsEffect } from "@store/cart/effects/get-cart-products.effect";
-import { RemoveCartProductEffect } from "@store/cart/effects/remove-cart-product.effect";
 import AllFavoriteEffects from "@store/favorite-list/effects";
+import AllAuthEffects from "@store/auth/effects";
+import AllCartEffects from "@store/cart/effects";
+import AllProductsEffects from "@store/products/effects/inedex";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -45,23 +28,10 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptorsFromDi()),
     provideStore(reducers),
     provideEffects([
-      RegisterEffect,
-      LogoutEffect,
-      LoginEffect,
-      AddProductEffect,
-      GetCartProductsEffect,
-      RemoveCartProductEffect,
-      GetLatestProductsEffect,
-      GetAllProductsEffect,
-      GetFeaturedProductsEffect,
-      GetNewArrivalsProductsEffect,
-      GetBestSellersProductsEffect,
-      RefreshTokensEffect,
-      GetCategoriesEffect,
-      FilterProductsEffect,
-      GetProductEffect,
-      AuthLoadingsEffect,
+      ...AllProductsEffects,
       ...AllFavoriteEffects,
+      ...AllAuthEffects,
+      ...AllCartEffects,
     ]),
     provideStoreDevtools({maxAge: 25, logOnly: !isDevMode()}),
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

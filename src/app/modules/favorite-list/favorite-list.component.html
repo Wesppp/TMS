@@ -7,10 +7,10 @@
       You will always be aware of the availability of selected products.
     </p>
   </div>
-  @if (favoriteProducts$ | async; as products) {
+  @defer(when !(isFavoriteLoafing$ | async)) {
     <div class="favorite-list__main">
       <ul>
-        @for(product of products; track product.uuid) {
+        @for(product of favoriteProducts$ | async; track product.uuid) {
           <li>
             <app-product-card
               [isHideFavoriteBtn]="true"
@@ -29,14 +29,10 @@
                 [rounded]="true"></p-button>
             </div>
           </li>
-        } @empty {
-          <li>
-            No products here
-          </li>
         }
       </ul>
     </div>
-  } @else {
+  } @placeholder () {
     <app-progress-spinner></app-progress-spinner>
   }
 </div>

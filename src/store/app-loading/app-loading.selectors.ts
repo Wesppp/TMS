@@ -25,3 +25,13 @@ export const isProductLoadingSelector = createSelector(
   appLoadingFeatureSelector,
   (appLoadingState: AppLoadingState): boolean => appLoadingState.loadings.has(AppLoadings.PRODUCT_LOADING)
 );
+
+export const isCartLoadingSelector = createSelector(
+  appLoadingFeatureSelector,
+  (appLoadingState: AppLoadingState): boolean => appLoadingState.loadings.has(AppLoadings.CART_LOADING)
+);
+
+export const isFavoriteLoadingSelector = createSelector(
+  appLoadingFeatureSelector,
+  (appLoadingState: AppLoadingState): boolean => appLoadingState.loadings.has(AppLoadings.FAVORITE_LOADING)
+);

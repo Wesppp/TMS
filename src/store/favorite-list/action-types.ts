@@ -7,6 +7,8 @@ export enum ActionTypes {
   REMOVE_FROM_FAVORITE_SUCCESS = '[Favorite list] remove from favorite success',
   REMOVE_FROM_FAVORITE_FAILURE = '[Favorite list] remove from favorite failure',
 
+  UPDATE_PRODUCT = '[Favorite list] update product',
+
   GET_FAVORITES_PRODUCTS = '[Favorite list] get favorites products',
   GET_FAVORITES_PRODUCTS_SUCCESS = '[Favorite list] get favorites products success',
   GET_FAVORITES_PRODUCTS_FAILURE = '[Favorite list] get favorites products failure',
