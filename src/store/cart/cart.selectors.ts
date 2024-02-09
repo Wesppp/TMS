@@ -13,5 +13,5 @@ export const cartProductsSelector = createSelector(
 export const cartProductsTotalCost = createSelector(
   cartFeatureSelector,
   (cartState: CartState) => cartState.cartProducts
-    .reduce((acc, el) => acc += el.price, 0)
+    .reduce((acc, el) => acc += +el.price, 0)
 )

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AsyncPipe } from "@angular/common";
+import { AsyncPipe, JsonPipe } from "@angular/common";
 
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
@@ -13,6 +13,8 @@ import { ProgressSpinnerComponent } from "@components/progress-spinner/progress-
 import { getCartProductsAction } from "@store/cart/actions/get-cart-products.action";
 import { ButtonModule } from "primeng/button";
 import { removeProductFromCartAction } from "@store/cart/actions/remove-cart-product.action";
+import { getAllProductsAction } from "@store/products/actions/get-all-products.action";
+import { isCartLoadingSelector } from "@store/app-loading/app-loading.selectors";
 
 @Component({
   selector: 'app-cart',
@@ -22,13 +24,15 @@ import { removeProductFromCartAction } from "@store/cart/actions/remove-cart-pro
     AsyncPipe,
     ProductCardComponent,
     ProgressSpinnerComponent,
-    ButtonModule
+    ButtonModule,
+    JsonPipe
   ],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
 export class CartComponent implements OnInit {
   public cartProducts$!: Observable<Product[]>;
+  public isCartLoading$!: Observable<boolean>;
   public totalCost$!: Observable<number>;
 
   protected readonly CardType = CardType;
@@ -39,12 +43,14 @@ export class CartComponent implements OnInit {
   public ngOnInit(): void {
     this.initializeValues();
 
+    this.store.dispatch(getAllProductsAction({}));
     this.store.dispatch(getCartProductsAction());
   }
 
   private initializeValues(): void {
     this.cartProducts$ = this.store.select(cartProductsSelector);
     this.totalCost$ = this.store.select(cartProductsTotalCost);
+    this.isCartLoading$ = this.store.select(isCartLoadingSelector);
   }
 
   public onRemoveProduct(index: number): void {

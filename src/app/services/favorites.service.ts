@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
 
-import { Observable, of } from "rxjs";
+import { map, Observable, of } from "rxjs";
 import { MessageService } from "primeng/api";
 
 import { LocalStorageKeys } from "@enums/localstorage-keys.enum";
 import { Product } from "@models/product.interface";
+import { ProductsService } from "@services/products.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class FavoritesService {
-  constructor(private readonly messageService: MessageService) {
+  constructor(private readonly messageService: MessageService,
+              private readonly productsService: ProductsService) {
   }
 
   public addToFavorite(productUuid: string): Observable<string> {
@@ -38,15 +40,13 @@ export class FavoritesService {
     return of(productUuid);
   }
 
-  public getFavoriteProducts(products: Product[]): Observable<Product[]> {
+  public getFavoriteProducts(): Observable<Product[]> {
     const existingCart: string | null = localStorage.getItem(LocalStorageKeys.FAVORITES);
     const favoriteProducts: string[] = existingCart ? JSON.parse(existingCart) : [];
-    let filteredProducts: Product[] = [];
 
-    if(products && products.length) {
-      filteredProducts = favoriteProducts.map((uuid: string) => products.find((product: Product) => product.uuid === uuid)!)
-    }
-
-    return of(filteredProducts);
+    return this.productsService.getProducts({}).pipe(
+      map((products) => favoriteProducts.map((uuid: string) =>
+        products.find((product: Product) => product.uuid === uuid)!))
+    );
   }
 }

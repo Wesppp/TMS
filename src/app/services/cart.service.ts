@@ -1,24 +1,26 @@
 import { Injectable } from '@angular/core';
 
-import { Observable, of } from "rxjs";
+import { map, Observable, of } from "rxjs";
 import { MessageService } from "primeng/api";
 
 import { CartProduct } from "@models/cart-product.interface";
 import { LocalStorageKeys } from "@enums/localstorage-keys.enum";
 import { Product } from "@models/product.interface";
+import { ProductsService } from "@services/products.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  constructor(private readonly messageService: MessageService) {
+  constructor(private readonly messageService: MessageService,
+              private readonly productsService: ProductsService) {
   }
 
   public addProductToCart(product: CartProduct): Observable<CartProduct> {
     const existingCart: string | null = localStorage.getItem(LocalStorageKeys.PRODUCTS);
 
-    if(!product.size || !product.color) {
-      this.messageService.add({ severity: 'info', summary: 'Info', detail: 'Choose the color and size of the product.' });
+    if (!product.size || !product.color) {
+      this.messageService.add({severity: 'info', summary: 'Info', detail: 'Choose the color and size of the product.'});
 
       return of();
     }
@@ -39,19 +41,15 @@ export class CartService {
     return of(index);
   }
 
-  public getCartProducts(products: Product[]): Observable<Product[]> {
+  public getCartProducts(): Observable<Product[]> {
     const existingCart: string | null = localStorage.getItem(LocalStorageKeys.PRODUCTS);
     const cartProducts: CartProduct[] = existingCart ? JSON.parse(existingCart) : [];
-    let filteredProducts: Product[] = [];
 
-    if(products && products.length) {
-      filteredProducts = cartProducts.map((cartProduct: CartProduct) => ({
-          ...products.find((product: Product) => product.uuid === cartProduct.uuid)!,
-          ...cartProduct,
-        })
-      );
-    }
-
-    return of(filteredProducts);
+    return this.productsService.getProducts({}).pipe(
+      map((products) => cartProducts.map((cartProduct: CartProduct) => ({
+        ...products.find((product: Product) => product.uuid === cartProduct.uuid)!,
+        ...cartProduct,
+      })))
+    );
   }
 }
