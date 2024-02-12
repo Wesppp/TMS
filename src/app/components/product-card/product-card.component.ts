@@ -11,7 +11,7 @@ import { RouterLink } from "@angular/router";
 import { SizeColorPickerValue } from "@models/size-color-picker-value.interface";
 import { addToFavoriteAction } from "@store/favorite-list/actions/add-to-favorite.action";
 import { updateProductAction } from "@store/favorite-list/actions/update-product.action";
-import { CardTypeIcon } from "@enums/card-type-icon.enum";
+import { CardTypeIcon } from "@components/product-card/enums/card-type-icon.enum";
 
 @Component({
   selector: 'app-product-card',
