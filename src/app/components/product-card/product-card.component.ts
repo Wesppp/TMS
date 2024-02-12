@@ -11,6 +11,7 @@ import { RouterLink } from "@angular/router";
 import { SizeColorPickerValue } from "@models/size-color-picker-value.interface";
 import { addToFavoriteAction } from "@store/favorite-list/actions/add-to-favorite.action";
 import { updateProductAction } from "@store/favorite-list/actions/update-product.action";
+import { CardTypeIcon } from "@enums/card-type-icon.enum";
 
 @Component({
   selector: 'app-product-card',
@@ -32,6 +33,7 @@ export class ProductCardComponent implements OnInit {
   @Input() public isHideFavoriteBtn: boolean = false;
 
   public readonly cardType = CardType;
+  protected readonly CardTypeIcon = CardTypeIcon;
   public sizeColor!: SizeColorPickerValue;
 
   constructor(private readonly store: Store) {
