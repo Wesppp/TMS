@@ -9,7 +9,7 @@
     <img
       class="favorite-btn"
       (click)="onFavoriteAdd(productCard, $event)"
-      [src]="productCardType === cardType.STRETCH ? 'assets/icons/favorite-black-fill.svg' : 'assets/icons/favorite.svg'"
+      [src]="CardTypeIcon[productCardType]"
       alt="add to favorite">
   }
   <p-card [header]="productCard.title" subheader="(Black)">
